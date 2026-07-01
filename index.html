@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Aoraku's personal homepage: research, resume, papers, notes, and blog."
+    />
+    <title>Aoraku | Qingle Liu</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script defer src="assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#main" aria-label="Aoraku homepage">
+          <span class="brand-mark">A</span>
+          <span>
+            <strong>Aoraku</strong>
+            <small>Qingle Liu</small>
+          </span>
+        </a>
+
+        <nav class="top-nav" aria-label="Primary navigation">
+          <button class="nav-tab" type="button" data-route-target="main">Main</button>
+          <button class="nav-tab" type="button" data-route-target="info">My info</button>
+          <button class="nav-tab" type="button" data-route-target="scholar">Scholar</button>
+          <button class="nav-tab" type="button" data-route-target="blog">Blog</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="view-main" class="view" aria-labelledby="main-title">
+        <div class="hero-band">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Aoraku.github.io</p>
+              <h1 id="main-title">Welcome to Aoraku's homepage</h1>
+              <p id="profile-bio" class="lead"></p>
+              <div id="quick-facts" class="fact-grid" aria-label="Quick facts"></div>
+            </div>
+
+            <aside class="profile-card" aria-label="Profile summary">
+              <div class="portrait-frame">
+                <img id="profile-avatar" src="assets/avatar.jpg" alt="Portrait of Qingle Liu" />
+              </div>
+              <div>
+                <h2 id="profile-name">Qingle Liu</h2>
+                <p id="profile-headline"></p>
+              </div>
+              <div id="social-links" class="social-links"></div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Updates</p>
+            <h2>News</h2>
+          </div>
+          <div id="news-list" class="news-list"></div>
+        </div>
+      </section>
+
+      <section id="view-info" class="view" aria-labelledby="info-title" hidden>
+        <div class="content-band resume-layout">
+          <aside class="resume-toc" aria-label="Resume sections">
+            <div class="mini-profile">
+              <img src="assets/avatar.jpg" alt="Portrait of Qingle Liu" />
+              <div>
+                <strong>Qingle Liu</strong>
+                <span>Undergraduate, Tsinghua University</span>
+              </div>
+            </div>
+            <nav id="resume-toc-links"></nav>
+          </aside>
+
+          <article class="resume-panel">
+            <div class="section-heading">
+              <p class="eyebrow">Curriculum vitae</p>
+              <h1 id="info-title">My info</h1>
+            </div>
+            <div id="resume-header" class="resume-header"></div>
+            <div id="resume-sections"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-scholar" class="view" aria-labelledby="scholar-title" hidden>
+        <div class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Publications</p>
+            <h1 id="scholar-title">Scholar</h1>
+          </div>
+          <div id="paper-list" class="paper-list"></div>
+        </div>
+      </section>
+
+      <section id="view-blog" class="view" aria-labelledby="blog-title" hidden>
+        <div class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Writing archive</p>
+            <h1 id="blog-title">Blog</h1>
+          </div>
+
+          <div class="blog-shell">
+            <aside class="blog-sidebar" aria-label="Blog categories">
+              <div id="blog-categories" class="category-list"></div>
+            </aside>
+
+            <div class="blog-main">
+              <div id="blog-list" class="blog-list"></div>
+              <article id="blog-reader" class="blog-reader" hidden>
+                <button id="reader-close" class="icon-button" type="button" aria-label="Close reader">
+                  <i data-lucide="x"></i>
+                </button>
+                <div id="reader-meta" class="reader-meta"></div>
+                <div class="reader-layout">
+                  <nav id="reader-toc" class="reader-toc" aria-label="Document table of contents"></nav>
+                  <div id="reader-content" class="reader-content"></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Aoraku</span>
+      <a href="mailto:lql24@mails.tsinghua.edu.cn">lql24@mails.tsinghua.edu.cn</a>
+    </footer>
+  </body>
+</html>
+

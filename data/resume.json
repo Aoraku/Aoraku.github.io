@@ -1,0 +1,149 @@
+{
+  "name": "Qingle Liu",
+  "email": "lql24@mails.tsinghua.edu.cn",
+  "phone": "+86 18561983501",
+  "affiliation": "Department of Computer Science and Technology, Tsinghua University, Beijing, China",
+  "sections": [
+    {
+      "id": "education",
+      "title": "Education",
+      "entries": [
+        {
+          "title": "Tsinghua University",
+          "meta": "Beijing, China",
+          "subtitle": "B.Eng. in CS & B.A. in Economics and Finance (Double Major)",
+          "date": "Sep. 2024 - Jun. 2028 (Expected)",
+          "bullets": [
+            "**GPA:** 3.97 / 4.0   **Rank:** 2 / 33",
+            "**Core Coursework:** Calculus (A/A-), Linear Algebra (A), Advanced Linear Algebra (A+), University Physics (A+/A), Discrete Mathematics (A-), Fundamentals of Programming (A), Object-Oriented Programming (A), Programming Training (A), Data Structures (A-), Intro to Computer Systems (A)",
+            "**In Progress:** Probability & Mathematical Statistics, Intro to Artificial Intelligence, Deep Learning & Financial Data Analysis, Intro to Machine Learning, Software Engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "honors-awards",
+      "title": "Honors & Awards",
+      "entries": [
+        {
+          "title": "National Scholarship",
+          "date": "2025",
+          "subtitle": "Top national undergraduate award in China"
+        },
+        {
+          "title": "Outstanding Communist Youth League Member, Tsinghua University",
+          "date": "2025"
+        },
+        {
+          "title": "AEON Scholarship",
+          "date": "2025"
+        },
+        {
+          "title": "CSP-J 2019, Provincial First Prize",
+          "date": "2019",
+          "subtitle": "Competitive programming, junior group"
+        }
+      ]
+    },
+    {
+      "id": "research-experience",
+      "title": "Research Experience",
+      "entries": [
+        {
+          "title": "Institute of HCI and Media Integration, Tsinghua University",
+          "meta": "Beijing, China",
+          "subtitle": "Undergraduate Researcher, advised by Academician Shimin Hu",
+          "date": "Aug. 2025 - Present",
+          "bullets": [
+            "Conducting research on multimodal video understanding and GUI agents.",
+            "Two papers under review at **ECCV 2026** (not yet on arXiv):",
+            "*Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction* (2nd author)",
+            "*GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated Screenshots* (4th author)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "industry-experience",
+      "title": "Industry Experience",
+      "entries": [
+        {
+          "title": "Einsia.AI",
+          "meta": "Beijing, China",
+          "subtitle": "Software Developer & Research Engineer",
+          "date": "Mar. 2026 - Present",
+          "bullets": [
+            "**Dev Team -- Deep Research:** Contributed to the development of Einsia's [Deep Research](https://einsia.ai/deep-research/) product, an AI-powered academic research agent.",
+            "**Lab Team -- Frontier-Eng:** Participated in the *Frontier-Eng* project, a benchmark for evaluating AI agents on real-world engineering optimization tasks (47 tasks, 5 categories). Paper: [arXiv:2604.12290](https://arxiv.org/abs/2604.12290).",
+            "**Lab Team -- AI4Health:** Currently contributing to the AI for Health project (ongoing)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "entries": [
+        {
+          "title": "Optical-Chip Sign Language Translation Glove",
+          "meta": "Tsinghua University",
+          "subtitle": "Algorithm Design & Model Training -- SRT Program",
+          "date": "2026 - Present",
+          "bullets": [
+            "Participating in the National College Student Innovation Competition; funded as an SRT (Student Research Training) project at Tsinghua University.",
+            "Responsible for algorithm design and model training for a sign language translation glove based on an optical chip sensor."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "leadership-activities",
+      "title": "Leadership & Activities",
+      "entries": [
+        {
+          "title": "Class President, Dept. of Computer Science and Technology",
+          "date": "2025 - 2026"
+        },
+        {
+          "title": "Team Leader, Summer Social Practice Trip to Wuxi (\"Smart Wuxi\")",
+          "date": "Summer 2025"
+        },
+        {
+          "title": "Staff Member, Organization & Volunteer Div., Dept. Youth League Committee",
+          "date": "2025 - 2026"
+        },
+        {
+          "title": "Party Study Group Leader",
+          "date": "2024 - 2025"
+        },
+        {
+          "title": "Completed 200+ hours of community volunteer service",
+          "date": "2024 - 2026"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "entries": [
+        {
+          "title": "Programming",
+          "subtitle": "Python, C++"
+        },
+        {
+          "title": "Tools",
+          "subtitle": "Adobe Creative Suite, Microsoft Office"
+        },
+        {
+          "title": "Languages",
+          "subtitle": "Mandarin (native), English (CET-4: 609), Japanese (JLPT N2)"
+        },
+        {
+          "title": "Interests",
+          "subtitle": "Travel, Piano, Calligraphy, Basketball"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,45 @@
+{
+  "displayName": "Qingle Liu",
+  "handle": "Aoraku",
+  "avatar": "assets/avatar.jpg",
+  "headline": "Undergraduate in Computer Science and Economics & Finance at Tsinghua University.",
+  "affiliation": "Department of Computer Science and Technology, Tsinghua University",
+  "location": "Beijing, China",
+  "email": "lql24@mails.tsinghua.edu.cn",
+  "phone": "+86 18561983501",
+  "bio": "I am Qingle Liu, an undergraduate student at Tsinghua University with interests in multimodal video understanding, GUI agents, AI research agents, and real-world engineering optimization.",
+  "quickFacts": [
+    "B.Eng. in CS & B.A. in Economics and Finance, expected 2028",
+    "GPA 3.97 / 4.0, ranked 2 / 33",
+    "Undergraduate researcher at the Institute of HCI and Media Integration",
+    "Research engineer and software developer at Einsia.AI"
+  ],
+  "socials": [
+    {
+      "label": "Email",
+      "url": "mailto:lql24@mails.tsinghua.edu.cn",
+      "icon": "mail"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/Aoraku",
+      "icon": "github"
+    },
+    {
+      "label": "Google Scholar",
+      "url": "",
+      "icon": "graduation-cap"
+    },
+    {
+      "label": "X",
+      "url": "",
+      "icon": "messages-square"
+    },
+    {
+      "label": "Instagram",
+      "url": "",
+      "icon": "instagram"
+    }
+  ]
+}
+
