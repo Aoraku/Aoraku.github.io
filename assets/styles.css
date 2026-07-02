@@ -94,15 +94,15 @@ button {
 }
 
 .brand-mark {
-  width: 42px;
+  width: 58px;
   height: 42px;
   display: grid;
   place-items: center;
-  background: var(--ink);
-  color: var(--paper);
+  background: #c83228;
+  color: #fffdf7;
   border-radius: 8px;
-  font-family: var(--serif);
-  font-size: 1.45rem;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif CJK SC", var(--serif);
+  font-size: 1.05rem;
   font-weight: 700;
 }
 

@@ -6,21 +6,34 @@ Personal homepage for Qingle Liu / Aoraku.
 
 - `index.html` is the GitHub Pages entry point.
 - `assets/` contains CSS, JavaScript, favicon, and avatar image.
-- `data/profile.json`, `data/resume.json`, `data/news.json`, and `data/papers.json` drive Main, My info, News, and Scholar.
-- `content/blog/` stores future blog documents.
-- `scripts/sync_content.py` scans blog documents and regenerates `data/blog-index.json`.
+- `data/profile.json` drives the Main page profile text, quick facts, and social links.
+- `data/news.json` drives News on the Main page.
+- `data/resume.json` drives My info.
+- `data/papers.json` drives Scholar.
+- `content/blog/` stores Blog documents.
+- `scripts/sync_content.py` scans Blog documents and regenerates `data/blog-index.json`.
 
-## Add blog content
+## Edit Content
 
-Place files in:
+Main page text: edit `data/profile.json`.
 
-- `content/blog/essays/` for 杂文
-- `content/blog/cst-notes/` for CST专业课文档
-- `content/blog/journals/` for 日周月季年记
+News: edit `data/news.json` and add items with `date`, `title`, and `body`.
 
-Supported formats: `.md`, `.txt`, `.pdf`, `.docx`.
+My info: edit `data/resume.json`.
 
-For Markdown or text files, optional front matter:
+Scholar: edit `data/papers.json`.
+
+Blog categories:
+
+- `content/blog/essays/` for essays
+- `content/blog/cst-notes/` for CST course notes
+- `content/blog/journals/` for daily/weekly/monthly/quarterly/yearly journals
+
+Supported Blog formats: `.md`, `.txt`, `.pdf`, `.docx`.
+
+## Blog Front Matter
+
+For Markdown or text files, put writing time in front matter. Blog sorting uses this `date`, not Git commit time.
 
 ```yaml
 ---
@@ -37,7 +50,7 @@ Then run:
 python scripts/sync_content.py
 ```
 
-Preview locally:
+## Preview
 
 ```bash
 python -m http.server 8000
@@ -47,7 +60,12 @@ Open <http://localhost:8000>.
 
 ## Deploy
 
-Push this repository to `https://github.com/Aoraku/Aoraku.github.io`. The included GitHub Actions workflow regenerates the blog index and deploys the static site to GitHub Pages.
+```bash
+git add .
+git commit -m "Update homepage"
+git push
+```
+
+GitHub Actions deploys the static site to <https://aoraku.github.io/>.
 
 Do not commit GitHub tokens or other secrets.
-

@@ -1,4 +1,35 @@
 {
-  "generatedAt": "2026-07-01T14:35:28+00:00",
-  "entries": []
+  "generatedAt": "2026-07-02T02:08:40+00:00",
+  "entries": [
+    {
+      "id": "cst-notes-cst-notes-intro-ai-review-index",
+      "title": "《人工智能导论》复习文档",
+      "date": "2026-06-18",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "人工智能导论期末复习笔记，覆盖搜索、机器学习、神经网络、NLP 与强化学习等主题。",
+      "tags": [
+        "CST",
+        "AI",
+        "复习"
+      ],
+      "type": "markdown",
+      "source": "content/blog/cst-notes/intro-ai-review/index.md"
+    },
+    {
+      "id": "cst-notes-cst-notes-intro-computer-systems-review-index",
+      "title": "《计算机系统概论》复习文档",
+      "date": "2026-01-13",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "计算机系统概论期末复习笔记，覆盖整数、浮点数、链接、虚拟内存、IO 与并发等主题。",
+      "tags": [
+        "CST",
+        "ICS",
+        "复习"
+      ],
+      "type": "markdown",
+      "source": "content/blog/cst-notes/intro-computer-systems-review/index.md"
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from __future__ import annotations
 
 import argparse
@@ -104,7 +104,7 @@ def discover_entries() -> list[dict]:
             rel = path.relative_to(ROOT).as_posix()
             title = str(meta.get("title") or title_from_stem(path))
             date = str(meta.get("date") or file_date(path))
-            entry_id = slugify(f"{category}-{path.stem}")
+            entry_id = slugify(f"{category}-{path.relative_to(BLOG_ROOT).with_suffix("").as_posix()}")
             tags = meta.get("tags") or []
             if isinstance(tags, str):
                 tags = [item.strip() for item in tags.split(",") if item.strip()]

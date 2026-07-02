@@ -1,47 +1,58 @@
-﻿# Maintenance
+# Maintenance
 
-This site is intentionally data-driven.
+This site is data-driven. Most content changes do not require editing HTML/CSS/JS.
 
-## News
+## Where To Edit
 
-Edit `data/news.json` and add items with `date`, `title`, and `body`.
+Main page profile, headline, bio, social links, and quick facts:
 
-## Resume
+- `data/profile.json`
 
-Edit `data/resume.json`. Each section has a stable `id`, a visible `title`, and an `entries` array. Inline Markdown works in bullet text.
+Main page News:
 
-## Scholar
+- `data/news.json`
 
-Edit `data/papers.json`:
+My info / resume:
 
-```json
-{
-  "papers": [
-    {
-      "title": "Paper title",
-      "authors": "Author A, Author B",
-      "venue": "Conference or Journal",
-      "year": "2026",
-      "url": "https://example.com"
-    }
-  ]
-}
-```
+- `data/resume.json`
 
-## Blog
+Scholar / papers:
 
-Drop files into:
+- `data/papers.json`
+
+Blog documents:
 
 - `content/blog/essays/`
 - `content/blog/cst-notes/`
 - `content/blog/journals/`
 
-Supported formats are `.md`, `.txt`, `.pdf`, and `.docx`.
+## Blog Sorting
 
-Then run:
+Blog sorting uses the document writing date from front matter:
+
+```yaml
+---
+title: Example title
+date: 2026-07-01
+summary: Short abstract.
+tags: [CST, note]
+---
+```
+
+If `date` is missing, the sync script falls back to the file modified date. For reliable GitHub Pages ordering, keep `date` in every article.
+
+After adding or editing Blog files, run:
 
 ```bash
 python scripts/sync_content.py
 ```
 
-The reader supports Markdown/text directly. PDF opens inline. DOCX renders in the browser when the converter script loads.
+## Publish Changes
+
+```bash
+git add .
+git commit -m "Update homepage"
+git push
+```
+
+GitHub Actions will rebuild and publish the site.

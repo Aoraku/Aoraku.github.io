@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const state = {
     profile: null,
     resume: null,
@@ -65,16 +65,30 @@
   function bindNavigation() {
     $$(".nav-tab").forEach((button) => {
       button.addEventListener("click", () => {
-        window.location.hash = button.dataset.routeTarget;
+        window.location.hash = `#${button.dataset.routeTarget}`;
       });
     });
     window.addEventListener("hashchange", updateRoute);
   }
 
-  function updateRoute() {
+  function parseRoute() {
+    const raw = window.location.hash.replace(/^#/, "");
+    const [route, rawAnchor] = raw.split("/");
     const valid = new Set(["main", "info", "scholar", "blog"]);
-    const route = window.location.hash.replace("#", "") || "main";
-    const active = valid.has(route) ? route : "main";
+    let anchor = rawAnchor || "";
+    try {
+      anchor = decodeURIComponent(anchor);
+    } catch {
+      // Keep the raw anchor if the browser hash contains an incomplete escape sequence.
+    }
+    return {
+      active: valid.has(route) ? route : "main",
+      anchor: valid.has(route) ? anchor : ""
+    };
+  }
+
+  function updateRoute() {
+    const { active, anchor } = parseRoute();
 
     $$(".view").forEach((view) => {
       view.hidden = view.id !== `view-${active}`;
@@ -84,7 +98,14 @@
       button.classList.toggle("is-active", selected);
       button.setAttribute("aria-current", selected ? "page" : "false");
     });
-    window.scrollTo({ top: 0, behavior: "auto" });
+    if (anchor) {
+      requestAnimationFrame(() => {
+        const target = document.getElementById(anchor);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
   }
 
   function renderProfile() {
@@ -153,7 +174,7 @@
 
     const sectionList = resume.sections || [];
     toc.innerHTML = sectionList
-      .map((section) => `<a href="#${escapeAttr(section.id)}">${escapeHtml(section.title)}</a>`)
+      .map((section) => `<a href="#info/${escapeAttr(section.id)}">${escapeHtml(section.title)}</a>`)
       .join("");
 
     sections.innerHTML = sectionList
@@ -333,9 +354,12 @@
         const response = await fetch(entry.source, { cache: "no-cache" });
         if (!response.ok) throw new Error(`Could not load ${entry.source}`);
         const text = await response.text();
-        readerContent.innerHTML = renderDocumentText(text, entry.type);
+        readerContent.innerHTML = renderDocumentText(text, entry.type, entry.source);
       }
       buildReaderToc(readerContent, readerToc);
+      if (window.MathJax?.typesetPromise) {
+        window.MathJax.typesetPromise([readerContent]).catch(console.warn);
+      }
       reader.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (error) {
       console.warn(error);
@@ -358,13 +382,29 @@
     return sanitize(result.value || "");
   }
 
-  function renderDocumentText(text, type) {
+  function renderDocumentText(text, type, source) {
     const [, body] = parseFrontMatter(text);
+    let html = "";
     if (type === "markdown" && window.marked) {
       window.marked.setOptions({ gfm: true, breaks: false });
-      return sanitize(window.marked.parse(body));
+      html = sanitize(window.marked.parse(body));
+    } else {
+      html = simpleMarkdown(body);
     }
-    return simpleMarkdown(body);
+    return resolveDocumentUrls(html, source);
+  }
+
+  function resolveDocumentUrls(html, source) {
+    const template = document.createElement("template");
+    template.innerHTML = html;
+    const base = new URL(source, window.location.href);
+    $$("img[src], a[href], iframe[src]", template.content).forEach((node) => {
+      const attr = node.hasAttribute("src") ? "src" : "href";
+      const value = node.getAttribute(attr);
+      if (!value || value.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(value)) return;
+      node.setAttribute(attr, new URL(value, base).href);
+    });
+    return template.innerHTML;
   }
 
   function parseFrontMatter(text) {
@@ -385,7 +425,7 @@
     tocRoot.innerHTML = headings
       .map((heading, index) => {
         if (!heading.id) heading.id = `section-${index + 1}-${slugify(heading.textContent)}`;
-        return `<a class="${heading.tagName.toLowerCase()}" href="#${escapeAttr(heading.id)}">${escapeHtml(heading.textContent)}</a>`;
+        return `<a class="${heading.tagName.toLowerCase()}" href="#blog/${escapeAttr(heading.id)}">${escapeHtml(heading.textContent)}</a>`;
       })
       .join("");
   }
