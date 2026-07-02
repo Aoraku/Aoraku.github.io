@@ -299,7 +299,6 @@
               <div class="item-meta">
                 <span>${escapeHtml(entry.categoryLabel || "")}</span>
                 <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
-                <span>${escapeHtml((entry.type || "").toUpperCase())}</span>
               </div>
               <h2>${escapeHtml(entry.title || "Untitled")}</h2>
               ${entry.summary ? `<p>${escapeHtml(entry.summary)}</p>` : ""}
@@ -338,7 +337,6 @@
       <div class="item-meta">
         <span>${escapeHtml(entry.categoryLabel || "")}</span>
         <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
-        <span>${escapeHtml((entry.type || "").toUpperCase())}</span>
       </div>
       <h2>${escapeHtml(entry.title || "Untitled")}</h2>
     `;
