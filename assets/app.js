@@ -381,11 +381,10 @@
 
     document.title = `${entry.title || "Document"} | Aoraku`;
     docMeta.innerHTML = `
-      <div class="item-meta">
+      <div class="item-meta" aria-label="Document metadata">
         <span>${escapeHtml(entry.categoryLabel || "")}</span>
         <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
       </div>
-      <h1 id="doc-title">${escapeHtml(entry.title || "Untitled")}</h1>
     `;
     docContent.innerHTML = `<div class="loading-line">Loading...</div>`;
     docToc.innerHTML = "";
@@ -400,9 +399,11 @@
         const response = await fetch(entry.source, { cache: "no-cache" });
         if (!response.ok) throw new Error(`Could not load ${entry.source}`);
         const text = await response.text();
-        docContent.innerHTML = renderDocumentText(text, entry.type, entry.source);
+        docContent.innerHTML = renderDocumentText(text, entry.type, entry.source, entry.title);
       }
 
+      const mainTitle = $("h1", docContent);
+      if (mainTitle) mainTitle.id = "doc-title";
       highlightCodeBlocks(docContent);
       buildReaderToc(docContent, docToc, entry.id);
       if (window.MathJax?.typesetPromise) {
@@ -493,18 +494,98 @@
     return sanitize(result.value || "");
   }
 
-  function renderDocumentText(text, type, source) {
-    const [, body] = parseFrontMatter(text);
+  function renderDocumentText(text, type, source, title = "") {
+    const [, rawBody] = parseFrontMatter(text);
+    const body = normalizeDocumentTitle(rawBody, title);
     let html = "";
     if (type === "markdown" && window.marked) {
+      const protectedMath = protectMarkdownMath(body);
       window.marked.setOptions({ gfm: true, breaks: false });
-      html = sanitize(window.marked.parse(body));
+      html = sanitize(window.marked.parse(protectedMath.text));
+      html = restoreProtectedMath(html, protectedMath.segments);
     } else {
       html = simpleMarkdown(body);
     }
     return resolveDocumentUrls(html, source);
   }
 
+  function normalizeDocumentTitle(body, title) {
+    const normalized = String(body || "").replace(/\r\n/g, "\n").replace(/^\uFEFF/, "");
+    const safeTitle = String(title || "Untitled").trim() || "Untitled";
+    const lines = normalized.split("\n");
+    let index = 0;
+    while (index < lines.length && !lines[index].trim()) index += 1;
+    if (index < lines.length && /^#{1,2}\s+/.test(lines[index].trim())) {
+      lines[index] = `# ${safeTitle}`;
+    } else {
+      lines.splice(index, 0, `# ${safeTitle}`, "");
+    }
+    return lines.join("\n");
+  }
+
+  function protectMarkdownMath(markdown) {
+    const segments = [];
+    let fence = "";
+    const lines = String(markdown || "").match(/[^\n]*\n|[^\n]+$/g) || [];
+    const text = lines.map((line) => {
+      const fenceMatch = line.match(/^\s*(```|~~~)/);
+      if (fenceMatch) {
+        if (!fence) {
+          fence = fenceMatch[1];
+        } else if (fence === fenceMatch[1]) {
+          fence = "";
+        }
+        return line;
+      }
+      return fence ? line : protectMathInLine(line, segments);
+    }).join("");
+    return { text, segments };
+  }
+
+  function protectMathInLine(line, segments) {
+    let output = "";
+    let index = 0;
+    while (index < line.length) {
+      if (line.startsWith("$$", index)) {
+        const end = line.indexOf("$$", index + 2);
+        if (end !== -1) {
+          output += addMathSegment(line.slice(index, end + 2), segments);
+          index = end + 2;
+          continue;
+        }
+      }
+      if (line[index] === "$" && line[index + 1] !== "$") {
+        const end = findInlineMathEnd(line, index + 1);
+        if (end !== -1) {
+          output += addMathSegment(line.slice(index, end + 1), segments);
+          index = end + 1;
+          continue;
+        }
+      }
+      output += line[index];
+      index += 1;
+    }
+    return output;
+  }
+
+  function findInlineMathEnd(line, start) {
+    for (let index = start; index < line.length; index += 1) {
+      if (line[index] === "$" && line[index - 1] !== "\\") return index;
+    }
+    return -1;
+  }
+
+  function addMathSegment(raw, segments) {
+    const token = `AORAKUMATHTOKEN${segments.length}X`;
+    segments.push({ token, raw });
+    return token;
+  }
+
+  function restoreProtectedMath(html, segments) {
+    return segments.reduce((value, segment) => (
+      value.split(segment.token).join(escapeHtml(segment.raw))
+    ), html);
+  }
   function resolveDocumentUrls(html, source) {
     const template = document.createElement("template");
     template.innerHTML = html;
