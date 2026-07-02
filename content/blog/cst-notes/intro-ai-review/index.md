@@ -316,8 +316,6 @@ def Modified_A_star(s):
 | 全连接层合计 | ≈ **123,642,856** （约1.24亿） |
 | **总计** | ≈ **138,357,544** （约**1.38亿**） |
 
-### 关键结论
-
 9. GoogLeNet
 ![alt text](image-8.png)
 ![alt text](image-9.png)
