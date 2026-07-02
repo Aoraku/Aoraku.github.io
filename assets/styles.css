@@ -1433,3 +1433,57 @@ button {
 .doc-content.reader-content pre code.codex-highlight .syntax-operator {
   color: #ff7b72;
 }
+
+
+/* Layout and reader refinements v20260702i */
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  flex-shrink: 0;
+}
+
+.doc-meta h1 {
+  font-size: clamp(1.5rem, 2.3vw, 2.45rem);
+  line-height: 1.08;
+}
+
+.doc-content.reader-content h1 {
+  font-size: clamp(1.35rem, 1.72vw, 1.78rem);
+}
+
+.doc-content.reader-content h2 {
+  font-size: clamp(1.1rem, 1.3vw, 1.28rem);
+}
+
+.doc-content.reader-content h3 {
+  font-size: clamp(1.02rem, 1.18vw, 1.14rem);
+}
+
+.reader-content mjx-container:not([display="true"]),
+.doc-content.reader-content mjx-container:not([display="true"]) {
+  vertical-align: -0.02em !important;
+  line-height: normal !important;
+}
+
+.doc-content.reader-content pre code.hljs {
+  color: #e6edf3;
+}
+
+@media (max-width: 700px) {
+  .doc-meta h1 {
+    font-size: clamp(1.7rem, 8vw, 2.45rem);
+  }
+}

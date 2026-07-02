@@ -99,7 +99,7 @@ $
 | ---- | :---: | ---- |
 | $$x<0 \Rightarrow (x\cdot 2)<0$$        | X   | $x=T_{\min}$，乘2溢出|
 | $$ux \Rightarrow ux\ge 0$$              | O   ||
-| $$(x\ \&\  7)=7 \Rightarrow (x\ll 30)<0$$ | O   ||
+| $$(x\ \\&\  7)=7 \Rightarrow (x\ll 30)<0$$ | O   ||
 | $$ux \Rightarrow ux>-1$$                | X   | 恒错，$-1$会被转换成$U_{max}=2^{32}-1$|
 | $$x>y \Rightarrow -x<-y$$               | X   | $x=0,y=T_{\min}$（特殊：$T_{min}$的相反数仍为$T_{min}$）|
 | $$x>0且y>0 \Rightarrow x+y>0$$   | X   | $x=T_{\max},y=1$，相加溢出|
@@ -108,7 +108,7 @@ $
 | $$((x\mid -x)\gg 31)=-1$$               | X   | $x=0$                                                |
 | $$(ux\gg 3)=ux/8$$                      | O   ||
 | $$(x\gg 3)=x/8$$                        | X   |负数，左侧向下取整，右侧向$0$取整|
-| $$x\ \&\ (x-1)\ne 0$$                    | X   |任意 $x=2^k$|
+| $$x\ \\&\ (x-1)\ne 0$$                    | X   |任意 $x=2^k$|
 
 #### （三）浮点数表示
 1.  浮点数的表示：$(-1)^s\times M\times 2^E$

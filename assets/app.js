@@ -431,84 +431,50 @@
 
   function highlightCodeBlocks(root) {
     $$('pre code', root).forEach((code) => {
-      const normalized = normalizeCodeLanguage(code);
-      const preferFallback = !normalized || normalized === 'plaintext';
-      if (window.hljs && !preferFallback) {
+      const language = normalizeCodeLanguage(code);
+      const source = code.textContent || '';
+      if (window.hljs && language !== 'plaintext' && window.hljs.getLanguage(language)) {
         try {
-          window.hljs.highlightElement(code);
-          if (code.querySelector('span')) return;
+          const highlighted = window.hljs.highlight(source, {
+            language,
+            ignoreIllegals: true
+          });
+          code.innerHTML = highlighted.value;
+          code.classList.add('hljs', `language-${language}`);
+          code.dataset.highlighted = 'yes';
+          return;
         } catch {
-          // Fall back to the local highlighter below.
+          // Fall through to plain rendering.
         }
       }
-      code.innerHTML = highlightCodeFallback(code.textContent || '', normalized);
-      code.classList.add('hljs', 'codex-highlight');
-      code.dataset.highlighted = 'fallback';
+      code.textContent = source;
+      code.classList.add('hljs');
+      code.dataset.highlighted = 'plain';
     });
   }
 
   function normalizeCodeLanguage(code) {
     const languageClass = Array.from(code.classList).find((name) => name.startsWith('language-'));
-    const language = languageClass ? languageClass.replace('language-', '') : '';
+    const language = languageClass ? languageClass.replace('language-', '').toLowerCase() : '';
     const aliases = {
       asmx86: 'x86asm',
       asm: 'x86asm',
-      text: 'plaintext'
+      'x86-64': 'x86asm',
+      x64: 'x86asm',
+      'c++': 'cpp',
+      cc: 'cpp',
+      cxx: 'cpp',
+      sv: 'verilog',
+      systemverilog: 'verilog',
+      text: 'plaintext',
+      txt: 'plaintext'
     };
-    const normalized = aliases[language] || language;
-    if (languageClass && normalized !== language) {
+    const normalized = aliases[language] || language || 'plaintext';
+    if (languageClass) {
       code.classList.remove(languageClass);
-      code.classList.add(`language-${normalized}`);
     }
+    code.classList.add(`language-${normalized}`);
     return normalized;
-  }
-
-  function highlightCodeFallback(value, language) {
-    const mode = language || 'generic';
-    const python = [
-      ['syntax-comment', /#[^\n]*/y],
-      ['syntax-string', /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')/y],
-      ['syntax-keyword', /\b(def|class|return|if|elif|else|for|while|in|not|and|or|import|from|as|try|except|finally|with|lambda|True|False|None|break|continue|pass|yield|global|nonlocal)\b/y],
-      ['syntax-number', /\b\d+(?:\.\d+)?\b/y],
-      ['syntax-constant', /\b[A-Z_]{2,}\b/y],
-      ['syntax-operator', /[+\-*\/%=<>!&|^~:]+/y]
-    ];
-    const asm = [
-      ['syntax-comment', /[#;][^\n]*/y],
-      ['syntax-string', /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')/y],
-      ['syntax-keyword', /\b(movq|movl|movslq|leaq|cmpq|ja|call|ret|push|pop|subq|addq|salq|sarq|shlq|shrq|jmp|jne|je|jg|jge|jl|jle|andq|orq|xorq)\b/iy],
-      ['syntax-constant', /%[a-z][a-z0-9]*/iy],
-      ['syntax-number', /\$?-?(?:0x[0-9a-f]+|\d+)/iy],
-      ['syntax-operator', /[(),:%+\-*]+/y]
-    ];
-    const generic = [
-      ['syntax-comment', /(#[^\n]*|\/\/[^\n]*)/y],
-      ['syntax-string', /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`)/y],
-      ['syntax-keyword', /\b(def|function|class|return|if|else|for|while|OPEN|CLOSED|input|output|break|continue)\b/y],
-      ['syntax-number', /\b\d+(?:\.\d+)?\b/y],
-      ['syntax-operator', /[+\-*\/%=<>!&|^~:]+/y]
-    ];
-    const patterns = mode.includes('python') ? python : mode.includes('x86asm') ? asm : generic;
-    let html = '';
-    let index = 0;
-    while (index < value.length) {
-      let matched = false;
-      for (const [className, pattern] of patterns) {
-        pattern.lastIndex = index;
-        const match = pattern.exec(value);
-        if (match) {
-          html += `<span class="${className}">${escapeHtml(match[0])}</span>`;
-          index = pattern.lastIndex;
-          matched = true;
-          break;
-        }
-      }
-      if (!matched) {
-        html += escapeHtml(value[index]);
-        index += 1;
-      }
-    }
-    return html;
   }
 
   function hideReader() {
