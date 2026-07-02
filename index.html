@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/styles.css?v=20260702c" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260702f" />
     <script>
       window.MathJax = {
         tex: {
@@ -30,7 +30,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
     <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script defer src="assets/app.js?v=20260702c"></script>
+    <script defer src="assets/app.js?v=20260702f"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -149,10 +149,28 @@
           </div>
         </div>
       </section>
+
+      <section id="view-doc" class="view document-view" aria-labelledby="doc-title" hidden>
+        <div class="doc-band">
+          <article id="doc-reader" class="doc-reader">
+            <header class="doc-header">
+              <button id="doc-back" class="text-button doc-back" type="button">
+                <i data-lucide="arrow-left"></i>
+                <span>Blog</span>
+              </button>
+              <div id="doc-meta" class="doc-meta"></div>
+            </header>
+            <div class="doc-layout">
+              <div id="doc-content" class="reader-content doc-content"></div>
+              <nav id="doc-toc" class="reader-toc doc-toc" aria-label="Document table of contents"></nav>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-      <span>© <span id="year"></span> Aoraku</span>
+      <span>&copy; <span id="year"></span> Aoraku</span>
       <a href="mailto:lql24@mails.tsinghua.edu.cn">lql24@mails.tsinghua.edu.cn</a>
     </footer>
   </body>

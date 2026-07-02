@@ -73,31 +73,56 @@
 
   function parseRoute() {
     const raw = window.location.hash.replace(/^#/, "");
-    const [route, rawAnchor] = raw.split("/");
-    const valid = new Set(["main", "info", "scholar", "blog"]);
-    let anchor = rawAnchor || "";
-    try {
-      anchor = decodeURIComponent(anchor);
-    } catch {
-      // Keep the raw anchor if the browser hash contains an incomplete escape sequence.
+    const parts = raw.split("/");
+    const route = parts[0] || "main";
+    const valid = new Set(["main", "info", "scholar", "blog", "doc"]);
+
+    if (!valid.has(route)) {
+      return { active: "main", entryId: "", anchor: "" };
     }
+
+    if (route === "doc") {
+      return {
+        active: route,
+        entryId: decodeHashSegment(parts[1] || ""),
+        anchor: decodeHashSegment(parts.slice(2).join("/"))
+      };
+    }
+
     return {
-      active: valid.has(route) ? route : "main",
-      anchor: valid.has(route) ? anchor : ""
+      active: route,
+      entryId: "",
+      anchor: decodeHashSegment(parts.slice(1).join("/"))
     };
   }
 
+  function decodeHashSegment(value) {
+    try {
+      return decodeURIComponent(value || "");
+    } catch {
+      return value || "";
+    }
+  }
+
   function updateRoute() {
-    const { active, anchor } = parseRoute();
+    const { active, entryId, anchor } = parseRoute();
 
     $$(".view").forEach((view) => {
       view.hidden = view.id !== `view-${active}`;
     });
     $$(".nav-tab").forEach((button) => {
-      const selected = button.dataset.routeTarget === active;
+      const selectedRoute = active === "doc" ? "blog" : active;
+      const selected = button.dataset.routeTarget === selectedRoute;
       button.classList.toggle("is-active", selected);
       button.setAttribute("aria-current", selected ? "page" : "false");
     });
+
+    if (active === "doc") {
+      renderDocRoute(entryId, anchor);
+      return;
+    }
+
+    document.title = "Aoraku | Qingle Liu";
     if (anchor) {
       requestAnimationFrame(() => {
         const target = document.getElementById(anchor);
@@ -320,53 +345,91 @@
   }
 
   function bindReader() {
-    $("#reader-close").addEventListener("click", hideReader);
+    const readerClose = $("#reader-close");
+    if (readerClose) readerClose.addEventListener("click", hideReader);
+
+    const docBack = $("#doc-back");
+    if (docBack) {
+      docBack.addEventListener("click", () => {
+        window.location.hash = "#blog";
+      });
+    }
   }
 
-  async function openEntry(id) {
+  function openEntry(id) {
+    if (!id) return;
+    window.location.hash = `#doc/${encodeURIComponent(id)}`;
+  }
+
+  async function renderDocRoute(id, anchor = "") {
     const entry = state.blog.find((item) => item.id === id);
-    if (!entry) return;
+    const docMeta = $("#doc-meta");
+    const docContent = $("#doc-content");
+    const docToc = $("#doc-toc");
 
-    const reader = $("#blog-reader");
-    const readerMeta = $("#reader-meta");
-    const readerContent = $("#reader-content");
-    const readerToc = $("#reader-toc");
+    if (!docMeta || !docContent || !docToc) return;
 
-    reader.hidden = false;
-    readerMeta.innerHTML = `
+    if (!entry) {
+      document.title = "Document not found | Aoraku";
+      docMeta.innerHTML = `<h1 id="doc-title">Document not found</h1>`;
+      docContent.innerHTML = emptyState("This document does not exist yet.");
+      docToc.innerHTML = "";
+      docToc.hidden = true;
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+
+    document.title = `${entry.title || "Document"} | Aoraku`;
+    docMeta.innerHTML = `
       <div class="item-meta">
         <span>${escapeHtml(entry.categoryLabel || "")}</span>
         <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
       </div>
-      <h2>${escapeHtml(entry.title || "Untitled")}</h2>
+      <h1 id="doc-title">${escapeHtml(entry.title || "Untitled")}</h1>
     `;
-    readerContent.innerHTML = `<div class="loading-line">Loading...</div>`;
-    readerToc.innerHTML = "";
+    docContent.innerHTML = `<div class="loading-line">Loading...</div>`;
+    docToc.innerHTML = "";
+    docToc.hidden = true;
 
     try {
       if (entry.type === "pdf") {
-        readerContent.innerHTML = `<iframe class="pdf-frame" src="${escapeAttr(entry.source)}" title="${escapeAttr(entry.title)}"></iframe>`;
+        docContent.innerHTML = `<iframe class="pdf-frame" src="${escapeAttr(entry.source)}" title="${escapeAttr(entry.title)}"></iframe>`;
       } else if (entry.type === "docx") {
-        readerContent.innerHTML = await renderDocx(entry.source);
+        docContent.innerHTML = await renderDocx(entry.source);
       } else {
         const response = await fetch(entry.source, { cache: "no-cache" });
         if (!response.ok) throw new Error(`Could not load ${entry.source}`);
         const text = await response.text();
-        readerContent.innerHTML = renderDocumentText(text, entry.type, entry.source);
+        docContent.innerHTML = renderDocumentText(text, entry.type, entry.source);
       }
-      buildReaderToc(readerContent, readerToc);
+
+      buildReaderToc(docContent, docToc, entry.id);
       if (window.MathJax?.typesetPromise) {
-        window.MathJax.typesetPromise([readerContent]).catch(console.warn);
+        window.MathJax.typesetPromise([docContent]).catch(console.warn);
       }
-      reader.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      requestAnimationFrame(() => {
+        const target = anchor ? document.getElementById(anchor) : null;
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "auto" });
+        }
+      });
     } catch (error) {
       console.warn(error);
-      readerContent.innerHTML = emptyState("This document could not be loaded.");
+      docContent.innerHTML = emptyState("This document could not be loaded.");
+      docToc.innerHTML = "";
+      docToc.hidden = true;
     }
   }
 
   function hideReader() {
-    $("#blog-reader").hidden = true;
+    const reader = $("#blog-reader");
+    if (reader) reader.hidden = true;
   }
 
   async function renderDocx(source) {
@@ -413,17 +476,25 @@
     return [{}, normalized.slice(end + 5)];
   }
 
-  function buildReaderToc(contentRoot, tocRoot) {
+  function buildReaderToc(contentRoot, tocRoot, entryId = "") {
     const headings = $$("h2, h3", contentRoot);
     if (!headings.length) {
       tocRoot.hidden = true;
       return;
     }
+
+    const seen = new Map();
     tocRoot.hidden = false;
     tocRoot.innerHTML = headings
       .map((heading, index) => {
-        if (!heading.id) heading.id = `section-${index + 1}-${slugify(heading.textContent)}`;
-        return `<a class="${heading.tagName.toLowerCase()}" href="#blog/${escapeAttr(heading.id)}">${escapeHtml(heading.textContent)}</a>`;
+        const baseId = heading.id || `section-${index + 1}-${slugify(heading.textContent) || "part"}`;
+        const nextCount = (seen.get(baseId) || 0) + 1;
+        seen.set(baseId, nextCount);
+        heading.id = nextCount === 1 ? baseId : `${baseId}-${nextCount}`;
+        const href = entryId
+          ? `#doc/${encodeURIComponent(entryId)}/${encodeURIComponent(heading.id)}`
+          : `#blog/${encodeURIComponent(heading.id)}`;
+        return `<a class="${heading.tagName.toLowerCase()}" href="${escapeAttr(href)}">${escapeHtml(heading.textContent)}</a>`;
       })
       .join("");
   }

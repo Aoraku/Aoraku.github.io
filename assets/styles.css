@@ -12,8 +12,8 @@
   --shadow: 0 22px 60px rgba(23, 23, 23, 0.09);
   --max: 1120px;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --sans: "Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --serif: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", Georgia, "Times New Roman", serif;
+  --sans: Inter, "Segoe UI", -apple-system, BlinkMacSystemFont, "Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN", ui-sans-serif, system-ui, sans-serif;
+  --serif: Georgia, "Times New Roman", "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", serif;
 }
 
 * {
@@ -1016,4 +1016,260 @@ button {
 .reader-content mjx-container {
   max-width: 100%;
   overflow-x: auto;
+}
+
+
+/* Standalone document reader v20260702d */
+.document-view {
+  min-width: 0;
+}
+
+.doc-band {
+  width: min(1440px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(1.6rem, 4vw, 3.2rem) 0 clamp(4rem, 7vw, 6rem);
+}
+
+.doc-reader {
+  min-width: 0;
+}
+
+.doc-header {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+  padding: 1.25rem 0 1.4rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-back {
+  gap: 0.45rem;
+  margin-top: 0.15rem;
+}
+
+.doc-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.doc-meta {
+  min-width: 0;
+}
+
+.doc-meta .item-meta {
+  margin: 0 0 0.55rem;
+}
+
+.doc-meta h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5.4vw, 5.2rem);
+  font-weight: 900;
+  line-height: 0.98;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.doc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  margin-top: clamp(1.7rem, 4vw, 3rem);
+}
+
+.doc-content.reader-content {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: clamp(1.02rem, 1.15vw, 1.13rem);
+  line-height: 1.92;
+  overflow-x: visible;
+}
+
+.doc-content.reader-content > :first-child {
+  margin-top: 0;
+}
+
+.doc-content.reader-content h1,
+.doc-content.reader-content h2,
+.doc-content.reader-content h3 {
+  font-family: var(--serif);
+  font-weight: 900;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.doc-content.reader-content h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.doc-content.reader-content h2 {
+  margin-top: 2.35rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+}
+
+.doc-content.reader-content h3 {
+  margin-top: 1.65rem;
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+}
+
+.doc-content.reader-content p,
+.doc-content.reader-content li {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.doc-content.reader-content img {
+  max-width: 100%;
+}
+
+.doc-content.reader-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.doc-toc.reader-toc {
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 126px);
+  overflow-y: auto;
+  align-self: start;
+  background: transparent;
+  border-left: 1px solid var(--line);
+  padding-left: 0.9rem;
+  padding-right: 0.45rem;
+}
+
+.doc-toc.reader-toc a {
+  display: block;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.doc-toc.reader-toc[hidden] {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .doc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-toc.reader-toc {
+    position: static;
+    display: flex;
+    gap: 0.85rem;
+    max-height: 96px;
+    overflow: auto;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 0.8rem;
+  }
+
+  .doc-toc.reader-toc a {
+    flex: 0 0 auto;
+    max-width: 18rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .doc-band {
+    width: min(100% - 24px, 1440px);
+  }
+
+  .doc-header {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-meta h1 {
+    font-size: clamp(2rem, 12vw, 3.25rem);
+  }
+}
+
+
+/* Document overflow containment v20260702d */
+.doc-content.reader-content {
+  overflow-x: hidden;
+}
+
+.doc-content.reader-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.doc-content.reader-content pre code {
+  display: block;
+  min-width: max-content;
+}
+
+.doc-content.reader-content mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.doc-content.reader-content mjx-assistive-mml {
+  max-width: 1px;
+}
+
+
+/* MathJax inline/display split v20260702d */
+.reader-content mjx-container:not([display="true"]),
+.doc-content.reader-content mjx-container:not([display="true"]) {
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  overflow: visible;
+  vertical-align: -0.12em;
+}
+
+.reader-content mjx-container[display="true"],
+.doc-content.reader-content mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.doc-content.reader-content mjx-container:not([display="true"]) svg {
+  display: inline-block;
+  max-width: none;
+}
+
+.doc-content.reader-content mjx-assistive-mml {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+
+/* MathJax long-inline containment v20260702e */
+.reader-content mjx-container:not([display="true"]),
+.doc-content.reader-content mjx-container:not([display="true"]) {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  vertical-align: -0.12em !important;
+}
+
+.reader-content mjx-container:not([display="true"]) > svg,
+.doc-content.reader-content mjx-container:not([display="true"]) > svg {
+  max-width: none !important;
 }
