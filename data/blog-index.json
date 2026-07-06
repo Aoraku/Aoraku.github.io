@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T11:28:13+00:00",
+  "generatedAt": "2026-07-06T11:56:53+00:00",
   "entries": [
     {
       "id": "essays-essays-日本语-日本語４-index",
@@ -193,16 +193,8 @@
         "数据结构"
       ],
       "starred": false,
-      "type": "pdf",
-      "source": "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-01.pdf",
-      "pdfs": [
-        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-01.pdf",
-        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-02.pdf",
-        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-03.pdf",
-        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-04.pdf",
-        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-05.pdf",
-        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-06.pdf"
-      ]
+      "type": "markdown",
+      "source": "content/blog/cst-notes/DSA/数据结构PPT注释版/index.md"
     },
     {
       "id": "essays-essays-思政丨通识-以台湾大罢免与宪政危机为案例谈民主的危机与韧性-index",
