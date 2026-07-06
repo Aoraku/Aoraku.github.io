@@ -723,10 +723,22 @@ button {
   text-align: left;
 }
 
+.pdf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin: 0 0 0.85rem;
+}
+
 .pdf-frame {
   width: 100%;
-  min-height: 72vh;
+  min-height: 78vh;
   border: 0;
+}
+
+.pdf-frame + .pdf-frame {
+  margin-top: 1rem;
 }
 
 .empty-state,

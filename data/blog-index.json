@@ -1,6 +1,63 @@
 {
-  "generatedAt": "2026-07-02T02:08:40+00:00",
+  "generatedAt": "2026-07-06T11:14:38+00:00",
   "entries": [
+    {
+      "id": "essays-essays-日本语-日本語４-index",
+      "title": "日本語４",
+      "date": "2026-07-06",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "",
+      "tags": [
+        "日本语"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/essays/日本语/日本語４/_document.pdf"
+    },
+    {
+      "id": "essays-essays-思政丨通识-对观点-在当代欧美-右翼民粹主义威胁着其自由民主制度的生死存亡-的评析-index",
+      "title": "对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析",
+      "date": "2026-07-06",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "民主的历程期末论文。当时是期末已结束，在旅游时写的。我忘不了在香港尖沙咀麦当劳的一下午和仙台青叶通酒店和一整夜。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-邓小平时代-读书报告-index",
+      "title": "《邓小平时代》读书报告",
+      "date": "2026-07-06",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "毛概（大二下）期末读书报告。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/《邓小平时代》读书报告/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-清江集-index",
+      "title": "清江集",
+      "date": "2026-07-03",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "高中时和jbw的诗拼在一起了，我自己的诗前期都是堆砌生搬硬造读来很是别扭，到后期开始形成稳定的风格了。",
+      "tags": [
+        "高中时代",
+        "诗文"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/清江集/index.md"
+    },
     {
       "id": "cst-notes-cst-notes-intro-ai-review-index",
       "title": "《人工智能导论》复习文档",
@@ -13,8 +70,69 @@
         "AI",
         "复习"
       ],
+      "starred": false,
       "type": "markdown",
       "source": "content/blog/cst-notes/intro-ai-review/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-从黄河到黄海-我的家族史-index",
+      "title": "从黄河到黄海：我的家族史",
+      "date": "2026-06-17",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "习概（大二下）大作业，认真调研了我的家族史。可以影响我人生的一篇文章。",
+      "tags": [
+        "通识"
+      ],
+      "starred": true,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/从黄河到黄海：我的家族史/index.md"
+    },
+    {
+      "id": "cst-notes-cst-notes-数字逻辑-数字逻辑电路往年题总结-coauthored-by-codex-index",
+      "title": "数字逻辑电路往年题总结 (coauthored by codex)",
+      "date": "2026-06-16",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "",
+      "tags": [
+        "CST",
+        "数字逻辑",
+        "往年题"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/cst-notes/数字逻辑/数字逻辑电路往年题总结-(coauthored-by-codex)/_document.pdf"
+    },
+    {
+      "id": "cst-notes-cst-notes-数字逻辑-systemverilog从零到考试讲义-coauthored-by-codex-index",
+      "title": "SystemVerilog从零到考试讲义 (coauthored by codex)",
+      "date": "2026-06-05",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "",
+      "tags": [
+        "CST",
+        "SystemVerilog",
+        "数字逻辑"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/cst-notes/数字逻辑/SystemVerilog从零到考试讲义-(coauthored-by-codex)/_document.pdf"
+    },
+    {
+      "id": "essays-essays-日本语-日本語文法-index",
+      "title": "日本語文法",
+      "date": "2026-04-24",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "",
+      "tags": [
+        "日本语"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/日本语/日本語文法/index.md"
     },
     {
       "id": "cst-notes-cst-notes-intro-computer-systems-review-index",
@@ -28,8 +146,354 @@
         "ICS",
         "复习"
       ],
+      "starred": false,
       "type": "markdown",
       "source": "content/blog/cst-notes/intro-computer-systems-review/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-物质本体论-与-实践本体论-之争-主流马克思主义与实践唯物主义的分歧与统合路径-index",
+      "title": "“物质本体论”与“实践本体论”之争——主流马克思主义与实践唯物主义的分歧与统合路径",
+      "date": "2026-01-13",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "马原课程论文（大二上），但写的是我一直很想写的主题，付出了很多工夫，自己比较喜欢的一篇文章。",
+      "tags": [
+        "通识"
+      ],
+      "starred": true,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/“物质本体论”与“实践本体论”之争——主流马克思主义与实践唯物主义的分歧与统合路径/index.md"
+    },
+    {
+      "id": "cst-notes-cst-notes-dsa-dsa期末考前速记-index",
+      "title": "DSA期末考前速记",
+      "date": "2026-01-09",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "",
+      "tags": [
+        "CST",
+        "DSA",
+        "复习"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/cst-notes/DSA/DSA期末考前速记/_document.pdf"
+    },
+    {
+      "id": "cst-notes-cst-notes-dsa-数据结构ppt注释版-index",
+      "title": "数据结构PPT注释版",
+      "date": "2026-01-04",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "",
+      "tags": [
+        "CST",
+        "DSA",
+        "数据结构"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-01.pdf",
+      "pdfs": [
+        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-01.pdf",
+        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-02.pdf",
+        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-03.pdf",
+        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-04.pdf",
+        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-05.pdf",
+        "content/blog/cst-notes/DSA/数据结构PPT注释版/_part-06.pdf"
+      ]
+    },
+    {
+      "id": "essays-essays-思政丨通识-以台湾大罢免与宪政危机为案例谈民主的危机与韧性-index",
+      "title": "以台湾大罢免与宪政危机为案例谈民主的危机与韧性",
+      "date": "2025-12-29",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "民主的历程（大二上）第二次pre。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/essays/思政丨通识/以台湾大罢免与宪政危机为案例谈民主的危机与韧性/_document.pdf"
+    },
+    {
+      "id": "essays-essays-日本语-ｎ２临时抱佛脚-index",
+      "title": "Ｎ２临时抱佛脚",
+      "date": "2025-12-04",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "网上搜集的复合动词和拟音拟态词，用于备考Ｎ２。",
+      "tags": [
+        "日本语",
+        "N2"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/日本语/Ｎ２临时抱佛脚/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-政治秩序的诞生与契约的订立-index",
+      "title": "政治秩序的诞生与契约的订立",
+      "date": "2025-11-10",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "民主的历程（大二上）第一次pre。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/essays/思政丨通识/政治秩序的诞生与契约的订立/_document.pdf"
+    },
+    {
+      "id": "cst-notes-cst-notes-dsa-dsa期中考前速记-index",
+      "title": "DSA期中考前速记",
+      "date": "2025-11-08",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "",
+      "tags": [
+        "CST",
+        "DSA",
+        "复习"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/cst-notes/DSA/DSA期中考前速记/_document.pdf"
+    },
+    {
+      "id": "essays-essays-日本语-ｎ２文法-index",
+      "title": "Ｎ２文法",
+      "date": "2025-10-13",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "摘抄蓝宝书，备考Ｎ２用。",
+      "tags": [
+        "日本语",
+        "N2"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/日本语/Ｎ２文法/index.md"
+    },
+    {
+      "id": "essays-essays-杂文-考试的日子-心该如何过-中道的艺术-index",
+      "title": "考试的日子，心该如何过——中道的艺术",
+      "date": "2025-08-13",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "大一时应偷袭圣手邀请写了一篇给高中生的文章，算是把我高中的许多感想系统总结了一遍，应该算一篇实用的文章。",
+      "tags": [
+        "杂文",
+        "高中时代"
+      ],
+      "starred": true,
+      "type": "markdown",
+      "source": "content/blog/essays/杂文/考试的日子，心该如何过——中道的艺术/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-中华文明基因中的现代化脉搏-从市场经济与法治建设两方面探究-index",
+      "title": "中华文明基因中的现代化脉搏——从市场经济与法治建设两方面探究",
+      "date": "2025-05-31",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "中国文明（大一下）第三次课程论文。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/中华文明基因中的现代化脉搏——从市场经济与法治建设两方面探究/index.md"
+    },
+    {
+      "id": "essays-essays-日本语-日本語３期末復習-index",
+      "title": "日本語３期末復習",
+      "date": "2025-05-26",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "",
+      "tags": [
+        "日本语"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/essays/日本语/日本語３期末復習/_document.pdf"
+    },
+    {
+      "id": "essays-essays-思政丨通识-浅谈-后罗马时代-和-后秦汉时代-的大一统性差异-index",
+      "title": "浅谈“后罗马时代”和“后秦汉时代”的大一统性差异",
+      "date": "2025-04-15",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "中国文明（大一下）第二次课程论文。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/浅谈“后罗马时代”和“后秦汉时代”的大一统性差异/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-毛泽东传-读书报告-刘青乐-index",
+      "title": "《毛泽东传》读书报告 刘青乐",
+      "date": "2025-03-20",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "史纲（大一下）期末读书报告。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/《毛泽东传》读书报告-刘青乐/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-秩序的崩坏与新阶段的开启-浅谈-田氏代齐-三家分晋-的历史意义-index",
+      "title": "秩序的崩坏与新阶段的开启：浅谈“田氏代齐”“三家分晋”的历史意义",
+      "date": "2025-03-10",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "中国文明（大一下）第一次课程论文。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/秩序的崩坏与新阶段的开启：浅谈“田氏代齐”“三家分晋”的历史意义/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-新世纪的潘多拉魔盒-当代叙事媒介中的日本新-神隐-文化-index",
+      "title": "新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化",
+      "date": "2025-01-04",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "写沟（大一上）期末论文，研究了喜欢的主题。",
+      "tags": [
+        "通识"
+      ],
+      "starred": true,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-邓稼先传-读书报告-index",
+      "title": "《邓稼先传》读书报告",
+      "date": "2024-12-19",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "德法（大一上）期末读书报告。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/《邓稼先传》读书报告/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-魔鬼经济学-读书报告-index",
+      "title": "《魔鬼经济学》读书报告",
+      "date": "2024-12-10",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "经原（大一上）期末读书报告。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/《魔鬼经济学》读书报告/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-创世纪-读书报告-index",
+      "title": "《创世纪》读书报告",
+      "date": "2024-11-08",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "西方文明（大一上）期中报告。这门课",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/《创世纪》读书报告/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-哲学文论残篇-index",
+      "title": "哲学文论残篇",
+      "date": "2023-11-10",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "高中时思考各种哲学问题形成的一点看法，最后没有写完，不过里面的很多观点现在看来也还挺有价值的，未来可能把更多的哲学思考重新写本小册子。",
+      "tags": [
+        "高中时代",
+        "哲学"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/哲学文论残篇/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-2023読書手帳-index",
+      "title": "2023読書手帳",
+      "date": "2023-05-05",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "高中后来开始学习读诗，为了涨点词汇量从西方诗人的诗选翻译中摘抄了些关键词，然后读唐诗又摘抄了些漂亮的句子，又附庸风雅地读了些现代文学作品写了点感想，就当高中的回忆吧。",
+      "tags": [
+        "高中时代",
+        "读书笔记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/2023読書手帳/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-2022読書随筆-index",
+      "title": "2022読書随筆",
+      "date": "2023-03-12",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "高中有段时间忘情地读小说，像看动画片一样随手写了些剧评之类的，虽略显幼稚，但姑且把它们放在这吧。",
+      "tags": [
+        "高中时代",
+        "读书笔记",
+        "残篇"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/2022読書随筆/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-西方文化基础-index",
+      "title": "西方文化基础",
+      "date": "2022-10-30",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "高中时，我热衷于学习西方文化，包括哲学、历史、文艺、社会科学，翻了各种各样的书读，当时的我很中二，甚至觉得自己是一个博学家了，想写一本宏大的巨著。这本书耗费了我大一的一整个暑假写成，虽然写的也比较幼稚，里面也难以保证没有疏漏，但还是我比较得意的一桩事。",
+      "tags": [
+        "高中时代",
+        "通识"
+      ],
+      "starred": true,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/西方文化基础/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-东之话-index",
+      "title": "东之话",
+      "date": "2022-10-30",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "高中读书学习后对东方文化的一点思考。",
+      "tags": [
+        "高中时代",
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/东之话/index.md"
     }
   ]
 }

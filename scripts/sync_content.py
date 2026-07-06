@@ -36,6 +36,8 @@ def parse_scalar(value: str):
     value = value.strip()
     if not value:
         return ""
+    if value.lower() in {"true", "false"}:
+        return value.lower() == "true"
     if value.startswith("[") and value.endswith("]"):
         raw_items = value[1:-1].split(",")
         return [item.strip().strip("'\"") for item in raw_items if item.strip()]
@@ -66,10 +68,7 @@ def read_text_meta(path: Path) -> dict:
         text = path.read_text(encoding="utf-8")
     except UnicodeDecodeError:
         text = path.read_text(encoding="utf-8-sig", errors="replace")
-    meta, body = parse_front_matter(text)
-    if not meta.get("summary"):
-        first_para = next((p.strip() for p in re.split(r"\n\s*\n", body) if p.strip()), "")
-        meta["summary"] = re.sub(r"[#*_>`\[\]()-]", "", first_para)[:180]
+    meta, _body = parse_front_matter(text)
     return meta
 
 
@@ -101,7 +100,30 @@ def discover_entries() -> list[dict]:
                 continue
 
             meta = read_text_meta(path) if kind in {"markdown", "text"} else {}
-            rel = path.relative_to(ROOT).as_posix()
+            source_path = path
+            entry_kind = kind
+            pdf_sources: list[Path] = []
+            pdf_ref = meta.get("pdf") if kind in {"markdown", "text"} else None
+            pdfs_ref = meta.get("pdfs") if kind in {"markdown", "text"} else None
+            if isinstance(pdf_ref, str) and pdf_ref.strip():
+                pdf_path = (path.parent / pdf_ref.strip()).resolve()
+                if pdf_path.exists():
+                    source_path = pdf_path
+                    entry_kind = "pdf"
+                    pdf_sources = [pdf_path]
+            elif isinstance(pdfs_ref, list):
+                pdf_paths = [
+                    (path.parent / str(item).strip()).resolve()
+                    for item in pdfs_ref
+                    if str(item).strip()
+                ]
+                pdf_paths = [item for item in pdf_paths if item.exists()]
+                if pdf_paths:
+                    source_path = pdf_paths[0]
+                    entry_kind = "pdf"
+                    pdf_sources = pdf_paths
+
+            rel = source_path.relative_to(ROOT).as_posix()
             title = str(meta.get("title") or title_from_stem(path))
             date = str(meta.get("date") or file_date(path))
             entry_id = slugify(f"{category}-{path.relative_to(BLOG_ROOT).with_suffix("").as_posix()}")
@@ -109,19 +131,21 @@ def discover_entries() -> list[dict]:
             if isinstance(tags, str):
                 tags = [item.strip() for item in tags.split(",") if item.strip()]
 
-            entries.append(
-                {
-                    "id": entry_id,
-                    "title": title,
-                    "date": date,
-                    "category": category,
-                    "categoryLabel": label,
-                    "summary": str(meta.get("summary") or ""),
-                    "tags": tags,
-                    "type": kind,
-                    "source": rel,
-                }
-            )
+            entry = {
+                "id": entry_id,
+                "title": title,
+                "date": date,
+                "category": category,
+                "categoryLabel": label,
+                "summary": str(meta.get("summary") or ""),
+                "tags": tags,
+                "starred": bool(meta.get("starred")),
+                "type": entry_kind,
+                "source": rel,
+            }
+            if len(pdf_sources) > 1:
+                entry["pdfs"] = [item.relative_to(ROOT).as_posix() for item in pdf_sources]
+            entries.append(entry)
 
     entries.sort(key=lambda item: (item.get("date", ""), item.get("title", "")), reverse=True)
     return entries
