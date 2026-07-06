@@ -11,10 +11,20 @@ ROOT = Path(__file__).resolve().parents[1]
 BLOG_ROOT = ROOT / "content" / "blog"
 OUT_PATH = ROOT / "data" / "blog-index.json"
 
-CATEGORIES = {
+SCAN_ROOTS = ("essays", "cst-notes", "journals")
+CATEGORY_LABELS = {
     "essays": "\u6742\u6587",
+    "politics": "\u601d\u653f\u4e28\u901a\u8bc6",
+    "japanese": "\u65e5\u672c\u8bed",
     "cst-notes": "CST\u4e13\u4e1a\u8bfe\u6587\u6863",
+    "high-school": "\u9ad8\u4e2d\u65f6\u4ee3",
     "journals": "\u65e5\u5468\u6708\u5b63\u5e74\u8bb0",
+}
+ESSAY_SUBCATEGORIES = {
+    "\u6742\u6587": "essays",
+    "\u601d\u653f\u4e28\u901a\u8bc6": "politics",
+    "\u65e5\u672c\u8bed": "japanese",
+    "\u9ad8\u4e2d\u65f6\u4ee3": "high-school",
 }
 SUPPORTED = {
     ".md": "markdown",
@@ -82,10 +92,21 @@ def title_from_stem(path: Path) -> str:
     return stem.replace("_", " ").replace("-", " ").strip() or path.stem
 
 
+def classify_path(root_category: str, path: Path) -> tuple[str, str]:
+    if root_category != "essays":
+        category = root_category
+        return category, CATEGORY_LABELS[category]
+
+    rel = path.relative_to(BLOG_ROOT / root_category)
+    first_part = rel.parts[0] if rel.parts else ""
+    category = ESSAY_SUBCATEGORIES.get(first_part, "essays")
+    return category, CATEGORY_LABELS[category]
+
+
 def discover_entries() -> list[dict]:
     entries: list[dict] = []
-    for category, label in CATEGORIES.items():
-        category_dir = BLOG_ROOT / category
+    for root_category in SCAN_ROOTS:
+        category_dir = BLOG_ROOT / root_category
         if not category_dir.exists():
             category_dir.mkdir(parents=True, exist_ok=True)
             continue
@@ -126,7 +147,8 @@ def discover_entries() -> list[dict]:
             rel = source_path.relative_to(ROOT).as_posix()
             title = str(meta.get("title") or title_from_stem(path))
             date = str(meta.get("date") or file_date(path))
-            entry_id = slugify(f"{category}-{path.relative_to(BLOG_ROOT).with_suffix("").as_posix()}")
+            category, label = classify_path(root_category, path)
+            entry_id = slugify(f"{root_category}-{path.relative_to(BLOG_ROOT).with_suffix("").as_posix()}")
             tags = meta.get("tags") or []
             if isinstance(tags, str):
                 tags = [item.strip() for item in tags.split(",") if item.strip()]

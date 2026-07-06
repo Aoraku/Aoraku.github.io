@@ -11,7 +11,10 @@
   const categoryOrder = [
     { id: "all", label: "All" },
     { id: "essays", label: "\u6742\u6587" },
+    { id: "politics", label: "\u601d\u653f\u4e28\u901a\u8bc6" },
+    { id: "japanese", label: "\u65e5\u672c\u8bed" },
     { id: "cst-notes", label: "CST\u4e13\u4e1a\u8bfe\u6587\u6863" },
+    { id: "high-school", label: "\u9ad8\u4e2d\u65f6\u4ee3" },
     { id: "journals", label: "\u65e5\u5468\u6708\u5b63\u5e74\u8bb0" }
   ];
 
@@ -785,14 +788,14 @@
   }
 
   function renderCategories() {
-    const counts = state.blog.reduce(
-      (acc, entry) => {
-        acc.all += 1;
-        acc[entry.category] = (acc[entry.category] || 0) + 1;
-        return acc;
-      },
-      { all: 0 }
-    );
+    const counts = categoryOrder.reduce((acc, category) => ({ ...acc, [category.id]: 0 }), {});
+    state.blog.forEach((entry) => {
+      categoryOrder.forEach((category) => {
+        if (matchesBlogCategory(entry, category.id)) {
+          counts[category.id] += 1;
+        }
+      });
+    });
 
     $("#blog-categories").innerHTML = categoryOrder
       .map(
@@ -816,10 +819,7 @@
 
   function renderBlogList() {
     const target = $("#blog-list");
-    const entries =
-      state.activeCategory === "all"
-        ? state.blog
-        : state.blog.filter((entry) => entry.category === state.activeCategory);
+    const entries = state.blog.filter((entry) => matchesBlogCategory(entry, state.activeCategory));
 
     if (!entries.length) {
       target.innerHTML = emptyState("No entries yet.");
@@ -852,6 +852,17 @@
     $$("[data-entry-id]", target).forEach((button) => {
       button.addEventListener("click", () => openEntry(button.dataset.entryId));
     });
+  }
+
+  function matchesBlogCategory(entry, categoryId) {
+    if (categoryId === "all") return true;
+    if (categoryId === "essays") {
+      return (
+        entry.category === "essays" ||
+        (entry.starred && (entry.category === "politics" || entry.category === "high-school"))
+      );
+    }
+    return entry.category === categoryId;
   }
 
   function bindReader() {
