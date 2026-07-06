@@ -117,7 +117,7 @@
           title: "Research Experience",
           entries: [
             {
-              title: "The Graphics and Geometric Computing Lab",
+              title: "The Graphics and Geometric Computing Lab, Tsinghua University",
               meta: "Beijing, China",
               subtitle: "Undergraduate Researcher, advised by Academician Shimin Hu",
               date: "Aug. 2025 - Present",
