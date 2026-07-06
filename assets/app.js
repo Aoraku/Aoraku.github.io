@@ -421,8 +421,8 @@
 
     const footerEmail = $(".site-footer a[href^='mailto:']");
     if (footerEmail) {
-      footerEmail.href = "mailto:liuqingle0324@gmail.com";
-      footerEmail.textContent = "liuqingle0324@gmail.com";
+      footerEmail.href = "mailto:lql24@mails.tsinghua.edu.cn";
+      footerEmail.textContent = "lql24@mails.tsinghua.edu.cn";
     }
   }
 
