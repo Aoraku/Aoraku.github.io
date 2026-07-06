@@ -23,13 +23,13 @@
       displayName: "Qingle Liu",
       handle: "Aoraku",
       avatar: "assets/avatar.jpg",
-      headline: "Dept. CS, Tsinghua University",
+      headline: "Department of Computer Science and Technology, Tsinghua University",
       affiliation: "Department of Computer Science and Technology, Tsinghua University",
       location: "Beijing, China",
       email: "liuqingle0324@gmail.com",
       bio: "I am Qingle Liu, an undergraduate student in the Department of Computer Science and Technology at Tsinghua University. My current research interests include Computer Vision, Generative Models, Multimodal Models, and Computer Graphics.",
       quickFacts: [
-        "B.Eng. in CS, Tsinghua University, expected 2028",
+        "B.Eng. in CS & B.A. in Economics and Finance (Double Major), Tsinghua University, expected 2028",
         "GPA: 3.97 / 4.0; Rank: 2 / 33",
         "Research internships: The Graphics and Geometric Computing Lab, CST, THU; MMLab, CCDS, NTU",
         "Software developer and research engineer at [Einsia.ai](https://einsia.ai/)"
@@ -59,7 +59,8 @@
     },
     resume: {
       name: "Qingle Liu",
-      email: "liuqingle0324@gmail.com",
+      email: "lql24@mails.tsinghua.edu.cn",
+      extraEmail: "liuqingle0324@gmail.com",
       phone: "",
       affiliation: "Department of Computer Science and Technology, Tsinghua University, Beijing, China",
       sections: [
@@ -211,8 +212,8 @@
     news: [
       {
         date: "2026-06",
-        title: "Bridging VideoQA accepted to ECCV 2026",
-        body: "Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction was accepted to ECCV 2026."
+        title: "One paper accepted to ECCV 2026",
+        body: "Our paper, Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction, was accepted to ECCV 2026."
       },
       {
         date: "2025-11",
@@ -416,7 +417,7 @@
     if (researchEyebrow) researchEyebrow.textContent = "Research";
 
     const miniProfileLine = $(".mini-profile span");
-    if (miniProfileLine) miniProfileLine.textContent = "Dept. CS";
+    if (miniProfileLine) miniProfileLine.textContent = "Department of Computer Science and Technology, Tsinghua University";
 
     const footerEmail = $(".site-footer a[href^='mailto:']");
     if (footerEmail) {
@@ -432,6 +433,17 @@
     style.textContent = `
       .resume-section {
         padding-top: 1.8rem;
+      }
+
+      .fact-item > span {
+        display: block;
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+      }
+
+      .fact-item a {
+        display: inline;
       }
 
       .resume-section > h2 {
@@ -619,7 +631,7 @@
     $("#profile-avatar").src = state.profile.avatar || "assets/avatar.jpg";
 
     $("#quick-facts").innerHTML = (state.profile.quickFacts || [])
-      .map((fact) => `<div class="fact-item">${renderInline(fact)}</div>`)
+      .map((fact) => `<div class="fact-item"><span>${renderInline(fact)}</span></div>`)
       .join("");
 
     $("#social-links").innerHTML = (state.profile.socials || [])
@@ -669,6 +681,7 @@
       <h2>${escapeHtml(resume.name || "Qingle Liu")}</h2>
       <div class="resume-contact">
         ${contactLink("mail", resume.email, resume.email ? `mailto:${resume.email}` : "")}
+        ${contactLink("mail", resume.extraEmail, resume.extraEmail ? `mailto:${resume.extraEmail}` : "")}
         ${contactLink("phone", resume.phone, resume.phone ? `tel:${resume.phone.replace(/\s+/g, "")}` : "")}
         <span><i data-lucide="map-pin"></i>${escapeHtml(resume.affiliation || "")}</span>
       </div>
