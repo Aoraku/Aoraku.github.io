@@ -1,34 +1,6 @@
 {
-  "generatedAt": "2026-07-06T11:56:53+00:00",
+  "generatedAt": "2026-07-06T12:57:48+00:00",
   "entries": [
-    {
-      "id": "essays-essays-日本语-日本語４-index",
-      "title": "日本語４",
-      "date": "2026-07-06",
-      "category": "japanese",
-      "categoryLabel": "日本语",
-      "summary": "",
-      "tags": [
-        "日本语"
-      ],
-      "starred": false,
-      "type": "pdf",
-      "source": "content/blog/essays/日本语/日本語４/_document.pdf"
-    },
-    {
-      "id": "essays-essays-思政丨通识-对观点-在当代欧美-右翼民粹主义威胁着其自由民主制度的生死存亡-的评析-index",
-      "title": "对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析",
-      "date": "2026-07-06",
-      "category": "politics",
-      "categoryLabel": "思政丨通识",
-      "summary": "民主的历程期末论文。当时是期末已结束，在旅游时写的。我忘不了在香港尖沙咀麦当劳的一下午和仙台青叶通酒店和一整夜。",
-      "tags": [
-        "通识"
-      ],
-      "starred": false,
-      "type": "markdown",
-      "source": "content/blog/essays/思政丨通识/对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析/index.md"
-    },
     {
       "id": "essays-essays-思政丨通识-邓小平时代-读书报告-index",
       "title": "《邓小平时代》读书报告",
@@ -44,19 +16,18 @@
       "source": "content/blog/essays/思政丨通识/《邓小平时代》读书报告/index.md"
     },
     {
-      "id": "essays-essays-高中时代-清江集-index",
-      "title": "清江集",
-      "date": "2026-07-03",
-      "category": "high-school",
-      "categoryLabel": "高中时代",
-      "summary": "高中时和jbw的诗拼在一起了，我自己的诗前期都是堆砌生搬硬造读来很是别扭，到后期开始形成稳定的风格了。",
+      "id": "journals-journals-2026-07-01-index",
+      "title": "2026年7月1日",
+      "date": "2026-07-01",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "7月到了，给苦哈哈的第二季度做个小结吧",
       "tags": [
-        "高中时代",
-        "诗文"
+        "日记"
       ],
       "starred": false,
       "type": "markdown",
-      "source": "content/blog/essays/高中时代/清江集/index.md"
+      "source": "content/blog/journals/2026-07-01/index.md"
     },
     {
       "id": "cst-notes-cst-notes-intro-ai-review-index",
@@ -82,7 +53,7 @@
       "categoryLabel": "思政丨通识",
       "summary": "习概（大二下）大作业，认真调研了我的家族史。可以影响我人生的一篇文章。",
       "tags": [
-        "通识"
+        "自我"
       ],
       "starred": true,
       "type": "markdown",
@@ -105,6 +76,20 @@
       "source": "content/blog/cst-notes/数字逻辑/数字逻辑电路往年题总结-(coauthored-by-codex)/_document.pdf"
     },
     {
+      "id": "journals-journals-2026-06-13-index",
+      "title": "2026年6月13日",
+      "date": "2026-06-13",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "在北馆的一天，有感",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-06-13/index.md"
+    },
+    {
       "id": "cst-notes-cst-notes-数字逻辑-systemverilog从零到考试讲义-coauthored-by-codex-index",
       "title": "SystemVerilog从零到考试讲义 (coauthored by codex)",
       "date": "2026-06-05",
@@ -121,18 +106,144 @@
       "source": "content/blog/cst-notes/数字逻辑/SystemVerilog从零到考试讲义-(coauthored-by-codex)/_document.pdf"
     },
     {
-      "id": "essays-essays-日本语-日本語文法-index",
-      "title": "日本語文法",
-      "date": "2026-04-24",
-      "category": "japanese",
-      "categoryLabel": "日本语",
-      "summary": "",
+      "id": "journals-journals-2026-04-05-index",
+      "title": "2026年4月5日",
+      "date": "2026-04-05",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "淄博／高青・张店",
       "tags": [
-        "日本语"
+        "日记"
       ],
       "starred": false,
       "type": "markdown",
-      "source": "content/blog/essays/日本语/日本語文法/index.md"
+      "source": "content/blog/journals/2026-04-05/index.md"
+    },
+    {
+      "id": "journals-journals-2026-04-01-index",
+      "title": "2026年4月1日",
+      "date": "2026-04-01",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "愚人节之第一季度总结",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-04-01/index.md"
+    },
+    {
+      "id": "journals-journals-2026-02-06-index",
+      "title": "2026年2月6日",
+      "date": "2026-02-06",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "北海道印象",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-02-06/index.md"
+    },
+    {
+      "id": "journals-journals-2026-02-05-index",
+      "title": "2026年2月5日",
+      "date": "2026-02-05",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "北海道印象——民族、边疆与领土",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-02-05/index.md"
+    },
+    {
+      "id": "journals-journals-2026-01-31-index",
+      "title": "2026年1月31日",
+      "date": "2026-01-31",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "三个湖",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-01-31/index.md"
+    },
+    {
+      "id": "journals-journals-2026-01-27-index",
+      "title": "2026年1月27日",
+      "date": "2026-01-27",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "松尾芭蕉的奥之细道",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-01-27/index.md"
+    },
+    {
+      "id": "essays-essays-思政丨通识-对观点-在当代欧美-右翼民粹主义威胁着其自由民主制度的生死存亡-的评析-index",
+      "title": "对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析",
+      "date": "2026-01-26",
+      "category": "politics",
+      "categoryLabel": "思政丨通识",
+      "summary": "民主的历程期末论文。当时是期末已结束，在旅游时写的。我忘不了在香港尖沙咀麦当劳的一下午和仙台青叶通酒店和一整夜。",
+      "tags": [
+        "通识"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/思政丨通识/对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析/index.md"
+    },
+    {
+      "id": "journals-journals-2026-01-26-index",
+      "title": "2026年1月26日",
+      "date": "2026-01-26",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "一线探访核事故地☢︎",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-01-26/index.md"
+    },
+    {
+      "id": "journals-journals-2026-01-25-index",
+      "title": "2026年1月25日",
+      "date": "2026-01-25",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "鲁迅与仙台",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-01-25/index.md"
+    },
+    {
+      "id": "journals-journals-2026-01-24-index",
+      "title": "2026年1月24日",
+      "date": "2026-01-24",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "雪国与川端康成的世界",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2026-01-24/index.md"
     },
     {
       "id": "cst-notes-cst-notes-intro-computer-systems-review-index",
@@ -197,6 +308,20 @@
       "source": "content/blog/cst-notes/DSA/数据结构PPT注释版/index.md"
     },
     {
+      "id": "journals-journals-2025-12-31-index",
+      "title": "2025年12月31日",
+      "date": "2025-12-31",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "虽然平时总抱怨生活的不顺，吐槽自己没什么长进，但值此年末之际，翻一翻相册、回忆一下过去，却发现还是有不少的收获。",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-12-31/index.md"
+    },
+    {
       "id": "essays-essays-思政丨通识-以台湾大罢免与宪政危机为案例谈民主的危机与韧性-index",
       "title": "以台湾大罢免与宪政危机为案例谈民主的危机与韧性",
       "date": "2025-12-29",
@@ -209,6 +334,62 @@
       "starred": false,
       "type": "pdf",
       "source": "content/blog/essays/思政丨通识/以台湾大罢免与宪政危机为案例谈民主的危机与韧性/_document.pdf"
+    },
+    {
+      "id": "essays-essays-日本语-日本語４-index",
+      "title": "日本語４期末復習",
+      "date": "2025-12-25",
+      "category": "japanese",
+      "categoryLabel": "日本语",
+      "summary": "",
+      "tags": [
+        "日本语"
+      ],
+      "starred": false,
+      "type": "pdf",
+      "source": "content/blog/essays/日本语/日本語４/_document.pdf"
+    },
+    {
+      "id": "journals-journals-2025-12-21-index",
+      "title": "2025年12月21日",
+      "date": "2025-12-21",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "第14周周记：回青岛",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-12-21/index.md"
+    },
+    {
+      "id": "journals-journals-2025-12-14-index",
+      "title": "2025年12月14日",
+      "date": "2025-12-14",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "13周周记  初雪会",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-12-14/index.md"
+    },
+    {
+      "id": "journals-journals-2025-12-07-index",
+      "title": "2025年12月7日",
+      "date": "2025-12-07",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "Ｎ２受験完了！",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-12-07/index.md"
     },
     {
       "id": "essays-essays-日本语-ｎ２临时抱佛脚-index",
@@ -224,6 +405,34 @@
       "starred": false,
       "type": "markdown",
       "source": "content/blog/essays/日本语/Ｎ２临时抱佛脚/index.md"
+    },
+    {
+      "id": "journals-journals-2025-11-29-index",
+      "title": "2025年11月29日",
+      "date": "2025-11-29",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "今天是2025年11月29日，是刘青乐步入20岁的第二天。",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-11-29/index.md"
+    },
+    {
+      "id": "journals-journals-2025-11-12-index",
+      "title": "2025年11月12日",
+      "date": "2025-11-12",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "终于。在与病气的斗争中熬过了期中周。",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-11-12/index.md"
     },
     {
       "id": "essays-essays-思政丨通识-政治秩序的诞生与契约的订立-index",
@@ -256,6 +465,20 @@
       "source": "content/blog/cst-notes/DSA/DSA期中考前速记/_document.pdf"
     },
     {
+      "id": "journals-journals-2025-10-26-index",
+      "title": "2025年10月26日",
+      "date": "2025-10-26",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "第三次听键盘队演出 随感小作文",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-10-26/index.md"
+    },
+    {
       "id": "essays-essays-日本语-ｎ２文法-index",
       "title": "Ｎ２文法",
       "date": "2025-10-13",
@@ -286,6 +509,34 @@
       "source": "content/blog/essays/杂文/考试的日子，心该如何过——中道的艺术/index.md"
     },
     {
+      "id": "journals-journals-2025-07-30-index",
+      "title": "2025年7月30日",
+      "date": "2025-07-30",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "在无锡的5天实践+8天打工终于结束，苦日子算是结束了，但如今百感交集。",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-07-30/index.md"
+    },
+    {
+      "id": "journals-journals-2025-07-07-index",
+      "title": "2025年7月7日",
+      "date": "2025-07-07",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "紧赶慢赶终于在ddl前夕搞定了大作业1的收官工作，也是时候给日本实践来一个迟到的回顾了",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-07-07/index.md"
+    },
+    {
       "id": "essays-essays-思政丨通识-中华文明基因中的现代化脉搏-从市场经济与法治建设两方面探究-index",
       "title": "中华文明基因中的现代化脉搏——从市场经济与法治建设两方面探究",
       "date": "2025-05-31",
@@ -314,6 +565,37 @@
       "source": "content/blog/essays/日本语/日本語３期末復習/_document.pdf"
     },
     {
+      "id": "cst-notes-cst-notes-数学-曲线曲面积分讲解-index",
+      "title": "曲线曲面积分讲解",
+      "date": "2025-05-20",
+      "category": "cst-notes",
+      "categoryLabel": "CST专业课文档",
+      "summary": "曾经给Zinc讲微积分时候留下的手稿，写得令我比较满意，我把它们重新整理出来了放在这里。",
+      "tags": [
+        "CST",
+        "数学",
+        "微积分",
+        "讲义"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/cst-notes/数学/曲线曲面积分讲解/index.md"
+    },
+    {
+      "id": "journals-journals-2025-05-15-index",
+      "title": "2025年5月15日",
+      "date": "2025-05-15",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "『艾尔登法环』全成就通关记念！",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2025-05-15/index.md"
+    },
+    {
       "id": "essays-essays-思政丨通识-浅谈-后罗马时代-和-后秦汉时代-的大一统性差异-index",
       "title": "浅谈“后罗马时代”和“后秦汉时代”的大一统性差异",
       "date": "2025-04-15",
@@ -326,6 +608,21 @@
       "starred": false,
       "type": "markdown",
       "source": "content/blog/essays/思政丨通识/浅谈“后罗马时代”和“后秦汉时代”的大一统性差异/index.md"
+    },
+    {
+      "id": "essays-essays-杂文-两道有趣的证明题-index",
+      "title": "两道有趣的证明题",
+      "date": "2025-04-10",
+      "category": "essays",
+      "categoryLabel": "杂文",
+      "summary": "两道VA2的往年压轴证明题，个人比较喜欢，期末复习之余就研究了一下证明并整理了一下自己的过程。",
+      "tags": [
+        "杂文",
+        "数学"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/杂文/两道有趣的证明题/index.md"
     },
     {
       "id": "essays-essays-思政丨通识-毛泽东传-读书报告-刘青乐-index",
@@ -356,6 +653,20 @@
       "source": "content/blog/essays/思政丨通识/秩序的崩坏与新阶段的开启：浅谈“田氏代齐”“三家分晋”的历史意义/index.md"
     },
     {
+      "id": "essays-essays-日本语-日本語文法-index",
+      "title": "日本語文法",
+      "date": "2025-02-23",
+      "category": "japanese",
+      "categoryLabel": "日本语",
+      "summary": "",
+      "tags": [
+        "日本语"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/日本语/日本語文法/index.md"
+    },
+    {
       "id": "essays-essays-思政丨通识-新世纪的潘多拉魔盒-当代叙事媒介中的日本新-神隐-文化-index",
       "title": "新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化",
       "date": "2025-01-04",
@@ -368,6 +679,20 @@
       "starred": true,
       "type": "markdown",
       "source": "content/blog/essays/思政丨通识/新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化/index.md"
+    },
+    {
+      "id": "journals-journals-2024-12-31-index",
+      "title": "2024年12月31日",
+      "date": "2024-12-31",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "近日考试周高强度图书馆的泡让我找回了半年前坐在强4教室静悟的感觉，这一年似乎一直在逼仄与忙碌中度过，直到年底也累的够呛。",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2024-12-31/index.md"
     },
     {
       "id": "essays-essays-思政丨通识-邓稼先传-读书报告-index",
@@ -412,6 +737,35 @@
       "source": "content/blog/essays/思政丨通识/《创世纪》读书报告/index.md"
     },
     {
+      "id": "journals-journals-2024-09-30-index",
+      "title": "2024年9月30日",
+      "date": "2024-09-30",
+      "category": "journals",
+      "categoryLabel": "日周月季年记",
+      "summary": "秋雨后的北京城尤显得凄冷",
+      "tags": [
+        "日记"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/journals/2024-09-30/index.md"
+    },
+    {
+      "id": "essays-essays-高中时代-清江集-index",
+      "title": "清江集",
+      "date": "2024-06-30",
+      "category": "high-school",
+      "categoryLabel": "高中时代",
+      "summary": "高中时和jbw的诗拼在一起了，我自己的诗前期都是堆砌生搬硬造读来很是别扭，到后期开始形成稳定的风格了。",
+      "tags": [
+        "高中时代",
+        "文学"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/高中时代/清江集/index.md"
+    },
+    {
       "id": "essays-essays-高中时代-哲学文论残篇-index",
       "title": "哲学文论残篇",
       "date": "2023-11-10",
@@ -450,8 +804,7 @@
       "summary": "高中有段时间忘情地读小说，像看动画片一样随手写了些剧评之类的，虽略显幼稚，但姑且把它们放在这吧。",
       "tags": [
         "高中时代",
-        "读书笔记",
-        "残篇"
+        "读书笔记"
       ],
       "starred": false,
       "type": "markdown",
