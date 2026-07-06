@@ -18,6 +18,8 @@
     { id: "journals", label: "\u65e5\u5468\u6708\u5b63\u5e74\u8bb0" }
   ];
 
+  const footerContactEmail = "lql24@mails.tsinghua.edu.cn";
+
   const homepageData = {
     profile: {
       displayName: "Qingle Liu",
@@ -86,8 +88,7 @@
           entries: [
             {
               title: "National Scholarship",
-              date: "2025",
-              subtitle: "Top national undergraduate award in China"
+              date: "2025"
             },
             {
               title: "Merit Student, Tsinghua University",
@@ -116,7 +117,7 @@
           title: "Research Experience",
           entries: [
             {
-              title: "Institute of HCI and Media Integration, Tsinghua University",
+              title: "The Graphics and Geometric Computing Lab",
               meta: "Beijing, China",
               subtitle: "Undergraduate Researcher, advised by Academician Shimin Hu",
               date: "Aug. 2025 - Present",
@@ -421,8 +422,8 @@
 
     const footerEmail = $(".site-footer a[href^='mailto:']");
     if (footerEmail) {
-      footerEmail.href = "mailto:lql24@mails.tsinghua.edu.cn";
-      footerEmail.textContent = "lql24@mails.tsinghua.edu.cn";
+      footerEmail.href = `mailto:${footerContactEmail}`;
+      footerEmail.textContent = footerContactEmail;
     }
   }
 
