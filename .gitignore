@@ -3,6 +3,7 @@ Thumbs.db
 *.log
 dist/
 .cache/
-
+output/
+tmp/
 __pycache__/
 %SystemDrive%/
