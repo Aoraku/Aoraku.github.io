@@ -28,7 +28,7 @@
       headline: "Department of Computer Science and Technology, Tsinghua University",
       affiliation: "Department of Computer Science and Technology, Tsinghua University",
       location: "Beijing, China",
-      email: "liuqingle0324@gmail.com",
+      email: "lql24@mails.tsinghua.edu.cn",
       bio: "I am Qingle Liu, an undergraduate student in the Department of Computer Science and Technology at Tsinghua University. My current research interests include Computer Vision, Generative Models, Multimodal Models, and Computer Graphics.",
       quickFacts: [
         "B.Eng. in CS & B.A. in Economics and Finance (Double Major), Tsinghua University, expected 2028",
@@ -39,7 +39,7 @@
       socials: [
         {
           label: "Email",
-          url: "mailto:liuqingle0324@gmail.com",
+          url: "mailto:lql24@mails.tsinghua.edu.cn",
           icon: "mail"
         },
         {
