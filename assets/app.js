@@ -32,7 +32,7 @@
       bio: "I am Qingle Liu, an undergraduate student in the Department of Computer Science and Technology at Tsinghua University. My current research interests include Computer Vision, Generative Models, Multimodal Models, and Computer Graphics.",
       quickFacts: [
         "B.Eng. in CS & B.A. in Economics and Finance (Double Major), Tsinghua University, expected 2028",
-        "GPA: 3.97 / 4.0; Rank: 2 / 33",
+        "GPA: 3.97 / 4.0; Rank: 3 / 33",
         "Research internships: The Graphics and Geometric Computing Lab, CST, THU; MMLab, CCDS, NTU",
         "Software developer and research engineer at [Einsia.ai](https://einsia.ai/)"
       ],
@@ -76,7 +76,7 @@
               subtitle: "B.Eng. in CS & B.A. in Economics and Finance (Double Major)",
               date: "Sep. 2024 - Jun. 2028 (Expected)",
               bullets: [
-                "**GPA:** 3.97 / 4.0   **Rank:** 2 / 33",
+                "**GPA:** 3.97 / 4.0   **Rank:** 3 / 33",
                 "**Core Coursework:** Calculus (A/A-), Linear Algebra (A), Advanced Linear Algebra (A+), Probability & Mathematical Statistics (A-), Discrete Mathematics (A-), University Physics (A+/A), Fundamentals of Programming (A), Object-Oriented Programming (A), Programming Training (A), Data Structures (A-), Computer Graphics (A), Intro to Artificial Intelligence (A), Deep Learning & Financial Data Analysis (A+), Intro to Machine Learning (A), Software Engineering (A+), Digital Logic Circuits (A), Digital Logic Lab (A+), Intro to Computer Systems (A)"
               ]
             }
