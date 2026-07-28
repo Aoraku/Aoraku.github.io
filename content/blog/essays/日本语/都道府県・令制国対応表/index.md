@@ -14,20 +14,20 @@ tags: [日本地理]
     <th style="text-align: center; vertical-align: middle"><ruby>令制国<rt>りょうせいこく</rt></ruby>(68)</th>
     <th style="text-align: center; vertical-align: middle"><ruby>五畿七道<rt>ごきしちどう</rt></ruby></th>
   </tr>
-  <tr>
+  <tr style="height: 2.75rem">
     <td rowspan="8" style="text-align: center; vertical-align: middle">九州地方(7)</td>
     <td style="text-align: center; vertical-align: middle">福岡</td>
     <td style="text-align: center; vertical-align: middle; background-color: #D9F2D0"><ruby>筑前<rt>ちくぜん</rt></ruby>・<ruby>筑後<rt>ちくご</rt></ruby></td>
     <td rowspan="8" style="text-align: center; vertical-align: middle; background-color: #B3E5A1">西海道(11)</td>
   </tr>
-  <tr>
+  <tr style="height: 2.75rem">
     <td style="text-align: center; vertical-align: middle">佐賀</td>
     <td rowspan="2" style="text-align: center; vertical-align: middle; background-color: #D9F2D0"><ruby>肥前<rt>ひぜん</rt></ruby></td>
   </tr>
-  <tr>
+  <tr style="height: 2.75rem">
     <td rowspan="2" style="text-align: center; vertical-align: middle">長崎</td>
   </tr>
-  <tr>
+  <tr style="height: 2.75rem">
     <td style="text-align: center; vertical-align: middle; background-color: #D9F2D0"><ruby>対馬<rt>つしま</rt></ruby>・<ruby>壱岐<rt>いき</rt></ruby></td>
   </tr>
   <tr>
