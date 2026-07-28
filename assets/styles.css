@@ -716,11 +716,21 @@ button {
   overflow: hidden;
 }
 
+.reader-content table.jp-province-table tr {
+  height: 2.75rem;
+}
+
 .reader-content th,
 .reader-content td {
   border: 1px solid var(--line);
   padding: 0.5rem;
   text-align: left;
+}
+
+.reader-content table.jp-province-table th,
+.reader-content table.jp-province-table td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .pdf-toolbar {
