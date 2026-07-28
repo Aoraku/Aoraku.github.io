@@ -1,6 +1,20 @@
 {
-  "generatedAt": "2026-07-06T12:57:48+00:00",
+  "generatedAt": "2026-07-28T08:58:57+00:00",
   "entries": [
+    {
+      "id": "essays-essays-日本语-都道府県-令制国対応表-index",
+      "title": "都道府県・令制国 対応表",
+      "date": "2026-07-28",
+      "category": "japanese",
+      "categoryLabel": "日本语",
+      "summary": "大部分初学日语的人都会了解一些都道府县的知识，对地理感兴趣的可能愿意把47都道府县都背下来。但是在坐 JR、看历史地名或者深入了解区域文化的时候，只知道都道府县名字是不够的。在这里把今日的都道府县和传统的五畿七道+令制国的对应表整理出来，令制国名不好读于是全都加了振假名，希望对学习日本地理/历史的朋友有帮助www",
+      "tags": [
+        "日本地理"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/essays/日本语/都道府県・令制国対応表/index.md"
+    },
     {
       "id": "essays-essays-思政丨通识-邓小平时代-读书报告-index",
       "title": "《邓小平时代》读书报告",
@@ -573,9 +587,7 @@
       "summary": "曾经给Zinc讲微积分时候留下的手稿，写得令我比较满意，我把它们重新整理出来了放在这里。",
       "tags": [
         "CST",
-        "数学",
-        "微积分",
-        "讲义"
+        "数学"
       ],
       "starred": false,
       "type": "markdown",
