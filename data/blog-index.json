@@ -1,6 +1,29 @@
 {
-  "generatedAt": "2026-07-28T08:58:57+00:00",
+  "generatedAt": "2026-08-10T06:36:21+00:00",
   "entries": [
+    {
+      "id": "cst-notes-cst-notes-diffusion-from-beginner-to-master-index",
+      "title": "Diffusion 从入门到精通",
+      "date": "2026-08-10",
+      "category": "essays",
+      "categoryLabel": "杂文 / CST专业课文档",
+      "summary": "暑研开始做生成，加上科协暑培的邀请，系统地写了一篇 Diffusion 讲义，希望能对所有想学 Diffusion 的人有所帮助",
+      "tags": [
+        "Diffusion",
+        "Generative Models"
+      ],
+      "starred": false,
+      "type": "markdown",
+      "source": "content/blog/cst-notes/diffusion-from-beginner-to-master/index.md",
+      "categories": [
+        "essays",
+        "cst-notes"
+      ],
+      "categoryLabels": [
+        "杂文",
+        "CST专业课文档"
+      ]
+    },
     {
       "id": "essays-essays-日本语-都道府県-令制国対応表-index",
       "title": "都道府県・令制国 対応表",

@@ -103,6 +103,25 @@ def classify_path(root_category: str, path: Path) -> tuple[str, str]:
     return category, CATEGORY_LABELS[category]
 
 
+def normalize_categories(value: object, fallback: str) -> list[str]:
+    if isinstance(value, list):
+        raw_items = [str(item).strip() for item in value if str(item).strip()]
+    elif isinstance(value, str) and value.strip():
+        raw_items = [item.strip() for item in value.split(",") if item.strip()]
+    else:
+        raw_items = []
+
+    categories: list[str] = []
+    for item in raw_items:
+        category = ESSAY_SUBCATEGORIES.get(item, item)
+        if category in CATEGORY_LABELS and category not in categories:
+            categories.append(category)
+
+    if fallback not in categories:
+        categories.append(fallback)
+    return categories or [fallback]
+
+
 def discover_entries() -> list[dict]:
     entries: list[dict] = []
     for root_category in SCAN_ROOTS:
@@ -148,6 +167,8 @@ def discover_entries() -> list[dict]:
             title = str(meta.get("title") or title_from_stem(path))
             date = str(meta.get("date") or file_date(path))
             category, label = classify_path(root_category, path)
+            categories = normalize_categories(meta.get("categories"), category)
+            category_labels = [CATEGORY_LABELS[item] for item in categories]
             entry_id = slugify(f"{root_category}-{path.relative_to(BLOG_ROOT).with_suffix("").as_posix()}")
             tags = meta.get("tags") or []
             if isinstance(tags, str):
@@ -157,14 +178,17 @@ def discover_entries() -> list[dict]:
                 "id": entry_id,
                 "title": title,
                 "date": date,
-                "category": category,
-                "categoryLabel": label,
+                "category": categories[0],
+                "categoryLabel": " / ".join(category_labels) if len(category_labels) > 1 else label,
                 "summary": str(meta.get("summary") or ""),
                 "tags": tags,
                 "starred": bool(meta.get("starred")),
                 "type": entry_kind,
                 "source": rel,
             }
+            if len(categories) > 1:
+                entry["categories"] = categories
+                entry["categoryLabels"] = category_labels
             if len(pdf_sources) > 1:
                 entry["pdfs"] = [item.relative_to(ROOT).as_posix() for item in pdf_sources]
             entries.append(entry)

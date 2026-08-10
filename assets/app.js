@@ -846,7 +846,7 @@
           <article class="blog-item">
             <div>
               <div class="item-meta">
-                <span>${escapeHtml(entry.categoryLabel || "")}</span>
+                <span>${escapeHtml(getEntryCategoryDisplay(entry))}</span>
                 <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
               </div>
               <h2>${escapeHtml(entry.title || "Untitled")}</h2>
@@ -869,14 +869,29 @@
   }
 
   function matchesBlogCategory(entry, categoryId) {
+    const categories = getEntryCategories(entry);
     if (categoryId === "all") return true;
     if (categoryId === "essays") {
       return (
-        entry.category === "essays" ||
-        (entry.starred && (entry.category === "politics" || entry.category === "high-school"))
+        categories.includes("essays") ||
+        (entry.starred && (categories.includes("politics") || categories.includes("high-school")))
       );
     }
-    return entry.category === categoryId;
+    return categories.includes(categoryId);
+  }
+
+  function getEntryCategories(entry) {
+    if (Array.isArray(entry.categories) && entry.categories.length) {
+      return entry.categories.filter(Boolean);
+    }
+    return entry.category ? [entry.category] : [];
+  }
+
+  function getEntryCategoryDisplay(entry) {
+    if (Array.isArray(entry.categoryLabels) && entry.categoryLabels.length) {
+      return entry.categoryLabels.filter(Boolean).join(" / ");
+    }
+    return entry.categoryLabel || "";
   }
 
   function bindReader() {
@@ -917,7 +932,7 @@
     document.title = `${entry.title || "Document"} | Aoraku`;
     docMeta.innerHTML = `
       <div class="item-meta" aria-label="Document metadata">
-        <span>${escapeHtml(entry.categoryLabel || "")}</span>
+        <span>${escapeHtml(getEntryCategoryDisplay(entry))}</span>
         <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
       </div>
     `;
