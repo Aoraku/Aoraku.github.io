@@ -1535,3 +1535,19 @@ main {
 .doc-content.reader-content blockquote mjx-container[display="true"] {
   margin: 0.55rem 0 !important;
 }
+
+/* MathJax display overflow and scale fix v20260810 */
+.reader-content mjx-container[display="true"],
+.doc-content.reader-content mjx-container[display="true"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: left !important;
+  padding: 0.18rem 0 0.28rem;
+}
+
+.reader-content mjx-container[display="true"] > svg,
+.doc-content.reader-content mjx-container[display="true"] > svg {
+  max-width: none !important;
+}

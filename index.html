@@ -16,12 +16,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/vendor/highlight/github-dark.min.css?v=20260702j" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260728table-saga" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260810math" />
     <script>
       window.MathJax = {
         tex: {
           inlineMath: [["$", "$"], ["\\(", "\\)"]],
-          displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+          displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+          macros: {
+            argmin: "\\operatorname*{arg\\,min}",
+            argmax: "\\operatorname*{arg\\,max}"
+          }
         },
         svg: { fontCache: "global" }
       };
@@ -36,7 +40,7 @@
     <script defer src="assets/vendor/highlight/python.min.js?v=20260702j"></script>
     <script defer src="assets/vendor/highlight/x86asm.min.js?v=20260702j"></script>
     <script defer src="assets/vendor/highlight/verilog.min.js?v=20260702j"></script>
-    <script defer src="assets/app.js?v=20260810diffusion"></script>
+    <script defer src="assets/app.js?v=20260810math"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>

@@ -1099,52 +1099,82 @@
 
   function protectMarkdownMath(markdown) {
     const segments = [];
-    let fence = "";
-    const lines = String(markdown || "").match(/[^\n]*\n|[^\n]+$/g) || [];
-    const text = lines.map((line) => {
-      const fenceMatch = line.match(/^\s*(```|~~~)/);
-      if (fenceMatch) {
-        if (!fence) {
-          fence = fenceMatch[1];
-        } else if (fence === fenceMatch[1]) {
-          fence = "";
-        }
-        return line;
-      }
-      return fence ? line : protectMathInLine(line, segments);
-    }).join("");
-    return { text, segments };
-  }
-
-  function protectMathInLine(line, segments) {
+    const source = String(markdown || "").replace(/\r\n/g, "\n");
     let output = "";
+    let fence = "";
     let index = 0;
-    while (index < line.length) {
-      if (line.startsWith("$$", index)) {
-        const end = line.indexOf("$$", index + 2);
+
+    while (index < source.length) {
+      const lineStart = index === 0 || source[index - 1] === "\n";
+      if (lineStart) {
+        const nextLineBreak = source.indexOf("\n", index);
+        const lineEnd = nextLineBreak === -1 ? source.length : nextLineBreak;
+        const line = source.slice(index, lineEnd);
+        const lineChunk = source.slice(index, nextLineBreak === -1 ? source.length : nextLineBreak + 1);
+        const fenceMatch = line.match(/^\s*(```|~~~)/);
+        if (fenceMatch) {
+          if (!fence) {
+            fence = fenceMatch[1];
+          } else if (fence === fenceMatch[1]) {
+            fence = "";
+          }
+          output += lineChunk;
+          index += lineChunk.length;
+          continue;
+        }
+        if (fence) {
+          output += lineChunk;
+          index += lineChunk.length;
+          continue;
+        }
+      }
+
+      if (source.startsWith("$$", index)) {
+        const end = findDisplayMathEnd(source, index + 2);
         if (end !== -1) {
-          output += addMathSegment(line.slice(index, end + 2), segments);
+          const raw = source.slice(index, end + 2);
+          output += addMathSegment(normalizeDisplayMath(raw, source, index), segments);
           index = end + 2;
           continue;
         }
       }
-      if (line[index] === "$" && line[index + 1] !== "$") {
-        const end = findInlineMathEnd(line, index + 1);
+      if (source[index] === "$" && source[index + 1] !== "$" && source[index - 1] !== "$" && source[index - 1] !== "\\") {
+        const end = findInlineMathEnd(source, index + 1);
         if (end !== -1) {
-          output += addMathSegment(line.slice(index, end + 1), segments);
+          output += addMathSegment(source.slice(index, end + 1), segments);
           index = end + 1;
           continue;
         }
       }
-      output += line[index];
+      output += source[index];
       index += 1;
     }
-    return output;
+    return { text: output, segments };
   }
 
-  function findInlineMathEnd(line, start) {
-    for (let index = start; index < line.length; index += 1) {
-      if (line[index] === "$" && line[index - 1] !== "\\") return index;
+  function findDisplayMathEnd(text, start) {
+    for (let index = start; index < text.length - 1; index += 1) {
+      if (text[index] === "$" && text[index + 1] === "$" && text[index - 1] !== "\\") return index;
+    }
+    return -1;
+  }
+
+  function normalizeDisplayMath(raw, source, start) {
+    const lineStart = source.lastIndexOf("\n", start - 1) + 1;
+    const before = source.slice(lineStart, start);
+    const inBlockquote = /^\s*(?:>\s*)+$/.test(before);
+    const display = inBlockquote
+      ? raw.split("\n").map((line, lineIndex) => (
+          lineIndex === 0 ? line : line.replace(/^\s*(?:>\s*)+/, "")
+        )).join("\n")
+      : raw;
+    return `\\[\n${display.slice(2, -2).trim()}\n\\]`;
+  }
+
+  function findInlineMathEnd(text, start) {
+    for (let index = start; index < text.length; index += 1) {
+      if (text[index] === "\n") return -1;
+      if (text[index] === "$" && text[index - 1] !== "\\" && text[index + 1] !== "$") return index;
     }
     return -1;
   }
