@@ -83,3 +83,15 @@ body[data-line=selected]{--route-color:#8f76d6;--accent:#b5a0f0}
 :root[data-blog-theme=light] body[data-line=selected]{--accent:#7053b5}
 body[data-line=selected] #blog-title{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;color:var(--route-color)}
 #selected-menu summary,a.category-button[href="/blog/selected"]{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+
+/* Keep the map centred independently of the lower-right legend. */
+.metro-stage{position:relative;display:grid;place-items:center}
+.metro-stage .metro-map{margin:0 auto}
+.metro-stage .metro-legend{position:absolute;right:6px;bottom:24px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin:0;padding:0;border:0}
+.metro-stage .metro-legend>span{gap:12px;white-space:nowrap}
+body[data-blog-view=metro] .site-footer{border-top:0}
+@media(max-width:700px){
+  .metro-stage .metro-legend{right:0;bottom:12px;gap:13px;font-size:10px}
+  .metro-stage .metro-legend>span{gap:8px}
+  .metro-stage .metro-legend .line-symbol{width:27px;height:27px}
+}
