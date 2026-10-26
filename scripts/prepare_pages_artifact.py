@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 BLOG_INDEX = DATA_DIR / "blog-index.json"
-SITE_FILES = ("index.html", "assets", "data", ".nojekyll")
+SITE_FILES = ("index.html", "blog", "travel", "assets", "data", ".nojekyll")
 PUBLIC_BLOG_ROOT = Path("content") / "blog-public"
 
 
@@ -38,7 +38,7 @@ def copy_path(source_rel: str, source_to_public: dict[Path, Path], target_root: 
     target_parent = target_root / public_parent
     target_parent.mkdir(parents=True, exist_ok=True)
     if source_parent.is_dir():
-        shutil.copytree(source_parent, target_parent, dirs_exist_ok=True)
+        shutil.copytree(source_parent, target_parent, dirs_exist_ok=True, ignore=shutil.ignore_patterns("._*", ".DS_Store"))
     else:
       raise FileNotFoundError(source_parent)
     return (public_parent / source.name).as_posix()
@@ -58,7 +58,7 @@ def copy_site_shell(target_root: Path) -> None:
         source = ROOT / name
         target = target_root / name
         if source.is_dir():
-            shutil.copytree(source, target)
+            shutil.copytree(source, target, ignore=shutil.ignore_patterns("._*", ".DS_Store"))
         elif source.exists():
             shutil.copy2(source, target)
 

@@ -1,164 +1,60 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Aoraku's personal homepage: research, resume, papers, notes, and blog."
-    />
-    <title>Aoraku | Qingle Liu</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/vendor/highlight/github-dark.min.css?v=20260702j" />
-    <link rel="stylesheet" href="assets/styles.css?v=20261026" />
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [["$", "$"], ["\\(", "\\)"]],
-          displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-          macros: {
-            argmin: "\\operatorname*{arg\\,min}",
-            argmax: "\\operatorname*{arg\\,max}"
-          }
-        },
-        svg: { fontCache: "global" }
-      };
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
-    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script defer src="assets/vendor/highlight/highlight.min.js?v=20260702j"></script>
-    <script defer src="assets/vendor/highlight/cpp.min.js?v=20260702j"></script>
-    <script defer src="assets/vendor/highlight/python.min.js?v=20260702j"></script>
-    <script defer src="assets/vendor/highlight/x86asm.min.js?v=20260702j"></script>
-    <script defer src="assets/vendor/highlight/verilog.min.js?v=20260702j"></script>
-    <script defer src="assets/app.js?v=20261026"></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="#main" aria-label="Aoraku homepage">
-          <span class="brand-mark">&#x9752;&#x697D;</span>
-          <span>
-            <strong>Aoraku</strong>
-            <small>Qingle Liu</small>
-          </span>
-        </a>
-
-        <nav class="top-nav" aria-label="Primary navigation">
-          <button class="nav-tab" type="button" data-route-target="main">Main</button>
-          <a class="nav-tab" href="assets/CV_Qingle_Liu.pdf">CV</a>
-          <button class="nav-tab" type="button" data-route-target="scholar">Research</button>
-          <button class="nav-tab" type="button" data-route-target="blog">Blog</button>
-        </nav>
-      </div>
-    </header>
-
-    <main id="main-content">
-      <section id="view-main" class="view" aria-labelledby="main-title">
-        <div class="hero-band">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <p class="eyebrow">Aoraku.github.io</p>
-              <h1 id="main-title">Welcome to Aoraku's homepage</h1>
-              <p id="profile-bio" class="lead"></p>
-              <div id="quick-facts" class="fact-grid" aria-label="Quick facts"></div>
-            </div>
-
-            <aside class="profile-card" aria-label="Profile summary">
-              <div class="portrait-frame">
-                <img id="profile-avatar" src="assets/avatar.jpg" alt="Portrait of Qingle Liu" />
-              </div>
-              <div>
-                <h2 id="profile-name">Qingle Liu</h2>
-                <p id="profile-headline"></p>
-              </div>
-              <div id="social-links" class="social-links"></div>
-            </aside>
-          </div>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Qingle Liu — Computer Science and Economics & Finance at Tsinghua. Computer Vision, Generative Models, and Agents.">
+  <title>Qingle Liu | Aoraku</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/lato-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/styles.css?v=20261026-design">
+  <script src="assets/theme.js?v=20261026-design"></script>
+  <script defer src="assets/app.js?v=20261026-design"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#main" aria-label="Aoraku homepage"><span class="brand-mark" aria-hidden="true">青楽</span><span><strong>Aoraku</strong><small>Qingle Liu</small></span></a>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#main" data-nav="main">Main</a>
+        <a href="assets/CV_Qingle_Liu.pdf">CV</a>
+        <a href="#research" data-nav="research">Research</a>
+        <a href="/blog/">Blog <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.4 14.1A8.8 8.8 0 0 1 9.9 3.6a8.8 8.8 0 1 0 10.5 10.5Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" class="container">
+    <div id="view-main">
+      <section class="profile" aria-labelledby="profile-name">
+        <div class="profile-info">
+          <h1 id="profile-name">Qingle Liu <span class="name-divider">/</span> <span class="alternate-name">Aoraku <span class="name-divider">/</span> 刘青乐</span></h1>
+          <div id="profile-bio"></div>
+          <div id="social-links" class="social-links" aria-label="Contact and profiles"></div>
         </div>
-
-        <div class="content-band">
-          <div class="section-heading">
-            <p class="eyebrow">Updates</p>
-            <h2>News</h2>
-          </div>
-          <div id="news-list" class="news-list"></div>
-        </div>
+        <img class="portrait" src="assets/avatar.jpg" width="190" height="190" alt="Qingle Liu">
       </section>
-
-      <section id="view-scholar" class="view" aria-labelledby="scholar-title" hidden>
-        <div class="content-band">
-          <div class="section-heading">
-            <p class="eyebrow">Publications</p>
-            <h1 id="scholar-title">Research</h1>
-          </div>
-          <div id="paper-list" class="paper-list"></div>
-        </div>
+      <section class="home-section" aria-labelledby="education-title"><h2 id="education-title" class="section-title">Education</h2><div id="education"></div></section>
+      <section class="home-section" aria-labelledby="experience-title"><h2 id="experience-title" class="section-title">Research Experience</h2><div id="research-experience" class="experience-list"></div></section>
+      <section class="home-section" aria-labelledby="industry-title"><h2 id="industry-title" class="section-title">Industry Experience</h2><div id="industry-experience" class="experience-list"></div></section>
+      <section class="home-section" aria-labelledby="selected-title">
+        <div class="section-topline"><h2 id="selected-title" class="section-title">Selected Research</h2><a class="all-publications" href="#research">All Publications <span aria-hidden="true">↗</span></a></div>
+        <div id="selected-papers" class="publication-list"></div>
       </section>
-
-      <section id="view-blog" class="view" aria-labelledby="blog-title" hidden>
-        <div class="content-band">
-          <div class="section-heading">
-            <p class="eyebrow">Writing archive</p>
-            <h1 id="blog-title">Blog</h1>
-          </div>
-
-          <div class="blog-shell">
-            <aside class="blog-sidebar" aria-label="Blog categories">
-              <div id="blog-categories" class="category-list"></div>
-            </aside>
-
-            <div class="blog-main">
-              <div id="blog-list" class="blog-list"></div>
-              <article id="blog-reader" class="blog-reader" hidden>
-                <button id="reader-close" class="icon-button" type="button" aria-label="Close reader">
-                  <i data-lucide="x"></i>
-                </button>
-                <div id="reader-meta" class="reader-meta"></div>
-                <div class="reader-layout">
-                  <nav id="reader-toc" class="reader-toc" aria-label="Document table of contents"></nav>
-                  <div id="reader-content" class="reader-content"></div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
+      <section class="home-section" aria-labelledby="news-title"><h2 id="news-title" class="section-title">News</h2><div id="news-list" class="news-list"></div></section>
+      <section class="home-section other-info" aria-labelledby="other-title"><h2 id="other-title" class="section-title">Other Info</h2>
+        <p><strong>Foreign languages.</strong> Japanese (JLPT N2). I also plan to learn French, German, and Spanish.</p>
+        <ul class="interest-list"><li><a href="/travel" target="_blank" rel="noopener noreferrer">Travel <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li><li>Piano</li><li>Calligraphy</li><li>Basketball</li></ul>
       </section>
-
-      <section id="view-doc" class="view document-view" aria-labelledby="doc-title" hidden>
-        <div class="doc-band">
-          <article id="doc-reader" class="doc-reader">
-            <header class="doc-header">
-              <button id="doc-back" class="text-button doc-back" type="button">
-                <i data-lucide="arrow-left"></i>
-                <span>Blog</span>
-              </button>
-              <div id="doc-meta" class="doc-meta"></div>
-            </header>
-            <div class="doc-layout">
-              <div id="doc-content" class="reader-content doc-content"></div>
-              <nav id="doc-toc" class="reader-toc doc-toc" aria-label="Document table of contents"></nav>
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <span>&copy; <span id="year"></span> Aoraku</span>
-      <a href="mailto:lql24@mails.tsinghua.edu.cn">lql24@mails.tsinghua.edu.cn</a>
-    </footer>
-  </body>
+    </div>
+    <section id="view-research" class="research-page" aria-labelledby="research-title" hidden>
+      <h1 id="research-title" class="section-title">Research</h1>
+      <div id="paper-list" class="publication-list"></div>
+    </section>
+    <p id="load-error" role="alert" hidden>Could not load the page content. Please refresh to try again.</p>
+    <noscript>Please enable JavaScript to view the research list and profile. <a href="assets/CV_Qingle_Liu.pdf">View CV</a>.</noscript>
+  </main>
+  <footer class="site-footer"><span>© <span id="year"></span> Qingle Liu</span><a href="mailto:lql24@mails.tsinghua.edu.cn">lql24@mails.tsinghua.edu.cn</a></footer>
+</body>
 </html>
-

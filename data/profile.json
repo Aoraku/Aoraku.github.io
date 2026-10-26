@@ -6,13 +6,6 @@
   "affiliation": "Department of Computer Science and Technology, Tsinghua University",
   "location": "Beijing, China",
   "email": "lql24@mails.tsinghua.edu.cn",
-  "bio": "I am Qingle Liu, an undergraduate student in the Department of Computer Science and Technology at Tsinghua University. My current research interests include Computer Vision, Generative Models, Multimodal Models, and Computer Graphics.",
-  "quickFacts": [
-    "B.Eng. in CS & B.A. in Economics and Finance (Double Major), Tsinghua University, expected 2028",
-    "GPA: 3.97 / 4.0; Rank: 1 / 33",
-    "Research internships: The Graphics and Geometric Computing Lab, CST, THU; MMLab, CCDS, NTU",
-    "Software developer and research engineer at [Einsia.ai](https://einsia.ai/)"
-  ],
   "socials": [
     {
       "label": "Email",
@@ -33,6 +26,80 @@
       "label": "X",
       "url": "https://x.com/Chizhi_official",
       "icon": "messages-square"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/青乐-刘-24755b427/"
+    }
+  ],
+  "bioParagraphs": [
+    "I am Qingle Liu, a third-year undergraduate in [Computer Science at Tsinghua University](https://www.cs.tsinghua.edu.cn/), pursuing a double major in Computer Science and Economics & Finance. My GPA is **3.97/4.0**, ranked **1/33**. My research interests are Computer Vision, Generative Models, and Agents.",
+    "I conduct research in [Prof. Shi-Min Hu’s group](https://cg.cs.tsinghua.edu.cn/) at Tsinghua and intern at [MMLab, NTU](https://mmlab-ntu.github.io/) with [Prof. Xingang Pan](https://xingangpan.github.io/). I work on efficient video diffusion models with long-term memory, world models that unify understanding and generation, and agentic robotics."
+  ],
+  "education": {
+    "name": "Tsinghua University",
+    "url": "https://www.tsinghua.edu.cn/en/",
+    "mark": "THU",
+    "date": "2024–2028 (Expected)",
+    "degree": "B.Eng. in CS & B.A. in Economics and Finance (Double Major)",
+    "courses": [
+      {
+        "category": "Math & Science",
+        "items": "Calculus (A/A−); Linear Algebra (A); Advanced Linear Algebra (A+); Probability & Mathematical Statistics (A−); Discrete Mathematics (A−); University Physics (A+/A)"
+      },
+      {
+        "category": "Software",
+        "items": "Fundamentals of Programming (A); Object-Oriented Programming (A); Programming Training (A); Data Structures (A−); Computer Graphics (A); Software Engineering (A+)"
+      },
+      {
+        "category": "AI",
+        "items": "Intro to Artificial Intelligence (A); Intro to Machine Learning (A); Deep Learning & Financial Data Analysis (A+)"
+      },
+      {
+        "category": "Hardware",
+        "items": "Digital Logic Circuits (A); Digital Logic Lab (A+); Intro to Computer Systems (A)"
+      }
+    ]
+  },
+  "researchExperience": [
+    {
+      "name": "Graphics & Geometric Computing Group, Tsinghua",
+      "url": "https://cg.cs.tsinghua.edu.cn/",
+      "mark": "THU",
+      "date": "Aug. 2025–Present",
+      "topics": "Agents · Video understanding",
+      "advisors": [
+        {
+          "name": "Shi-Min Hu",
+          "url": "https://cg.cs.tsinghua.edu.cn/shimin.htm"
+        },
+        {
+          "name": "Meng-Hao Guo",
+          "url": "https://menghaoguo.github.io/"
+        }
+      ]
+    },
+    {
+      "name": "MMLab, Nanyang Technological University",
+      "url": "https://mmlab-ntu.github.io/",
+      "mark": "NTU",
+      "date": "Jun. 2026–Present",
+      "topics": "Efficient video generation · Unified models",
+      "advisors": [
+        {
+          "name": "Xingang Pan",
+          "url": "https://xingangpan.github.io/"
+        }
+      ]
+    }
+  ],
+  "industryExperience": [
+    {
+      "name": "Einsia.AI",
+      "url": "https://einsia.ai/",
+      "mark": "E",
+      "date": "Mar. 2026–Present",
+      "topics": "Agents · World models · Embodied AI"
     }
   ]
 }

@@ -16,7 +16,8 @@ Public site:
 - News: `data/news.json`
 - CV PDF: `assets/CV_Qingle_Liu.pdf`
 - Research / papers: `data/papers.json`
-- Blog: `content/blog/`
+- Blog: `content/blog/` (served at `/blog/`)
+- Travel notes: `data/travel/visits.json` (served at `/travel/`)
 
 See `MAINTENANCE.md` for details.
 

@@ -14,7 +14,7 @@ Public site:
 
 ## Edit Map
 
-Main profile text, headline, quick facts, and social links:
+Main introduction, education, coursework, experience, and social links:
 
 - `data/profile.json`
 
@@ -35,6 +35,30 @@ Blog content:
 - Essays: `content/blog/essays/`
 - CST course notes: `content/blog/cst-notes/`
 - Journals: `content/blog/journals/`
+
+## Pages and styling
+
+- `/` and `/#main`: academic homepage, rendered by `assets/app.js`.
+- `/#research`: full publication list. `/#scholar` is an alias.
+- `/blog/`: serif blog and document reader, rendered by `assets/blog.js`.
+- `/travel/`: interactive travel globe, rendered by `assets/travel.js`. The homepage opens it in a new tab.
+- `/assets/CV_Qingle_Liu.pdf`: direct CV link.
+
+`assets/styles.css` defines the academic layout and the locally hosted Lato font. Research headings use Georgia. `assets/blog.css` defines the serif blog layout. `assets/theme.js` defaults to light mode and persists the visitor's choice in local storage. Section underlines are red in light mode and cyan in dark mode.
+
+In `data/papers.json`, set `selected: true` on the five homepage papers. The complete list is shown on Research. Author strings retain contributor markers such as `*`; Qingle Liu's name is underlined automatically. Both publication lists have expandable author lists.
+
+## Travel journal
+
+Travel records belong in `data/travel/visits.json`; photographs belong in `assets/travel/`. See `data/travel/SOURCES.md` for the record schema, map sources, and boundary convention. The atlas supports 34 Chinese province-level regions, 47 Japanese prefectures, and 50 US states. Records automatically highlight the associated country and region.
+
+## Local preview
+
+```sh
+node scripts/serve-static.mjs 8765
+```
+
+Open `http://127.0.0.1:8765/`. To validate the GitHub Pages artifact, run `python3 scripts/prepare_pages_artifact.py tmp/site-preview`, then serve that directory. The artifact includes the homepage, Blog, Travel, local fonts, maps, PDF, and indexed article files.
 
 ## Blog Summary Text
 

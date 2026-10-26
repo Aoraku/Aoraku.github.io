@@ -5,7 +5,7 @@
     {
       "date": "2026-10-08",
       "title": "Can AI Agents Learn Their Way to the Top? Evaluating Heuristic Learning in a Long-Running Game Agent Competition",
-      "authors": "Kaisen Yang, Qingle Liu, Kejin Wang, Yicheng Zhao, Jieming Li, Shenghan Zheng, Ruize Yang, Bojun Yang, Heng Gong, Xiang Gao, Lanyue Zhang, Kaiyu Zhong, Zhuo Liu, Shaoxuan Li, Chengxi Li, Yong Yan, Weixuan Zhang, Tianwei Luo, Situ Wang, Youjie Zheng, Sihan Zhao, Shengyuan Wang, Huan-ang Gao, Jiazheng Xu, Xiaohui Xie, Wentao Han, Hongning Wang",
+      "authors": "Kaisen Yang*†, Qingle Liu*†, Kejin Wang*, Yicheng Zhao*, Jieming Li*, Shenghan Zheng*, Ruize Yang*, Bojun Yang*, Heng Gong, Xiang Gao, Lanyue Zhang, Kaiyu Zhong, Zhuo Liu, Shaoxuan Li, Chengxi Li, Yong Yan, Weixuan Zhang, Tianwei Luo, Situ Wang, Youjie Zheng, Sihan Zhao, Shengyuan Wang, Huan-ang Gao, Jiazheng Xu, Xiaohui Xie, Wentao Han, Hongning Wang‡",
       "venue": "arXiv",
       "year": "2026",
       "url": "https://arxiv.org/abs/2610.12341",
@@ -14,14 +14,24 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2610.12341"
+        },
+        {
+          "label": "Project",
+          "url": "https://aaarena.net/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/THU-CST-SAST/AAArena"
         }
       ],
-      "image": "assets/research/2610.12341.png"
+      "image": "assets/research/2610.12341.png",
+      "id": "2610.12341",
+      "selected": true
     },
     {
       "date": "2026-10-06",
       "title": "World Models' Last Exam in Physics",
-      "authors": "Mingju Gao, Qingle Liu, Yuzhao Peng, Xinjie Lin, Ziming Qin, Zheng Jiang, Wenyi Li, Calvin Xiao, Youjie Zheng, Kaisen Yang, Qinhuai Na",
+      "authors": "Mingju Gao*†, Qingle Liu*, Yuzhao Peng*, Xinjie Lin*, Ziming Qin, Zheng Jiang, Wenyi Li, Calvin Xiao, Youjie Zheng, Kaisen Yang‡, Qinhuai Na‡",
       "venue": "arXiv",
       "year": "2026",
       "url": "https://arxiv.org/abs/2610.08791",
@@ -30,14 +40,20 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2610.08791"
+        },
+        {
+          "label": "Project",
+          "url": "https://lab.einsia.ai/phys-last-exam"
         }
       ],
-      "image": "assets/research/2610.08791.png"
+      "image": "assets/research/2610.08791.png",
+      "id": "2610.08791",
+      "selected": true
     },
     {
       "date": "2026-09-30",
       "title": "DeCoPrune: Efficient KV-Cache Pruning for Autoregressive Video Diffusion via Denoising Consistency",
-      "authors": "Zeqi Xiao*, Qingle Liu*, Kaiwen Zhang, Yifan Zhou, Zihan Ding, Xingang Pan",
+      "authors": "Zeqi Xiao*, Qingle Liu*, Kaiwen Zhang, Yifan Zhou, Zihan Ding, Xingang Pan†",
       "venue": "arXiv",
       "year": "2026",
       "url": "https://arxiv.org/abs/2609.39096",
@@ -60,8 +76,9 @@
           "url": "https://huggingface.co/datasets/Aoraku/CMBench"
         }
       ],
-      "authorNote": "* Equal contribution.",
-      "image": "assets/research/2609.39096.png"
+      "image": "assets/research/2609.39096.png",
+      "id": "2609.39096",
+      "selected": true
     },
     {
       "date": "2026-09-23",
@@ -81,7 +98,9 @@
           "url": "https://github.com/peilin717/FakeContext-Bench"
         }
       ],
-      "image": "assets/research/2609.27603.png"
+      "image": "assets/research/2609.27603.png",
+      "id": "2609.27603",
+      "selected": false
     },
     {
       "date": "2026-06-30",
@@ -101,7 +120,9 @@
           "label": "Project",
           "url": "https://lab.einsia.ai/browserbc/"
         }
-      ]
+      ],
+      "id": "2606.32014",
+      "selected": false
     },
     {
       "date": "2026-06-29",
@@ -121,7 +142,9 @@
           "label": "Code",
           "url": "https://github.com/fansunqi/GUICrafter"
         }
-      ]
+      ],
+      "id": "2606.29705",
+      "selected": false
     },
     {
       "date": "2026-06-28",
@@ -141,7 +164,9 @@
           "label": "Project",
           "url": "https://vg-gui-tasker.github.io/"
         }
-      ]
+      ],
+      "id": "2606.29445",
+      "selected": true
     },
     {
       "date": "2026-04-14",
@@ -161,7 +186,9 @@
           "label": "Project",
           "url": "https://lab.einsia.ai/frontier-eng"
         }
-      ]
+      ],
+      "id": "2604.12290",
+      "selected": true
     }
   ]
 }

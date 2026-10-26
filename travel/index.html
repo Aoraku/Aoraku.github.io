@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Aoraku’s travel atlas — places, photographs, and memories."><title>Travel | Aoraku</title><link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/assets/styles.css?v=20261026-design"><link rel="stylesheet" href="/assets/travel.css?v=20261026-design"><script src="/assets/theme.js?v=20261026-design"></script><script defer src="/assets/vendor/d3.v7.min.js"></script><script defer src="/assets/travel.js?v=20261026-design"></script></head>
+<body><a class="skip-link" href="#atlas">Skip to atlas</a>  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/#main" aria-label="Aoraku homepage"><span class="brand-mark" aria-hidden="true">青楽</span><span><strong>Aoraku</strong><small>Qingle Liu</small></span></a>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="/#main">Main</a>
+        <a href="/assets/CV_Qingle_Liu.pdf">CV</a>
+        <a href="/#research">Research</a>
+        <a href="/blog/">Blog <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.4 14.1A8.8 8.8 0 0 1 9.9 3.6a8.8 8.8 0 1 0 10.5 10.5Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+      </nav>
+    </div>
+  </header>
+
+<main class="travel-container" id="atlas">
+  <div class="travel-heading"><div><h1 class="section-title">Travel</h1><p>Places, photographs, and memories.</p></div><span id="atlas-stats" class="atlas-stats"></span></div>
+  <div class="atlas-layout">
+    <section class="globe-panel" aria-label="Interactive travel globe">
+      <div class="country-shortcuts" aria-label="Explore countries"><button type="button" data-country="156">China</button><button type="button" data-country="392">Japan</button><button type="button" data-country="840">United States</button></div>
+      <div class="globe-stage"><svg id="globe" viewBox="0 0 680 600" tabindex="0" role="img" aria-label="Interactive globe. Drag to rotate. Use arrow keys to rotate, plus and minus to zoom. Choose a country using the controls below."></svg><div id="globe-tooltip" role="status" aria-live="polite"></div><p id="map-loading">Loading the atlas…</p></div>
+      <div class="globe-controls"><span>Drag to rotate · Scroll to zoom</span><div><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="reset-globe" type="button">World view</button></div></div>
+      <div class="map-legend"><span><i class="legend-note"></i>With travel notes</span><span><i class="legend-selected"></i>Selected place</span></div>
+      <label class="country-picker">Explore a place<select id="country-select"><option value="">World view</option></select></label>
+    </section>
+    <aside class="atlas-sidebar" aria-label="Places and travel notes">
+      <div class="place-heading"><h2 id="place-title">A world to explore</h2><p id="place-description">Choose a country on the globe or from the list.</p></div>
+      <section id="region-panel" hidden><label class="region-search-label" for="region-search">Find a region</label><input id="region-search" type="search" placeholder="Search regions" autocomplete="off"><div id="region-list" class="region-list" aria-label="Administrative regions"></div></section>
+      <section class="travel-journal" aria-labelledby="journal-title"><h3 id="journal-title">Travel notes</h3><div id="visit-list"><p class="empty-journal">Photos and stories will appear here.</p></div></section>
+    </aside>
+  </div>
+  <details class="map-sources"><summary>Map sources</summary><p>World: <a href="https://www.naturalearthdata.com/">Natural Earth</a> · China: <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">Alibaba DataV</a> · Japan: 地球地図日本 / Global Map Japan, <a href="https://github.com/dataofjapan/land">Data of Japan</a> · United States: <a href="https://github.com/topojson/us-atlas">US Census / us-atlas</a>.</p><p>The China layer follows the DataV boundary convention, with Taiwan, Hong Kong, and Macao included in its 34 province-level divisions.</p></details>
+</main><footer class="site-footer"><span>© <span id="year"></span> Qingle Liu</span><a href="/">Back to homepage ↗</a></footer></body></html>
