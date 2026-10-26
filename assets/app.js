@@ -7,9 +7,11 @@
   const link = item => `<a href="${esc(item.url)}">${esc(item.name || item.label)}</a>`;
   function route() {
     const hash = location.hash.slice(1).split('/')[0];
-    if (hash === 'info') { location.replace('assets/CV_Qingle_Liu.pdf'); return; }
+    if (hash === 'info') { location.replace('/assets/CV_Qingle_Liu.pdf'); return; }
     if (hash === 'blog' || hash === 'doc') { location.replace('/blog/' + location.hash); return; }
-    const research = hash === 'research' || hash === 'scholar';
+    if (['main','research','scholar'].includes(hash)) history.replaceState({}, '', hash === 'main' ? '/main' : '/research');
+    if (location.pathname === '/') history.replaceState({}, '', '/main' + location.search);
+    const research = location.pathname.replace(/\/+$/, '') === '/research';
     $('#view-main').hidden = research;
     $('#view-research').hidden = !research;
     document.querySelectorAll('[data-nav]').forEach(a => {
@@ -51,7 +53,20 @@
   }
   async function init() {
     $('#year').textContent = new Date().getFullYear();
-    route();window.addEventListener('hashchange',route);
+    route();window.addEventListener('hashchange',route);window.addEventListener('popstate',route);
+    document.addEventListener('click', event => {
+      const anchor = event.target.closest('a[href]');
+      if (!anchor || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || anchor.target) return;
+      if (anchor.classList.contains("skip-link")) {
+        event.preventDefault();
+        const main = $("#main-content"); main.tabIndex = -1; main.focus(); main.scrollIntoView();
+        return;
+      }
+      const url = new URL(anchor.href);
+      if (url.origin === location.origin && /^\/(main|research)\/?$/.test(url.pathname) && !url.hash) {
+        event.preventDefault();history.pushState({}, '', url.pathname);route();
+      }
+    });
     try {
       const [profile, papers, news] = await Promise.all(['profile','papers','news'].map(async file=>{
         const response=await fetch(`data/${file}.json`,{cache:'no-cache'});

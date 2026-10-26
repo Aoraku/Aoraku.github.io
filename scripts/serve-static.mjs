@@ -30,6 +30,14 @@ function resolvePath(url) {
 
 createServer(async (req, res) => {
   let filePath = resolvePath(req.url || '/');
+  const route = new URL(req.url || '/', 'http://localhost').pathname.replace(/\/+$/, '');
+  if (/^\/(main|research)$/.test(route)) filePath = join(root, 'index.html');
+  if (/^\/travel\/\d{3}(?:\/\d{2,6})?$/.test(route)) filePath = join(root, 'travel/index.html');
+  const index = JSON.parse(await readFile(join(root, 'data/blog-index.json'), 'utf8'));
+  if (/^\/blog\/[^/]+$/.test(route)) {
+    const slug = route.split('/')[2];
+    if ((index.categories || []).some(c => c.id === slug) || index.entries.some(e => e.id === slug)) filePath = join(root, 'blog/index.html');
+  }
   if (!filePath) {
     res.writeHead(403).end('Forbidden');
     return;
@@ -44,7 +52,7 @@ createServer(async (req, res) => {
       filePath = join(filePath, 'index.html');
     }
     await readFile(filePath, { flag: 'r' });
-    res.writeHead(200, { 'Content-Type': mime[extname(filePath).toLowerCase()] || 'application/octet-stream' });
+    res.writeHead(200, { 'Content-Type': mime[extname(filePath).toLowerCase()] || 'application/octet-stream', 'Cache-Control':'no-store' });
     createReadStream(filePath).pipe(res);
   } catch {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }).end('Not found');

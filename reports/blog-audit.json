@@ -1,0 +1,542 @@
+[
+  {
+    "id": "1",
+    "title": "东之话",
+    "source": "content/blog/essays/高中时代/东之话/index.md",
+    "type": "markdown",
+    "status": "首节标题被替换",
+    "note": "## 一、万古江河；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "一、万古江河"
+  },
+  {
+    "id": "2",
+    "title": "西方文化基础",
+    "source": "content/blog/essays/高中时代/西方文化基础/index.md",
+    "type": "markdown",
+    "status": "副标题被替换",
+    "note": "# *The Basis of Western Culture*；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "*The Basis of Western Culture*"
+  },
+  {
+    "id": "3",
+    "title": "2022読書随筆",
+    "source": "content/blog/essays/高中时代/2022読書随筆/index.md",
+    "type": "markdown",
+    "status": "副标题被替换",
+    "note": "## 2022 读书随想；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "2022 读书随想"
+  },
+  {
+    "id": "4",
+    "title": "2023読書手帳",
+    "source": "content/blog/essays/高中时代/2023読書手帳/index.md",
+    "type": "markdown",
+    "status": "首节标题被替换",
+    "note": "## Lyrics Section；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "Lyrics Section"
+  },
+  {
+    "id": "5",
+    "title": "哲学文论残篇",
+    "source": "content/blog/essays/高中时代/哲学文论残篇/index.md",
+    "type": "markdown",
+    "status": "首节标题被替换",
+    "note": "## 一、人学论；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "一、人学论"
+  },
+  {
+    "id": "6",
+    "title": "清江集",
+    "source": "content/blog/essays/高中时代/清江集/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "第一辑 剑气无形"
+  },
+  {
+    "id": "7",
+    "title": "2024年9月30日",
+    "source": "content/blog/journals/2024-09-30/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "8",
+    "title": "《创世纪》读书报告",
+    "source": "content/blog/essays/思政丨通识/《创世纪》读书报告/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、分篇内容概述"
+  },
+  {
+    "id": "9",
+    "title": "《魔鬼经济学》读书报告",
+    "source": "content/blog/essays/思政丨通识/《魔鬼经济学》读书报告/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "10",
+    "title": "《邓稼先传》读书报告",
+    "source": "content/blog/essays/思政丨通识/《邓稼先传》读书报告/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、一个有理想、有学识、敢钻研、敢担当的青年时代"
+  },
+  {
+    "id": "11",
+    "title": "2024年12月31日",
+    "source": "content/blog/journals/2024-12-31/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "12",
+    "title": "新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化",
+    "source": "content/blog/essays/思政丨通识/新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "新世纪的潘多拉魔盒：当代叙事媒介中的日本新“神隐”文化"
+  },
+  {
+    "id": "13",
+    "title": "日本語文法",
+    "source": "content/blog/essays/日本语/日本語文法/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "14",
+    "title": "秩序的崩坏与新阶段的开启：浅谈“田氏代齐”“三家分晋”的历史意义",
+    "source": "content/blog/essays/思政丨通识/秩序的崩坏与新阶段的开启：浅谈“田氏代齐”“三家分晋”的历史意义/index.md",
+    "type": "markdown",
+    "status": "章节格式待确认",
+    "note": "第一节“一、‘田氏代齐’与‘三家分晋’的历史概述”使用引用块，未进入目录。",
+    "firstHeading": "表 1 田氏家谱与相关事件"
+  },
+  {
+    "id": "15",
+    "title": "《毛泽东传》读书报告 刘青乐",
+    "source": "content/blog/essays/思政丨通识/《毛泽东传》读书报告-刘青乐/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、峥嵘岁月：回顾毛泽东同志光辉的一生"
+  },
+  {
+    "id": "16",
+    "title": "两道有趣的证明题",
+    "source": "content/blog/essays/杂文/两道有趣的证明题/index.md",
+    "type": "markdown",
+    "status": "首节标题被替换",
+    "note": "## Problem 1 我们分别连续，我们一起连续？；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "Problem 1 我们分别连续，我们一起连续？"
+  },
+  {
+    "id": "17",
+    "title": "浅谈“后罗马时代”和“后秦汉时代”的大一统性差异",
+    "source": "content/blog/essays/思政丨通识/浅谈“后罗马时代”和“后秦汉时代”的大一统性差异/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、前言"
+  },
+  {
+    "id": "18",
+    "title": "2025年5月15日",
+    "source": "content/blog/journals/2025-05-15/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "19",
+    "title": "曲线曲面积分讲解",
+    "source": "content/blog/cst-notes/数学/曲线曲面积分讲解/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "Preliminary: 曲面表示"
+  },
+  {
+    "id": "20",
+    "title": "日本語３期末復習",
+    "source": "content/blog/essays/日本语/日本語３期末復習/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "21",
+    "title": "中华文明基因中的现代化脉搏——从市场经济与法治建设两方面探究",
+    "source": "content/blog/essays/思政丨通识/中华文明基因中的现代化脉搏——从市场经济与法治建设两方面探究/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、前言"
+  },
+  {
+    "id": "22",
+    "title": "2025年7月7日",
+    "source": "content/blog/journals/2025-07-07/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "23",
+    "title": "2025年7月30日",
+    "source": "content/blog/journals/2025-07-30/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "24",
+    "title": "考试的日子，心该如何过——中道的艺术",
+    "source": "content/blog/essays/杂文/考试的日子，心该如何过——中道的艺术/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "前言"
+  },
+  {
+    "id": "25",
+    "title": "Ｎ２文法",
+    "source": "content/blog/essays/日本语/Ｎ２文法/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "26",
+    "title": "2025年10月26日",
+    "source": "content/blog/journals/2025-10-26/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "27",
+    "title": "DSA期中考前速记",
+    "source": "content/blog/cst-notes/DSA/DSA期中考前速记/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "28",
+    "title": "政治秩序的诞生与契约的订立",
+    "source": "content/blog/essays/思政丨通识/政治秩序的诞生与契约的订立/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "29",
+    "title": "2025年11月12日",
+    "source": "content/blog/journals/2025-11-12/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "30",
+    "title": "2025年11月29日",
+    "source": "content/blog/journals/2025-11-29/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "31",
+    "title": "Ｎ２临时抱佛脚",
+    "source": "content/blog/essays/日本语/Ｎ２临时抱佛脚/index.md",
+    "type": "markdown",
+    "status": "章节格式待确认",
+    "note": "开头“複合動詞ノ一部”使用引用块，未进入目录。",
+    "firstHeading": "**擬音語****・****擬態語****ノ一部**"
+  },
+  {
+    "id": "32",
+    "title": "2025年12月7日",
+    "source": "content/blog/journals/2025-12-07/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "33",
+    "title": "2025年12月14日",
+    "source": "content/blog/journals/2025-12-14/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "34",
+    "title": "2025年12月21日",
+    "source": "content/blog/journals/2025-12-21/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "35",
+    "title": "日本語４期末復習",
+    "source": "content/blog/essays/日本语/日本語４/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "36",
+    "title": "以台湾大罢免与宪政危机为案例谈民主的危机与韧性",
+    "source": "content/blog/essays/思政丨通识/以台湾大罢免与宪政危机为案例谈民主的危机与韧性/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "37",
+    "title": "2025年12月31日",
+    "source": "content/blog/journals/2025-12-31/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "38",
+    "title": "数据结构PPT注释版",
+    "source": "content/blog/cst-notes/DSA/数据结构PPT注释版/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "39",
+    "title": "DSA期末考前速记",
+    "source": "content/blog/cst-notes/DSA/DSA期末考前速记/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "40",
+    "title": "《计算机系统概论》复习文档",
+    "source": "content/blog/cst-notes/intro-computer-systems-review/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、整数和浮点数的编码"
+  },
+  {
+    "id": "41",
+    "title": "“物质本体论”与“实践本体论”之争——主流马克思主义与实践唯物主义的分歧与统合路径",
+    "source": "content/blog/essays/思政丨通识/“物质本体论”与“实践本体论”之争——主流马克思主义与实践唯物主义的分歧与统合路径/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "一、导言"
+  },
+  {
+    "id": "42",
+    "title": "2026年1月24日",
+    "source": "content/blog/journals/2026-01-24/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "43",
+    "title": "2026年1月25日",
+    "source": "content/blog/journals/2026-01-25/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "44",
+    "title": "对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析",
+    "source": "content/blog/essays/思政丨通识/对观点“在当代欧美，右翼民粹主义威胁着其自由民主制度的生死存亡”的评析/index.md",
+    "type": "markdown",
+    "status": "章节格式待确认",
+    "note": "开头“引言”是普通段落，未进入目录。",
+    "firstHeading": "一、何谓右翼民粹主义：概念界定与理论分野"
+  },
+  {
+    "id": "45",
+    "title": "2026年1月26日",
+    "source": "content/blog/journals/2026-01-26/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "46",
+    "title": "2026年1月27日",
+    "source": "content/blog/journals/2026-01-27/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "47",
+    "title": "2026年1月31日",
+    "source": "content/blog/journals/2026-01-31/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "48",
+    "title": "2026年2月5日",
+    "source": "content/blog/journals/2026-02-05/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "49",
+    "title": "2026年2月6日",
+    "source": "content/blog/journals/2026-02-06/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "50",
+    "title": "2026年4月1日",
+    "source": "content/blog/journals/2026-04-01/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "51",
+    "title": "2026年4月5日",
+    "source": "content/blog/journals/2026-04-05/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "52",
+    "title": "SystemVerilog从零到考试讲义 (coauthored by codex)",
+    "source": "content/blog/cst-notes/数字逻辑/SystemVerilog从零到考试讲义-(coauthored-by-codex)/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "53",
+    "title": "2026年6月13日",
+    "source": "content/blog/journals/2026-06-13/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "54",
+    "title": "数字逻辑电路往年题总结 (coauthored by codex)",
+    "source": "content/blog/cst-notes/数字逻辑/数字逻辑电路往年题总结-(coauthored-by-codex)/_document.pdf",
+    "type": "pdf",
+    "status": "附件需人工核对",
+    "note": "附件未经过 Markdown 首标题替换规则；未逐页核对附件内容完整性。",
+    "firstHeading": ""
+  },
+  {
+    "id": "55",
+    "title": "从黄河到黄海：我的家族史",
+    "source": "content/blog/essays/思政丨通识/从黄河到黄海：我的家族史/index.md",
+    "type": "markdown",
+    "status": "章节格式待确认",
+    "note": "开头“前言”使用引用块，未进入目录；第一章“一 刘家风云”存在。",
+    "firstHeading": "一 刘家风云"
+  },
+  {
+    "id": "56",
+    "title": "《人工智能导论》复习文档",
+    "source": "content/blog/cst-notes/intro-ai-review/index.md",
+    "type": "markdown",
+    "status": "首节标题被替换",
+    "note": "## 第一章 搜索；源文件保留该标题和正文，渲染规则已修正。",
+    "firstHeading": "第一章 搜索"
+  },
+  {
+    "id": "57",
+    "title": "2026年7月1日",
+    "source": "content/blog/journals/2026-07-01/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "58",
+    "title": "《邓小平时代》读书报告",
+    "source": "content/blog/essays/思政丨通识/《邓小平时代》读书报告/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "前言"
+  },
+  {
+    "id": "59",
+    "title": "都道府県・令制国 対応表",
+    "source": "content/blog/essays/日本语/都道府県・令制国対応表/index.md",
+    "type": "markdown",
+    "status": "无 Markdown 章节标题",
+    "note": "日记、表格或列表等无章节结构的内容；不能据此认定丢失章节。",
+    "firstHeading": ""
+  },
+  {
+    "id": "60",
+    "title": "Diffusion 从入门到精通",
+    "source": "content/blog/cst-notes/diffusion-from-beginner-to-master/index.md",
+    "type": "markdown",
+    "status": "未发现首标题替换问题",
+    "note": "",
+    "firstHeading": "Diffusion 从入门到精通"
+  }
+]

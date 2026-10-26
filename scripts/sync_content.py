@@ -10,6 +10,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BLOG_ROOT = ROOT / "content" / "blog"
 OUT_PATH = ROOT / "data" / "blog-index.json"
+METADATA_PATH = ROOT / "data" / "blog-metadata.json"
+CATEGORIES = [
+    {"id": key, "label": label} for key, label in [
+        ("selected", "精选"), ("journal", "雑感"), ("highschool", "高校時代"),
+        ("japanese", "日本語"), ("cst", "CST"), ("frontier", "先端"),
+        ("society", "社会"), ("poem", "詩歌"), ("philosophy", "哲学"),
+        ("music", "音楽"), ("travel", "旅行")
+    ]
+]
+CATEGORY_NAMES = {item["id"]: item["label"] for item in CATEGORIES}
 
 SCAN_ROOTS = ("essays", "cst-notes", "journals")
 CATEGORY_LABELS = {
@@ -122,7 +132,7 @@ def normalize_categories(value: object, fallback: str) -> list[str]:
     return categories or [fallback]
 
 
-def discover_entries() -> list[dict]:
+def discover_documents() -> list[dict]:
     entries: list[dict] = []
     for root_category in SCAN_ROOTS:
         category_dir = BLOG_ROOT / root_category
@@ -176,6 +186,7 @@ def discover_entries() -> list[dict]:
 
             entry = {
                 "id": entry_id,
+                "document": path.relative_to(ROOT).as_posix(),
                 "title": title,
                 "date": date,
                 "category": categories[0],
@@ -197,6 +208,47 @@ def discover_entries() -> list[dict]:
     return entries
 
 
+def discover_entries(save_registry=True) -> list[dict]:
+    registry = json.loads(METADATA_PATH.read_text(encoding="utf-8")) if METADATA_PATH.exists() else {"version": 1, "articles": {}}
+    articles = registry["articles"]
+    by_document = {item["document"]: (key, item) for key, item in articles.items()}
+    labels = CATEGORY_NAMES
+    entries = []
+    changed = False
+    for original in discover_documents():
+        document = original["document"]
+        if document not in by_document:
+            article_id = str(max([int(key) for key in articles] or [0]) + 1)
+            old = original.get("categories", [original["category"]])
+            mapped = {"essays": "journal", "journals": "journal", "high-school": "highschool", "cst-notes": "cst", "politics": "society"}
+            categories = list(dict.fromkeys(mapped.get(c, c) for c in old))
+            item = {"document": document, "legacyId": original["id"], "title": original["title"],
+                    "date": original["date"], "categories": categories,
+                    "selected": "essays" in old or bool(original.get("starred")),
+                    "tags": original.get("tags", []), "summary": original.get("summary", "")}
+            articles[article_id] = item
+            by_document[document] = (article_id, item)
+            changed = True
+        article_id, meta = by_document[document]
+        categories = meta["categories"]
+        if not categories or any(c not in labels or c == "selected" for c in categories):
+            raise ValueError(f"Invalid categories for article {article_id}")
+        entry = {"id": article_id, "legacyId": meta["legacyId"],
+                 "title": meta["title"], "date": meta["date"],
+                 "category": categories[0], "categories": categories,
+                 "categoryLabel": " / ".join(labels[c] for c in categories),
+                 "categoryLabels": [labels[c] for c in categories],
+                 "selected": bool(meta["selected"]), "summary": meta["summary"], "tags": meta["tags"],
+                 "type": original["type"], "source": original["source"]}
+        if "pdfs" in original:
+            entry["pdfs"] = original["pdfs"]
+        entries.append(entry)
+    if changed and save_registry:
+        METADATA_PATH.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    entries.sort(key=lambda item: (item["date"], item["title"]), reverse=True)
+    return entries
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate the blog index for Aoraku.github.io.")
     parser.add_argument("--check", action="store_true", help="Fail if the generated index differs.")
@@ -204,13 +256,14 @@ def main() -> int:
 
     payload = {
         "generatedAt": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
-        "entries": discover_entries(),
+        "categories": CATEGORIES,
+        "entries": discover_entries(save_registry=not args.check),
     }
     rendered = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
     if args.check:
         current = json.loads(OUT_PATH.read_text(encoding="utf-8")) if OUT_PATH.exists() else {}
-        if current.get("entries") != payload["entries"]:
+        if current.get("entries") != payload["entries"] or current.get("categories") != CATEGORIES:
             print(f"{OUT_PATH} is out of date. Run python scripts/sync_content.py")
             return 1
         return 0

@@ -2,9 +2,7 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import re
 import shutil
 from pathlib import Path
 
@@ -15,20 +13,8 @@ SITE_FILES = ("index.html", "blog", "travel", "assets", "data", ".nojekyll")
 PUBLIC_BLOG_ROOT = Path("content") / "blog-public"
 
 
-def slugify_ascii(value: str) -> str:
-    value = value.strip().lower()
-    value = re.sub(r"[^a-z0-9]+", "-", value)
-    value = re.sub(r"-{2,}", "-", value).strip("-")
-    return value[:48].strip("-") or "entry"
-
-
 def public_dir_for(entry: dict) -> Path:
-    key = str(entry.get("source") or entry.get("id") or entry.get("title") or "entry")
-    digest = hashlib.sha1(key.encode("utf-8")).hexdigest()[:10]
-    date = re.sub(r"[^0-9]", "", str(entry.get("date") or ""))[:8]
-    title = slugify_ascii(str(entry.get("title") or entry.get("id") or "entry"))
-    prefix = f"{date}-" if date else ""
-    return PUBLIC_BLOG_ROOT / f"{prefix}{title}-{digest}"
+    return PUBLIC_BLOG_ROOT / str(entry["id"])
 
 
 def copy_path(source_rel: str, source_to_public: dict[Path, Path], target_root: Path) -> str:
@@ -107,6 +93,29 @@ def rewrite_blog_index(target_root: Path) -> None:
     output.write_text(json.dumps(rewritten_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def write_routes(target_root: Path) -> None:
+    payload = load_blog_index()
+    for route in ("main", "research"):
+        folder = target_root / route
+        folder.mkdir(exist_ok=True)
+        shutil.copy2(target_root / "index.html", folder / "index.html")
+    for item in [*payload.get("categories", []), *payload.get("entries", [])]:
+        folder = target_root / "blog" / item["id"]
+        folder.mkdir(exist_ok=True)
+        shutil.copy2(target_root / "blog" / "index.html", folder / "index.html")
+
+    travel_routes = []
+    countries = json.loads((ROOT / "data/travel/world.json").read_text())["features"]
+    travel_routes.extend(str(f["id"]) for f in countries)
+    for country, name in [("156", "china"), ("392", "japan"), ("840", "us")]:
+        for feature in json.loads((ROOT / f"data/travel/{name}.json").read_text())["features"]:
+            travel_routes.append(f"{country}/{feature['id'].split('-')[-1]}")
+    for route in travel_routes:
+        folder = target_root / "travel" / route
+        folder.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(target_root / "travel/index.html", folder / "index.html")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Prepare a GitHub Pages artifact with short public blog paths.")
     parser.add_argument("target", nargs="?", default="_site", help="Artifact output directory.")
@@ -115,6 +124,7 @@ def main() -> int:
     target_root = (ROOT / args.target).resolve()
     copy_site_shell(target_root)
     rewrite_blog_index(target_root)
+    write_routes(target_root)
     print(f"Prepared {target_root.relative_to(ROOT)}")
     return 0
 

@@ -1,17 +1,12 @@
 (function () {
   const state = {
     blog: [],
-    activeCategory: "essays"
+    activeCategory: "selected",
+    renderedId: null,
+    request: 0
   };
 
-  const categoryOrder = [
-    { id: "essays", label: "\u6742\u6587" },
-    { id: "politics", label: "\u601d\u653f\u4e28\u901a\u8bc6" },
-    { id: "japanese", label: "\u65e5\u672c\u8bed" },
-    { id: "cst-notes", label: "CST\u4e13\u4e1a\u8bfe\u6587\u6863" },
-    { id: "high-school", label: "\u9ad8\u4e2d\u65f6\u4ee3" },
-    { id: "journals", label: "\u65e5\u5468\u6708\u5b63\u5e74\u8bb0" }
-  ];
+  let categoryOrder = [];
 
   const footerContactEmail = "lql24@mails.tsinghua.edu.cn";
 
@@ -23,10 +18,25 @@
   async function init() {
     $("#year").textContent = new Date().getFullYear();
     window.addEventListener("hashchange", updateRoute);
+    window.addEventListener("popstate", updateRoute);
+    document.addEventListener("click", event => {
+      const link = event.target.closest("a[href]");
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute("download")) return;
+      if (link.classList.contains("skip-link")) {
+        event.preventDefault();
+        const main = $("#main-content"); main.tabIndex = -1; main.focus(); main.scrollIntoView();
+        return;
+      }
+      const url = new URL(link.href);
+      if (url.origin === location.origin && /^\/blog(?:\/|$)/.test(url.pathname)) {
+        event.preventDefault(); navigate(url.pathname + url.search);
+      }
+    });
     bindReader();
 
     const index = await getJson("data/blog-index.json", { entries: [] });
     state.blog = index.entries || [];
+    categoryOrder = index.categories || [];
     renderBlog();
     updateRoute();
 
@@ -46,40 +56,54 @@
     }
   }
 
+  function navigate(url) {
+    history.pushState({}, "", url);
+    updateRoute();
+  }
+
   function parseRoute() {
-    const parts = window.location.hash.replace(/^#/, "").split("/");
+    const legacy = location.hash.match(/^#doc\/([^/]+)(?:\/(.*))?$/);
+    if (legacy) {
+      const key = decodeURIComponent(legacy[1]);
+      const entry = state.blog.find(item => item.id === key || item.legacyId === key);
+      const section = decodeURIComponent(legacy[2] || "").match(/^section-(\d+)/);
+      if (entry) history.replaceState({}, "", `/blog/${entry.id}${section ? `?section=${section[1]}` : ''}`);
+    } else if (location.hash === '#blog') {
+      history.replaceState({}, "", '/blog');
+    }
+    const path = location.pathname.replace(/\/+$/, '');
+    const slug = path.split('/')[2] || 'selected';
+    const section = new URLSearchParams(location.search).get('section');
     return {
-      active: parts[0] === "doc" ? "doc" : "blog",
-      entryId: decodeHashSegment(parts[1] || ""),
-      anchor: decodeHashSegment(parts.slice(2).join("/"))
+      active: /^\d+$/.test(slug) ? 'doc' : 'blog',
+      entryId: slug,
+      category: categoryOrder.some(c => c.id === slug) ? slug : 'selected',
+      anchor: /^\d+$/.test(section || '') ? `section-${section}` : ''
     };
   }
 
-  function decodeHashSegment(value) {
-    try {
-      return decodeURIComponent(value || "");
-    } catch {
-      return value || "";
-    }
+  function scrollToSection(anchor) {
+    requestAnimationFrame(() => {
+      const target = anchor && document.getElementById(anchor);
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      else window.scrollTo({top:0, behavior:'auto'});
+    });
   }
 
   function updateRoute() {
-    const { active, entryId, anchor } = parseRoute();
-    $$(".view").forEach((view) => { view.hidden = view.id !== `view-${active}`; });
-    if (active === "doc") {
-      renderDocRoute(entryId, anchor);
+    const { active, entryId, category, anchor } = parseRoute();
+    $$(".view").forEach(view => { view.hidden = view.id !== `view-${active}`; });
+    if (active === 'doc') {
+      if (state.renderedId === entryId) scrollToSection(anchor);
+      else renderDocRoute(entryId, anchor);
       return;
     }
-
-    document.title = "Blog | Aoraku";
-    if (anchor) {
-      requestAnimationFrame(() => {
-        const target = document.getElementById(anchor);
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    } else {
-      window.scrollTo({ top: 0, behavior: "auto" });
-    }
+    state.request += 1;
+    state.renderedId = null;
+    state.activeCategory = category;
+    renderBlog();
+    document.title = `${categoryOrder.find(c => c.id === category)?.label || 'Blog'} | Aoraku`;
+    window.scrollTo({top:0, behavior:'auto'});
   }
 
   function renderBlog() {
@@ -100,21 +124,14 @@
     $("#blog-categories").innerHTML = categoryOrder
       .map(
         (category) => `
-          <button class="category-button ${state.activeCategory === category.id ? "is-active" : ""}" type="button" data-category="${category.id}">
+          <a class="category-button ${state.activeCategory === category.id ? "is-active" : ""}" href="/blog/${category.id}" ${state.activeCategory === category.id ? 'aria-current="page"' : ""}>
             <span>${escapeHtml(category.label)}</span>
             <strong>${counts[category.id] || 0}</strong>
-          </button>
+          </a>
         `
       )
       .join("");
 
-    $$(".category-button").forEach((button) => {
-      button.addEventListener("click", () => {
-        state.activeCategory = button.dataset.category;
-        hideReader();
-        renderBlog();
-      });
-    });
   }
 
   function renderBlogList() {
@@ -135,7 +152,7 @@
                 <span>${escapeHtml(getEntryCategoryDisplay(entry))}</span>
                 <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
               </div>
-              <h2>${escapeHtml(entry.title || "Untitled")}</h2>
+              <h2><a href="/blog/${entry.id}">${escapeHtml(entry.title || "Untitled")}</a></h2>
               ${entry.summary ? `<p>${escapeHtml(entry.summary)}</p>` : ""}
               ${
                 entry.tags && entry.tags.length
@@ -143,26 +160,16 @@
                   : ""
               }
             </div>
-            <button class="text-button" type="button" data-entry-id="${escapeAttr(entry.id)}">Read</button>
+            <a class="text-button" href="/blog/${entry.id}">Read</a>
           </article>
         `
       )
       .join("");
 
-    $$("[data-entry-id]", target).forEach((button) => {
-      button.addEventListener("click", () => openEntry(button.dataset.entryId));
-    });
   }
 
   function matchesBlogCategory(entry, categoryId) {
-    const categories = getEntryCategories(entry);
-    if (categoryId === "essays") {
-      return (
-        categories.includes("essays") ||
-        (entry.starred && (categories.includes("politics") || categories.includes("high-school")))
-      );
-    }
-    return categories.includes(categoryId);
+    return categoryId === 'selected' ? entry.selected : getEntryCategories(entry).includes(categoryId);
   }
 
   function getEntryCategories(entry) {
@@ -186,17 +193,14 @@
     const docBack = $("#doc-back");
     if (docBack) {
       docBack.addEventListener("click", () => {
-        window.location.hash = "#blog";
+        navigate(`/blog/${state.activeCategory}`);
       });
     }
   }
 
-  function openEntry(id) {
-    if (!id) return;
-    window.location.hash = `#doc/${encodeURIComponent(id)}`;
-  }
-
   async function renderDocRoute(id, anchor = "") {
+    const request = ++state.request;
+    state.renderedId = null;
     const entry = state.blog.find((item) => item.id === id);
     const docMeta = $("#doc-meta");
     const docContent = $("#doc-content");
@@ -214,7 +218,7 @@
       return;
     }
 
-    state.activeCategory = getEntryCategories(entry)[0] || "essays";
+    state.activeCategory = getEntryCategories(entry)[0] || "selected";
     renderBlog();
     document.title = `${entry.title || "Document"} | Aoraku`;
     docMeta.innerHTML = `
@@ -231,6 +235,7 @@
       if (entry.type === "pdf") {
         const pdfSources = Array.isArray(entry.pdfs) && entry.pdfs.length ? entry.pdfs : [entry.source];
         docContent.innerHTML = `
+          <h1>${escapeHtml(entry.title)}</h1>
           <div class="pdf-toolbar">
             ${pdfSources
               .map(
@@ -255,14 +260,19 @@
             .join("")}
         `;
       } else if (entry.type === "docx") {
-        docContent.innerHTML = await renderDocx(entry.source);
+        const html = await renderDocx(entry.source);
+        if(request !== state.request) return;
+        docContent.innerHTML = `<h1>${escapeHtml(entry.title)}</h1>` + html;
       } else {
         const response = await fetch(entry.source, { cache: "no-cache" });
         if (!response.ok) throw new Error(`Could not load ${entry.source}`);
         const text = await response.text();
+        if(request !== state.request) return;
         docContent.innerHTML = renderDocumentText(text, entry.type, entry.source, entry.title);
       }
 
+      if(request !== state.request) return;
+      state.renderedId = id;
       const mainTitle = $("h1", docContent);
       if (mainTitle) mainTitle.id = "doc-title";
       highlightCodeBlocks(docContent);
@@ -283,6 +293,7 @@
         }
       });
     } catch (error) {
+      if(request !== state.request) return;
       console.warn(error);
       docContent.innerHTML = emptyState("This document could not be loaded.");
       docToc.innerHTML = "";
@@ -356,8 +367,8 @@
   }
 
   function renderDocumentText(text, type, source, title = "") {
-    const [, rawBody] = parseFrontMatter(text);
-    const body = normalizeDocumentTitle(rawBody, title);
+    const [meta, rawBody] = parseFrontMatter(text);
+    const body = normalizeDocumentTitle(rawBody, title, meta.title);
     let html = "";
     if (type === "markdown" && window.marked) {
       const protectedMath = protectMarkdownMath(body);
@@ -370,13 +381,15 @@
     return resolveDocumentUrls(html, source);
   }
 
-  function normalizeDocumentTitle(body, title) {
+  function normalizeDocumentTitle(body, title, sourceTitle = title) {
     const normalized = String(body || "").replace(/\r\n/g, "\n").replace(/^\uFEFF/, "");
     const safeTitle = String(title || "Untitled").trim() || "Untitled";
     const lines = normalized.split("\n");
     let index = 0;
     while (index < lines.length && !lines[index].trim()) index += 1;
-    if (index < lines.length && /^#{1,2}\s+/.test(lines[index].trim())) {
+    const heading = index < lines.length && lines[index].trim().match(/^#{1,2}\s+(.+?)\s*#*$/);
+    const plain = value => String(value).replace(/<[^>]*>/g, "").replace(/[*_`]/g, "").trim();
+    if (heading && [safeTitle, sourceTitle].some(t => plain(heading[1]) === plain(t || ""))) {
       lines[index] = `# ${safeTitle}`;
     } else {
       lines.splice(index, 0, `# ${safeTitle}`, "");
@@ -495,27 +508,23 @@
     if (!normalized.startsWith("---\n")) return [{}, text];
     const end = normalized.indexOf("\n---\n", 4);
     if (end === -1) return [{}, text];
-    return [{}, normalized.slice(end + 5)];
+    const match = normalized.slice(4, end).match(/^title:\s*(.*?)\s*$/m);
+    const title = match ? match[1].replace(/^([\"'])(.*)\1$/, "$2") : "";
+    return [{ title }, normalized.slice(end + 5)];
   }
 
   function buildReaderToc(contentRoot, tocRoot, entryId = "") {
-    const headings = $$("h2, h3", contentRoot);
+    const headings = $$("h1, h2, h3", contentRoot).filter(h => h.id !== "doc-title");
     if (!headings.length) {
       tocRoot.hidden = true;
       return;
     }
 
-    const seen = new Map();
     tocRoot.hidden = false;
     tocRoot.innerHTML = headings
       .map((heading, index) => {
-        const baseId = heading.id || `section-${index + 1}-${slugify(heading.textContent) || "part"}`;
-        const nextCount = (seen.get(baseId) || 0) + 1;
-        seen.set(baseId, nextCount);
-        heading.id = nextCount === 1 ? baseId : `${baseId}-${nextCount}`;
-        const href = entryId
-          ? `blog/#doc/${encodeURIComponent(entryId)}/${encodeURIComponent(heading.id)}`
-          : `blog/#blog/${encodeURIComponent(heading.id)}`;
+        heading.id = `section-${index + 1}`;
+        const href = `/blog/${entryId}?section=${index + 1}`;
         return `<a class="${heading.tagName.toLowerCase()}" href="${escapeAttr(href)}">${escapeHtml(heading.textContent)}</a>`;
       })
       .join("");
@@ -588,15 +597,6 @@
       year: "numeric",
       month: "short"
     }).format(date);
-  }
-
-  function slugify(value) {
-    return String(value)
-      .trim()
-      .toLowerCase()
-      .replace(/[^\w\u4e00-\u9fff-]+/g, "-")
-      .replace(/-{2,}/g, "-")
-      .replace(/^-|-$/g, "");
   }
 
   function escapeHtml(value) {

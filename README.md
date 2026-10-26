@@ -16,7 +16,8 @@ Public site:
 - News: `data/news.json`
 - CV PDF: `assets/CV_Qingle_Liu.pdf`
 - Research / papers: `data/papers.json`
-- Blog: `content/blog/` (served at `/blog/`)
+- Blog bodies: `content/blog/`; metadata: `data/blog-metadata.json`
+- Local Blog editor: run `python3 scripts/serve-blog-editor.py`, then open `http://127.0.0.1:8767/editor/`
 - Travel notes: `data/travel/visits.json` (served at `/travel/`)
 
 See `MAINTENANCE.md` for details.

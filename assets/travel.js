@@ -35,9 +35,12 @@
   const visitedCountry=id=>visits.some(v=>v.country===id);
   const visitedRegion=id=>visits.some(v=>v.region===id);
   const currentRegions=()=>regions[activeCountry]?.features || [];
+  const regionCode = id => id.split('-').pop();
+  const travelPath = (country='', region='') => '/travel' + (country ? `/${country}` : '') + (region ? `/${regionCode(region)}` : '');
   function navigate(country='',region='') {
-    const params=new URLSearchParams();if(country)params.set('country',country);if(region)params.set('region',region);
-    const hash=params.toString();if(location.hash.slice(1)===hash)applyRoute();else location.hash=hash;
+    const url = travelPath(country,region);
+    if (location.pathname.replace(/\/+$/, '') !== url || location.hash) history.pushState({}, '', url);
+    applyRoute();
   }
   function tooltip(text='') {$('#globe-tooltip').textContent=text;}
   function draw() {
@@ -56,11 +59,15 @@
     frame=requestAnimationFrame(tick);
   }
   function applyRoute() {
-    const params=new URLSearchParams(location.hash.slice(1));
-    const id=params.get('country')||'';const selected=world.features.find(f=>f.id===id);
+    if (location.hash.startsWith('#country=')) {
+      const legacy=new URLSearchParams(location.hash.slice(1));
+      history.replaceState({}, '', travelPath(legacy.get('country')||'', legacy.get('region')||''));
+    }
+    const parts=location.pathname.replace(/\/+$/, '').split('/');
+    const id=parts[2]||'';const selected=world.features.find(f=>f.id===id);
     activeCountry=selected?id:'';
-    const requested=params.get('region')||'';
-    const region=currentRegions().find(f=>f.id===requested);
+    const region=currentRegions().find(f=>regionCode(f.id)===(parts[3]||''));
+    const requested=region?.id||'';
     activeRegion=region?requested:'';
     if(selected)setRotation(false);
     $('#reset-globe').setAttribute('aria-pressed',String(!activeCountry));
@@ -123,7 +130,7 @@
       $('#region-search').addEventListener('input',renderRegions);
       $('#region-list').addEventListener('click',e=>{const button=e.target.closest('[data-region]');if(button)navigate(activeCountry,button.dataset.region);});
       $('#zoom-in').addEventListener('click',()=>zoom(1.2));$('#zoom-out').addEventListener('click',()=>zoom(1/1.2));$('#reset-globe').addEventListener('click',()=>navigate());
-      window.addEventListener('hashchange',applyRoute);$('#map-loading').hidden=true;applyRoute();spinFrame=requestAnimationFrame(animate);
+      window.addEventListener('hashchange',applyRoute);window.addEventListener('popstate',applyRoute);$('#map-loading').hidden=true;applyRoute();spinFrame=requestAnimationFrame(animate);
     }catch(error){console.error(error);$('#map-loading').textContent='The atlas could not load. Please refresh to try again.';}
   }
   document.addEventListener('DOMContentLoaded',init);
