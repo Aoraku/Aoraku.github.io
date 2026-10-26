@@ -3,15 +3,15 @@
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const stations = [
     {id:'frontier',name:'先端',code:'01',x:760,y:160,tx:760,ty:100,anchor:'middle',transfer:true},
-    {id:'japanese',name:'日本語',code:'02',x:565,y:160,tx:565,ty:106,anchor:'middle'},
+    {id:'japanese',name:'日本語',code:'02',x:520,y:160,tx:520,ty:106,anchor:'middle'},
     {id:'journal',name:'雑感',code:'03',x:330,y:250,tx:280,ty:258,anchor:'end'},
     {id:'society',name:'社会',code:'04',x:330,y:390,tx:280,ty:398,anchor:'end'},
     {id:'cst',name:'CST',code:'05',x:440,y:480,tx:440,ty:552,anchor:'middle',transfer:true},
-    {id:'poem',name:'詩歌',code:'06',x:640,y:480,tx:640,ty:544,anchor:'middle'},
+    {id:'poem',name:'詩歌',code:'06',x:680,y:480,tx:680,ty:544,anchor:'middle'},
     {id:'philosophy',name:'哲学',code:'07',x:870,y:390,tx:918,ty:398,anchor:'start'},
     {id:'arts',name:'文藝',code:'08',x:870,y:250,tx:918,ty:258,anchor:'start'},
     {id:'highschool',name:'高校時代',code:'01',x:210,y:710,tx:260,ty:720,anchor:'start',g:true},
-    {id:'travel',name:'旅',code:'04',x:920,y:0,tx:970,ty:9,anchor:'start',g:true,href:'/travel'}
+    {id:'travel',name:'旅',code:'04',x:1022,y:-102,tx:1072,ty:-93,anchor:'start',g:true,href:'/travel'}
   ];
   function badge(kind, number='', x=0, y=0) {
     const shape=kind==='g'?'<circle cx="0" cy="0" r="26" fill="white" stroke="var(--red)" stroke-width="8"/>':'<rect x="-26" y="-27" width="52" height="54" rx="1" fill="white" stroke="var(--green)" stroke-width="7"/>';
@@ -19,7 +19,7 @@
   }
   function lineIcon(kind){return `<svg viewBox="-33 -33 66 66" aria-hidden="true">${badge(kind)}</svg>`;}
   const station = s => `<a class="metro-station${s.transfer?' transfer':''}${s.g?' g-station':''}" href="${s.href || `/blog/${s.id}`}" data-station="${s.id}" data-x="${s.x}" data-y="${s.y}" aria-label="${s.name}${s.transfer?'、AK・G 乗り換え':''}"><rect class="station-hit" x="${s.x-65}" y="${s.y-40}" width="130" height="80" rx="8"/><circle class="station-halo" cx="${s.x}" cy="${s.y}" r="42"/>${s.transfer?`<rect class="transfer-link" x="${s.x-65}" y="${s.y-35}" width="130" height="70" rx="35"/>${badge('ak',s.code,s.x-31,s.y)}${badge('g',s.id==='cst'?'02':'03',s.x+32,s.y)}`:badge(s.g?'g':'ak',s.code,s.x,s.y)}<text class="station-name" x="${s.tx}" y="${s.ty}" text-anchor="${s.anchor}">${s.name}</text></a>`;
-  $('#metro-map').innerHTML = `<svg viewBox="125 -80 915 900" role="group" aria-labelledby="map-name map-desc"><title id="map-name">Cyber Metro 路線図</title><desc id="map-desc">環状線は先端から反時計回りに日本語、雑感、社会、CST、詩歌、哲学、文藝。学園都市線は高校時代からCST、先端を通り、北東の旅へ。旅駅はTravelページにリンクします。</desc><g class="route-track" aria-hidden="true"><rect class="ak-route route-bed" x="330" y="160" width="540" height="320" rx="64"/><path class="g-route route-bed" d="M145 775 970 -50"/><rect class="ak-route" x="330" y="160" width="540" height="320" rx="64"/><path class="g-route" d="M145 775 970 -50"/></g>${stations.map(station).join('')}</svg>`;
+  $('#metro-map').innerHTML = `<svg viewBox="125 -190 1015 1010" role="group" aria-labelledby="map-name map-desc"><title id="map-name">Cyber Metro 路線図</title><desc id="map-desc">環状線は先端から反時計回りに日本語、雑感、社会、CST、詩歌、哲学、文藝。学園都市線は高校時代からCST、先端を通り、北東の旅へ。旅駅はTravelページにリンクします。</desc><g class="route-track" aria-hidden="true"><rect class="ak-route route-bed" x="330" y="160" width="540" height="320" rx="64"/><path class="g-route route-bed" d="M145 775 1087 -167"/><rect class="ak-route" x="330" y="160" width="540" height="320" rx="64"/><path class="g-route" d="M145 775 1087 -167"/></g>${stations.map(station).join('')}</svg>`;
   document.querySelectorAll('.line-symbol').forEach(el=>{el.innerHTML=lineIcon(el.classList.contains('g')?'g':'ak');});
   window.CyberMetro = {stations, lineIcon};
   const theme=$('#blog-theme');
