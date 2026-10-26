@@ -1,15 +1,13 @@
 (function () {
   const state = {
     profile: null,
-    resume: null,
     news: [],
     papers: [],
     blog: [],
-    activeCategory: "all"
+    activeCategory: "essays"
   };
 
   const categoryOrder = [
-    { id: "all", label: "All" },
     { id: "essays", label: "\u6742\u6587" },
     { id: "politics", label: "\u601d\u653f\u4e28\u901a\u8bc6" },
     { id: "japanese", label: "\u65e5\u672c\u8bed" },
@@ -19,273 +17,6 @@
   ];
 
   const footerContactEmail = "lql24@mails.tsinghua.edu.cn";
-
-  const homepageData = {
-    profile: {
-      displayName: "Qingle Liu",
-      handle: "Aoraku",
-      avatar: "assets/avatar.jpg",
-      headline: "Department of Computer Science and Technology, Tsinghua University",
-      affiliation: "Department of Computer Science and Technology, Tsinghua University",
-      location: "Beijing, China",
-      email: "lql24@mails.tsinghua.edu.cn",
-      bio: "I am Qingle Liu, an undergraduate student in the Department of Computer Science and Technology at Tsinghua University. My current research interests include Computer Vision, Generative Models, Multimodal Models, and Computer Graphics.",
-      quickFacts: [
-        "B.Eng. in CS & B.A. in Economics and Finance (Double Major), Tsinghua University, expected 2028",
-        "GPA: 3.97 / 4.0; Rank: 3 / 33",
-        "Research internships: The Graphics and Geometric Computing Lab, CST, THU; MMLab, CCDS, NTU",
-        "Software developer and research engineer at [Einsia.ai](https://einsia.ai/)"
-      ],
-      socials: [
-        {
-          label: "Email",
-          url: "mailto:lql24@mails.tsinghua.edu.cn",
-          icon: "mail"
-        },
-        {
-          label: "GitHub",
-          url: "https://github.com/Aoraku",
-          icon: "code"
-        },
-        {
-          label: "Google Scholar",
-          url: "https://scholar.google.com/citations?view_op=list_works&hl=en&user=4MNeyAMAAAAJ",
-          icon: "graduation-cap"
-        },
-        {
-          label: "X",
-          url: "https://x.com/Chizhi_official",
-          icon: "messages-square"
-        }
-      ]
-    },
-    resume: {
-      name: "Qingle Liu",
-      email: "lql24@mails.tsinghua.edu.cn",
-      extraEmail: "liuqingle0324@gmail.com",
-      phone: "",
-      affiliation: "Department of Computer Science and Technology, Tsinghua University, Beijing, China",
-      sections: [
-        {
-          id: "education",
-          title: "Education",
-          entries: [
-            {
-              title: "Tsinghua University",
-              meta: "Beijing, China",
-              subtitle: "B.Eng. in CS & B.A. in Economics and Finance (Double Major)",
-              date: "Sep. 2024 - Jun. 2028 (Expected)",
-              bullets: [
-                "**GPA:** 3.97 / 4.0   **Rank:** 3 / 33",
-                "**Core Coursework:** Calculus (A/A-), Linear Algebra (A), Advanced Linear Algebra (A+), Probability & Mathematical Statistics (A-), Discrete Mathematics (A-), University Physics (A+/A), Fundamentals of Programming (A), Object-Oriented Programming (A), Programming Training (A), Data Structures (A-), Computer Graphics (A), Intro to Artificial Intelligence (A), Deep Learning & Financial Data Analysis (A+), Intro to Machine Learning (A), Software Engineering (A+), Digital Logic Circuits (A), Digital Logic Lab (A+), Intro to Computer Systems (A)"
-              ]
-            }
-          ]
-        },
-        {
-          id: "honors-awards",
-          title: "Honors & Awards",
-          entries: [
-            {
-              title: "National Scholarship",
-              date: "2025"
-            },
-            {
-              title: "Merit Student, Tsinghua University",
-              date: "2026"
-            },
-            {
-              title: "Five-Star Zijing Volunteer, Tsinghua University",
-              date: "2026"
-            },
-            {
-              title: "Outstanding CYL Member, Tsinghua University",
-              date: "2025"
-            },
-            {
-              title: "AEON Scholarship",
-              date: "2025"
-            },
-            {
-              title: "CSP-J 2019, Provincial First Prize",
-              date: "2019"
-            }
-          ]
-        },
-        {
-          id: "research-experience",
-          title: "Research Experience",
-          entries: [
-            {
-              title: "The Graphics and Geometric Computing Lab, Tsinghua University",
-              meta: "Beijing, China",
-              subtitle: "Undergraduate Researcher, advised by Academician Shimin Hu",
-              date: "Aug. 2025 - Present",
-              bullets: [
-                "Conducting research on multimodal video understanding, generalized keyframe extraction, and GUI agents.",
-                "*Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction* (2nd author, **ECCV 2026 accepted**; [arXiv:2606.29445](https://arxiv.org/abs/2606.29445)).",
-                "*GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated Screenshots* (4th author; [arXiv:2606.29705](https://arxiv.org/abs/2606.29705))."
-              ]
-            },
-            {
-              title: "MMLab, CCDS, Nanyang Technological University",
-              meta: "Singapore",
-              subtitle: "Undergraduate Researcher, advised by Prof. Xingang Pan",
-              date: "Jun. 2026 - Present",
-              bullets: [
-                "Researching KV-cache token compression for video generation models and generation-model-assisted video understanding."
-              ]
-            }
-          ]
-        },
-        {
-          id: "industry-experience",
-          title: "Industry Experience",
-          entries: [
-            {
-              title: "Einsia.AI",
-              url: "https://einsia.ai/",
-              meta: "Beijing, China",
-              subtitle: "Software Developer & Research Engineer",
-              date: "Mar. 2026 - Present",
-              bullets: [
-                "**Dev Team - Deep Research:** Contributed to the development of Einsia's [Deep Research](https://einsia.ai/deep-research/) product, an AI-powered academic research agent.",
-                "**Lab Team - Frontier-Eng:** Contributed to a benchmark for self-evolving AI agents on real-world engineering optimization tasks. Paper: [arXiv:2604.12290](https://arxiv.org/abs/2604.12290).",
-                "**Lab Team - Scalable Behaviour Cloning:** Worked on browser-agent skill distillation, converting human interaction traces into reusable natural-language skills. Paper: [arXiv:2606.32014](https://arxiv.org/abs/2606.32014)."
-              ]
-            }
-          ]
-        },
-        {
-          id: "leadership-activities",
-          title: "Leadership & Activities",
-          entries: [
-            {
-              title: "Vice Chair, Student Association for Science & Technology, Dept. of CS",
-              date: "2026 - Present"
-            },
-            {
-              title: "Team Leader, Peer Tutoring Workshop, Dept. of CS",
-              date: "2026 - Present"
-            },
-            {
-              title: "Class President, Dept. of CS",
-              date: "2025 - 2026"
-            },
-            {
-              title: "Team Leader, Summer Social Practice Trip to Wuxi (\"Smart Wuxi\")",
-              date: "Summer 2025"
-            },
-            {
-              title: "Staff Member, Organization & Volunteer Div., Dept. of CS",
-              date: "2025 - 2026"
-            },
-            {
-              title: "Completed 200+ hours of community volunteer service",
-              date: "2024 - 2026"
-            }
-          ]
-        },
-        {
-          id: "skills",
-          title: "Skills",
-          entries: [
-            {
-              title: "Programming",
-              subtitle: "Python, C++"
-            },
-            {
-              title: "Tools",
-              subtitle: "Codex/Claude Code, Adobe Creative Suite, Microsoft Office"
-            },
-            {
-              title: "Languages",
-              subtitle: "Mandarin (native), English (CET-4: 609), Japanese (JLPT N2)"
-            },
-            {
-              title: "Interests",
-              subtitle: "Travel, Piano, Calligraphy, Basketball"
-            }
-          ]
-        }
-      ]
-    },
-    news: [
-      {
-        date: "2026-06",
-        title: "One paper accepted to ECCV 2026",
-        body: "Our paper, Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction, was accepted to ECCV 2026."
-      },
-      {
-        date: "2025-11",
-        title: "Awarded the National Scholarship",
-        body: "I was awarded the National Scholarship, one of China's top national undergraduate honors."
-      },
-      {
-        date: "2024-07",
-        title: "Joined Tsinghua CS",
-        body: "I joined the Department of Computer Science and Technology at Tsinghua University."
-      }
-    ],
-    papers: [
-      {
-        date: "2026-04",
-        title: "Frontier-Eng: Benchmarking Self-Evolving Agents on Real-World Engineering Tasks with Generative Optimization",
-        authors: "Yizhe Chi, Deyao Hong, Dapeng Jiang, Tianwei Luo, Kaisen Yang, Boshi Zhang, Zhe Cao, Xiaoyan Fan, Bingxiang He, Han Hao, Weiyang Jin, Dianqiao Lei, Qingle Liu, Houde Qian, Bowen Wang, Situ Wang, Youjie Zheng, Yifan Zhou, Calvin Xiao, Eren Cai, Qinhuai Na",
-        venue: "arXiv",
-        year: "2026",
-        url: "https://arxiv.org/abs/2604.12290",
-        image: "https://arxiv.org/html/2604.12290v1/x1.png",
-        abstract: "Frontier-Eng introduces a benchmark for generative optimization on real engineering tasks. Agents iteratively propose, execute, evaluate, and revise solutions under fixed budgets, with continuous rewards, feasibility checks, and anti-hacking safeguards across five engineering categories.",
-        links: [
-          { label: "arXiv", url: "https://arxiv.org/abs/2604.12290" },
-          { label: "Project", url: "https://lab.einsia.ai/frontier-eng" }
-        ]
-      },
-      {
-        date: "2026-06",
-        title: "Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction",
-        authors: "Sunqi Fan, Qingle Liu, Runqi Yin, Meng-Hao Guo, Shuojin Yang",
-        venue: "ECCV 2026 / arXiv",
-        year: "2026",
-        url: "https://arxiv.org/abs/2606.29445",
-        image: "https://arxiv.org/html/2606.29445v1/x1.png",
-        abstract: "This work connects VideoQA with video-guided agentic tasks through generalized keyframe extraction. It introduces VG-GUIBench for learning procedural knowledge from videos, and proposes TASKER, a task-driven and scene-aware search method for selecting informative frames.",
-        links: [
-          { label: "arXiv", url: "https://arxiv.org/abs/2606.29445" },
-          { label: "Project", url: "https://vg-gui-tasker.github.io/" }
-        ]
-      },
-      {
-        date: "2026-06",
-        title: "GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated Screenshots",
-        authors: "Sunqi Fan, Lingshan Chen, Runqi Yin, Qingle Liu, Yongming Rao, Meng-Hao Guo, Shi-Min Hu",
-        venue: "arXiv",
-        year: "2026",
-        url: "https://arxiv.org/abs/2606.29705",
-        image: "https://arxiv.org/html/2606.29705v1/x1.png",
-        abstract: "GUICrafter trains GUI agents from large-scale unannotated screenshots and webpages, then calibrates the model with a smaller set of high-quality data. The two-stage curriculum improves visual grounding and cross-device generalization while greatly reducing annotation requirements.",
-        links: [
-          { label: "arXiv", url: "https://arxiv.org/abs/2606.29705" },
-          { label: "Code", url: "https://github.com/fansunqi/GUICrafter" }
-        ]
-      },
-      {
-        date: "2026-06",
-        title: "Scalable Behaviour Cloning on Browser Using via Skill Distillation",
-        authors: "Kaisen Yang, Zheng Jiang, Yuzhao Peng, Houde Qian, Boshi Zhang, Youjie Zheng, Shijin Hong, Qingle Liu, Ruoyu Han, Bohan Lyu, Bingxiang He, Eren Cai, Calvin Xiao, Qinhuai Na",
-        venue: "arXiv",
-        year: "2026",
-        url: "https://arxiv.org/abs/2606.32014",
-        image: "https://arxiv.org/html/2606.32014v1/x1.png",
-        abstract: "BrowserBC studies scalable behavior cloning for browser agents by distilling human browsing traces into reusable natural-language skills. The framework organizes distilled skills into a graph and retrieves compact decision priors for agents operating on unfamiliar websites.",
-        links: [
-          { label: "arXiv", url: "https://arxiv.org/abs/2606.32014" },
-          { label: "Project", url: "https://lab.einsia.ai/browserbc/" }
-        ]
-      }
-    ]
-  };
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -297,25 +28,22 @@
     bindNavigation();
     bindReader();
 
-    const [profile, resume, news, papers, blog] = await Promise.all([
+    const [profile, news, papers, blog] = await Promise.all([
       getJson("data/profile.json", {}),
-      getJson("data/resume.json", {}),
       getJson("data/news.json", []),
       getJson("data/papers.json", { papers: [] }),
       getJson("data/blog-index.json", { entries: [] })
     ]);
 
-    state.profile = { ...profile, ...homepageData.profile };
-    state.resume = { ...resume, ...homepageData.resume };
-    state.news = homepageData.news || (Array.isArray(news) ? news : []);
-    state.papers = homepageData.papers || (Array.isArray(papers) ? papers : papers.papers || []);
+    state.profile = profile;
+    state.news = Array.isArray(news) ? news : [];
+    state.papers = Array.isArray(papers) ? papers : papers.papers || [];
     state.blog = blog.entries || [];
 
     applyStaticLabels();
     ensureHomepageStyles();
     renderProfile();
     renderNews();
-    renderResume();
     renderPapers();
     renderBlog();
     updateRoute();
@@ -337,7 +65,7 @@
   }
 
   function bindNavigation() {
-    $$(".nav-tab").forEach((button) => {
+    $$(".nav-tab[data-route-target]").forEach((button) => {
       button.addEventListener("click", () => {
         window.location.hash = `#${button.dataset.routeTarget}`;
       });
@@ -380,6 +108,10 @@
 
   function updateRoute() {
     const { active, entryId, anchor } = parseRoute();
+    if (active === "info") {
+      window.location.replace($('a.nav-tab[href$=".pdf"]').href);
+      return;
+    }
 
     $$(".view").forEach((view) => {
       view.hidden = view.id !== `view-${active}`;
@@ -672,70 +404,6 @@
       .join("");
   }
 
-  function renderResume() {
-    const resume = state.resume || {};
-    const header = $("#resume-header");
-    const sections = $("#resume-sections");
-    const toc = $("#resume-toc-links");
-
-    header.innerHTML = `
-      <h2>${escapeHtml(resume.name || "Qingle Liu")}</h2>
-      <div class="resume-contact">
-        ${contactLink("mail", resume.email, resume.email ? `mailto:${resume.email}` : "")}
-        ${contactLink("mail", resume.extraEmail, resume.extraEmail ? `mailto:${resume.extraEmail}` : "")}
-        ${contactLink("phone", resume.phone, resume.phone ? `tel:${resume.phone.replace(/\s+/g, "")}` : "")}
-        <span><i data-lucide="map-pin"></i>${escapeHtml(resume.affiliation || "")}</span>
-      </div>
-    `;
-
-    const sectionList = resume.sections || [];
-    toc.innerHTML = sectionList
-      .map((section) => `<a href="#info/${escapeAttr(section.id)}">${escapeHtml(section.title)}</a>`)
-      .join("");
-
-    sections.innerHTML = sectionList
-      .map(
-        (section) => `
-          <section id="${escapeAttr(section.id)}" class="resume-section">
-            <h2>${escapeHtml(section.title)}</h2>
-            ${(section.entries || []).map(renderResumeEntry).join("")}
-          </section>
-        `
-      )
-      .join("");
-  }
-
-  function renderResumeEntry(entry) {
-    const bullets = entry.bullets || [];
-    const title = entry.url
-      ? `<a href="${escapeAttr(entry.url)}" target="_blank" rel="noreferrer">${escapeHtml(entry.title || "")}</a>`
-      : escapeHtml(entry.title || "");
-    return `
-      <article class="resume-entry">
-        <div class="entry-topline">
-          <h3>${title}</h3>
-          ${entry.date ? `<time>${escapeHtml(entry.date)}</time>` : ""}
-        </div>
-        <div class="entry-subline">
-          ${entry.subtitle ? `<span>${renderInline(entry.subtitle)}</span>` : ""}
-          ${entry.meta ? `<span>${escapeHtml(entry.meta)}</span>` : ""}
-        </div>
-        ${
-          bullets.length
-            ? `<ul>${bullets.map((bullet) => `<li>${renderInline(bullet)}</li>`).join("")}</ul>`
-            : ""
-        }
-      </article>
-    `;
-  }
-
-  function contactLink(icon, label, href) {
-    if (!label) return "";
-    return href
-      ? `<a href="${escapeAttr(href)}"><i data-lucide="${icon}"></i>${escapeHtml(label)}</a>`
-      : `<span><i data-lucide="${icon}"></i>${escapeHtml(label)}</span>`;
-  }
-
   function renderPapers() {
     const target = $("#paper-list");
     if (!state.papers.length) {
@@ -767,7 +435,7 @@
       : "";
 
     return `
-      <article class="research-item">
+      <article class="research-item${paper.image ? "" : " research-item-text"}">
         ${image}
         <div class="research-body">
           <div class="research-meta">
@@ -776,6 +444,7 @@
           </div>
           <h2>${escapeHtml(paper.title || "Untitled paper")}</h2>
           ${paper.authors ? `<p class="research-authors">${escapeHtml(paper.authors)}</p>` : ""}
+          ${paper.authorNote ? `<p class="research-author-note">${escapeHtml(paper.authorNote)}</p>` : ""}
           ${paper.abstract ? `<p class="research-abstract">${escapeHtml(paper.abstract)}</p>` : ""}
           ${
             links.length
@@ -870,7 +539,6 @@
 
   function matchesBlogCategory(entry, categoryId) {
     const categories = getEntryCategories(entry);
-    if (categoryId === "all") return true;
     if (categoryId === "essays") {
       return (
         categories.includes("essays") ||

@@ -2,17 +2,16 @@
   "displayName": "Qingle Liu",
   "handle": "Aoraku",
   "avatar": "assets/avatar.jpg",
-  "headline": "Undergraduate in Computer Science and Economics & Finance at Tsinghua University.",
+  "headline": "Department of Computer Science and Technology, Tsinghua University",
   "affiliation": "Department of Computer Science and Technology, Tsinghua University",
   "location": "Beijing, China",
   "email": "lql24@mails.tsinghua.edu.cn",
-  "phone": "+86 18561983501",
-  "bio": "I am Qingle Liu, an undergraduate student at Tsinghua University with interests in multimodal video understanding, GUI agents, AI research agents, and real-world engineering optimization.",
+  "bio": "I am Qingle Liu, an undergraduate student in the Department of Computer Science and Technology at Tsinghua University. My current research interests include Computer Vision, Generative Models, Multimodal Models, and Computer Graphics.",
   "quickFacts": [
-    "B.Eng. in CS & B.A. in Economics and Finance, expected 2028",
-    "GPA 3.97 / 4.0, ranked 3 / 33",
-    "Undergraduate researcher at the Institute of HCI and Media Integration",
-    "Research engineer and software developer at Einsia.AI"
+    "B.Eng. in CS & B.A. in Economics and Finance (Double Major), Tsinghua University, expected 2028",
+    "GPA: 3.97 / 4.0; Rank: 1 / 33",
+    "Research internships: The Graphics and Geometric Computing Lab, CST, THU; MMLab, CCDS, NTU",
+    "Software developer and research engineer at [Einsia.ai](https://einsia.ai/)"
   ],
   "socials": [
     {
@@ -23,22 +22,17 @@
     {
       "label": "GitHub",
       "url": "https://github.com/Aoraku",
-      "icon": "github"
+      "icon": "code"
     },
     {
       "label": "Google Scholar",
-      "url": "",
+      "url": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=4MNeyAMAAAAJ",
       "icon": "graduation-cap"
     },
     {
       "label": "X",
-      "url": "",
+      "url": "https://x.com/Chizhi_official",
       "icon": "messages-square"
-    },
-    {
-      "label": "Instagram",
-      "url": "",
-      "icon": "instagram"
     }
   ]
 }

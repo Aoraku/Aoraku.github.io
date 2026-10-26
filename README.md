@@ -4,7 +4,7 @@ Aoraku / Qingle Liu personal homepage.
 
 Local repository:
 
-`C:\Users\liuqi\Documents\Homepage`
+`/Volumes/LaCie/Aoraku.github.io`
 
 Public site:
 
@@ -14,17 +14,17 @@ Public site:
 
 - Main text: `data/profile.json`
 - News: `data/news.json`
-- My info / resume: `data/resume.json`
-- Scholar / papers: `data/papers.json`
+- CV PDF: `assets/CV_Qingle_Liu.pdf`
+- Research / papers: `data/papers.json`
 - Blog: `content/blog/`
 
 See `MAINTENANCE.md` for details.
 
 ## Publish
 
-```powershell
-cd C:\Users\liuqi\Documents\Homepage
-python scripts\sync_content.py
+```sh
+cd /Volumes/LaCie/Aoraku.github.io
+python3 scripts/sync_content.py
 git add .
 git commit -m "Update homepage"
 git push

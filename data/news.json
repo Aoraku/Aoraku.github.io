@@ -1,8 +1,27 @@
 [
   {
-    "date": "2026-07-01",
-    "title": "Homepage launched",
-    "body": "Aoraku.github.io is being shaped into a personal archive for research, resume, papers, notes, and long-form writing."
+    "date": "2026-09",
+    "title": "Released DeCoPrune",
+    "body": "We released DeCoPrune, a training-free KV-cache pruning method for autoregressive video diffusion via denoising consistency."
+  },
+  {
+    "date": "2026-09",
+    "title": "One paper accepted to NeurIPS 2026",
+    "body": "Our paper, Frontier-Eng: Benchmarking Self-Evolving Agents on Real-World Engineering Tasks with Generative Optimization, was accepted to NeurIPS 2026."
+  },
+  {
+    "date": "2026-06",
+    "title": "One paper accepted to ECCV 2026",
+    "body": "Our paper, Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction, was accepted to ECCV 2026."
+  },
+  {
+    "date": "2025-11",
+    "title": "Awarded the National Scholarship",
+    "body": "I was awarded the National Scholarship, one of China's top national undergraduate honors."
+  },
+  {
+    "date": "2024-07",
+    "title": "Joined Tsinghua CS",
+    "body": "I joined the Department of Computer Science and Technology at Tsinghua University."
   }
 ]
-

@@ -1,4 +1,167 @@
 {
-  "papers": []
+  "source": "https://scholar.google.com/citations?user=4MNeyAMAAAAJ&hl=en",
+  "updatedAt": "2026-10-26",
+  "papers": [
+    {
+      "date": "2026-10-08",
+      "title": "Can AI Agents Learn Their Way to the Top? Evaluating Heuristic Learning in a Long-Running Game Agent Competition",
+      "authors": "Kaisen Yang, Qingle Liu, Kejin Wang, Yicheng Zhao, Jieming Li, Shenghan Zheng, Ruize Yang, Bojun Yang, Heng Gong, Xiang Gao, Lanyue Zhang, Kaiyu Zhong, Zhuo Liu, Shaoxuan Li, Chengxi Li, Yong Yan, Weixuan Zhang, Tianwei Luo, Situ Wang, Youjie Zheng, Sihan Zhao, Shengyuan Wang, Huan-ang Gao, Jiazheng Xu, Xiaohui Xie, Wentao Han, Hongning Wang",
+      "venue": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2610.12341",
+      "abstract": "AAArena evaluates adversarial heuristic learning across 12 games and 1,920 archived human programs. Agents interpret rules, analyze match replays, and improve executable game policies under fixed budgets while keeping model weights unchanged.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.12341"
+        }
+      ],
+      "image": "assets/research/2610.12341.png"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "World Models' Last Exam in Physics",
+      "authors": "Mingju Gao, Qingle Liu, Yuzhao Peng, Xinjie Lin, Ziming Qin, Zheng Jiang, Wenyi Li, Calvin Xiao, Youjie Zheng, Kaisen Yang, Qinhuai Na",
+      "venue": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2610.08791",
+      "abstract": "A measurement-based benchmark evaluates physical consistency in video world models across 40 tasks. It combines task-observability screening with quantitative measurements spanning mechanics, optics, fluids, thermal phenomena, electromagnetism, and surface tension.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.08791"
+        }
+      ],
+      "image": "assets/research/2610.08791.png"
+    },
+    {
+      "date": "2026-09-30",
+      "title": "DeCoPrune: Efficient KV-Cache Pruning for Autoregressive Video Diffusion via Denoising Consistency",
+      "authors": "Zeqi Xiao*, Qingle Liu*, Kaiwen Zhang, Yifan Zhou, Zihan Ding, Xingang Pan",
+      "venue": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2609.39096",
+      "abstract": "DeCoPrune uses denoising consistency to retain informative historical tokens in autoregressive video diffusion. This training-free method preserves long-range information while pruning over 85% of historical KV tokens and achieving a 4.14× continuation-generation speedup over FullKV.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.39096"
+        },
+        {
+          "label": "Project",
+          "url": "https://decoprune.github.io/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/DeCoPrune/CMBench"
+        },
+        {
+          "label": "Dataset",
+          "url": "https://huggingface.co/datasets/Aoraku/CMBench"
+        }
+      ],
+      "authorNote": "* Equal contribution.",
+      "image": "assets/research/2609.39096.png"
+    },
+    {
+      "date": "2026-09-23",
+      "title": "When Context Misleads: In-context Learning with Jurisdiction in Large Language Models",
+      "authors": "Pei-lin Li, Qingle Liu, Junyang Feng, Siyu Li, Sunqi Fan, Xin-Sheng Chen, Shuojin Yang",
+      "venue": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2609.27603",
+      "abstract": "This work studies when contextual information should govern an answer. FakeContextBench tests resistance to misleading demonstrations, and Jurisdiction In-Context Learning incorporates context validation into post-training to improve both in-context learning and robustness.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.27603"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/peilin717/FakeContext-Bench"
+        }
+      ],
+      "image": "assets/research/2609.27603.png"
+    },
+    {
+      "date": "2026-06-30",
+      "title": "Scalable Behaviour Cloning on Browser Using via Skill Distillation",
+      "authors": "Kaisen Yang, Zheng Jiang, Yuzhao Peng, Houde Qian, Boshi Zhang, Youjie Zheng, Shijin Hong, Qingle Liu, Ruoyu Han, Bohan Lyu, Bingxiang He, Eren Cai, Calvin Xiao, Qinhuai Na",
+      "venue": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2606.32014",
+      "image": "assets/research/2606.32014.png",
+      "abstract": "BrowserBC studies scalable behavior cloning for browser agents by distilling human browsing traces into reusable natural-language skills. The framework organizes distilled skills into a graph and retrieves compact decision priors for agents operating on unfamiliar websites.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.32014"
+        },
+        {
+          "label": "Project",
+          "url": "https://lab.einsia.ai/browserbc/"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-29",
+      "title": "GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated Screenshots",
+      "authors": "Sunqi Fan, Lingshan Chen, Runqi Yin, Qingle Liu, Yongming Rao, Meng-Hao Guo, Shi-Min Hu",
+      "venue": "arXiv",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2606.29705",
+      "image": "assets/research/2606.29705.png",
+      "abstract": "GUICrafter trains GUI agents from large-scale unannotated screenshots and webpages, then calibrates the model with a smaller set of high-quality data. The two-stage curriculum improves visual grounding and cross-device generalization while greatly reducing annotation requirements.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.29705"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/fansunqi/GUICrafter"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction",
+      "authors": "Sunqi Fan, Qingle Liu, Runqi Yin, Meng-Hao Guo, Shuojin Yang",
+      "venue": "ECCV 2026",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2606.29445",
+      "image": "assets/research/2606.29445.png",
+      "abstract": "This work connects VideoQA with video-guided agentic tasks through generalized keyframe extraction. It introduces VG-GUIBench for learning procedural knowledge from videos, and proposes TASKER, a task-driven and scene-aware search method for selecting informative frames.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.29445"
+        },
+        {
+          "label": "Project",
+          "url": "https://vg-gui-tasker.github.io/"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "title": "Frontier-Eng: Benchmarking Self-Evolving Agents on Real-World Engineering Tasks with Generative Optimization",
+      "authors": "Yizhe Chi, Deyao Hong, Dapeng Jiang, Tianwei Luo, Kaisen Yang, Boshi Zhang, Zhe Cao, Xiaoyan Fan, Bingxiang He, Han Hao, Weiyang Jin, Dianqiao Lei, Qingle Liu, Houde Qian, Bowen Wang, Situ Wang, Youjie Zheng, Yifan Zhou, Calvin Xiao, Eren Cai, Qinhuai Na",
+      "venue": "NeurIPS 2026",
+      "year": "2026",
+      "url": "https://arxiv.org/abs/2604.12290",
+      "image": "assets/research/2604.12290.png",
+      "abstract": "Frontier-Eng introduces a benchmark for generative optimization on real engineering tasks. Agents iteratively propose, execute, evaluate, and revise solutions under fixed budgets, with continuous rewards, feasibility checks, and anti-hacking safeguards across five engineering categories.",
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2604.12290"
+        },
+        {
+          "label": "Project",
+          "url": "https://lab.einsia.ai/frontier-eng"
+        }
+      ]
+    }
+  ]
 }
-

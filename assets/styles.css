@@ -132,6 +132,9 @@ button {
 }
 
 .nav-tab {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
   min-height: 38px;
   border: 0;
   border-radius: 6px;
@@ -1550,4 +1553,14 @@ main {
 .reader-content mjx-container[display="true"] > svg,
 .doc-content.reader-content mjx-container[display="true"] > svg {
   max-width: none !important;
+}
+
+.research-item.research-item-text {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.research-author-note {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
 }

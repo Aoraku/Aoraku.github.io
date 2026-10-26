@@ -2,7 +2,7 @@
 
 Local repository:
 
-`C:\Users\liuqi\Documents\Homepage`
+`/Volumes/LaCie/Aoraku.github.io`
 
 Remote repository:
 
@@ -22,11 +22,11 @@ Main News:
 
 - `data/news.json`
 
-My info / resume:
+CV PDF:
 
-- `data/resume.json`
+- `assets/CV_Qingle_Liu.pdf`
 
-Scholar / papers:
+Research / papers:
 
 - `data/papers.json`
 
@@ -76,11 +76,11 @@ Supported article file types: `.md`, `.txt`, `.pdf`, `.docx`.
 
 ## Publish Changes
 
-Run in PowerShell:
+Run in a terminal:
 
-```powershell
-cd C:\Users\liuqi\Documents\Homepage
-python scripts\sync_content.py
+```sh
+cd /Volumes/LaCie/Aoraku.github.io
+python3 scripts/sync_content.py
 git status
 git add .
 git commit -m "Update homepage"
