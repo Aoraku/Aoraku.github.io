@@ -14,7 +14,7 @@ Public site:
 
 ## Edit Map
 
-Main introduction, education, coursework, experience, and social links:
+Main introduction, education, coursework, experience, honors, services, and social links:
 
 - `data/profile.json`
 
@@ -44,13 +44,13 @@ Blog content:
 - `/travel/`: interactive travel globe, rendered by `assets/travel.js`. The homepage opens it in a new tab.
 - `/assets/CV_Qingle_Liu.pdf`: direct CV link.
 
-`assets/styles.css` defines the academic layout and the locally hosted Lato font. Research headings use Georgia. `assets/blog.css` defines the serif blog layout. `assets/theme.js` defaults to light mode and persists the visitor's choice in local storage. Section underlines are red in light mode and cyan in dark mode.
+`assets/styles.css` defines the academic layout and the locally hosted Lato font. Research headings use Georgia. `assets/blog.css` defines the serif blog layout. `assets/brand.css` styles the vermilion seal shared by all pages. Institutional logo assets and their source links are in `assets/logos/`. `assets/theme.js` defaults to light mode and persists the visitor's choice in local storage. Section underlines are red in light mode and cyan in dark mode.
 
 In `data/papers.json`, set `selected: true` on the five homepage papers. The complete list is shown on Research. Author strings retain contributor markers such as `*`; Qingle Liu's name is underlined automatically. Both publication lists have expandable author lists.
 
 ## Travel journal
 
-Travel records belong in `data/travel/visits.json`; photographs belong in `assets/travel/`. See `data/travel/SOURCES.md` for the record schema, map sources, and boundary convention. The atlas supports 34 Chinese province-level regions, 47 Japanese prefectures, and 50 US states. Records automatically highlight the associated country and region.
+Travel records belong in `data/travel/visits.json`; photographs belong in `assets/travel/`. See `data/travel/SOURCES.md` for the record schema, map sources, and boundary convention. The atlas supports 34 Chinese province-level regions, 47 Japanese prefectures, and 50 US states. Records automatically highlight the associated country and region. The place picker lists only countries with published notes. The globe rotates by default (except when reduced motion is enabled); selecting a place or dragging pauses rotation. The Rotate/Pause button controls it explicitly.
 
 ## Local preview
 

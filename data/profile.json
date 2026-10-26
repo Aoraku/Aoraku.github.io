@@ -45,21 +45,45 @@
     "courses": [
       {
         "category": "Math & Science",
-        "items": "Calculus (A/A−); Linear Algebra (A); Advanced Linear Algebra (A+); Probability & Mathematical Statistics (A−); Discrete Mathematics (A−); University Physics (A+/A)"
+        "items": [
+          "Calculus (A/A−)",
+          "Linear Algebra (A)",
+          "Advanced Linear Algebra (A+)",
+          "Probability & Mathematical Statistics (A−)",
+          "Discrete Mathematics (A−)",
+          "University Physics (A+/A)"
+        ]
       },
       {
         "category": "Software",
-        "items": "Fundamentals of Programming (A); Object-Oriented Programming (A); Programming Training (A); Data Structures (A−); Computer Graphics (A); Software Engineering (A+)"
+        "items": [
+          "Fundamentals of Programming (A)",
+          "Object-Oriented Programming (A)",
+          "Programming Training (A)",
+          "Data Structures (A−)",
+          "Computer Graphics (A)",
+          "Software Engineering (A+)"
+        ]
       },
       {
         "category": "AI",
-        "items": "Intro to Artificial Intelligence (A); Intro to Machine Learning (A); Deep Learning & Financial Data Analysis (A+)"
+        "items": [
+          "Intro to Artificial Intelligence (A)",
+          "Intro to Machine Learning (A)",
+          "Deep Learning & Financial Data Analysis (A+)"
+        ]
       },
       {
         "category": "Hardware",
-        "items": "Digital Logic Circuits (A); Digital Logic Lab (A+); Intro to Computer Systems (A)"
+        "items": [
+          "Digital Logic Circuits (A)",
+          "Digital Logic Lab (A+)",
+          "Intro to Computer Systems (A)"
+        ]
       }
-    ]
+    ],
+    "logo": "assets/logos/tsinghua.jpg",
+    "logoType": "tsinghua"
   },
   "researchExperience": [
     {
@@ -77,7 +101,9 @@
           "name": "Meng-Hao Guo",
           "url": "https://menghaoguo.github.io/"
         }
-      ]
+      ],
+      "logo": "assets/logos/graphics-group.jpg",
+      "logoType": "graphics-group"
     },
     {
       "name": "MMLab, Nanyang Technological University",
@@ -90,7 +116,9 @@
           "name": "Xingang Pan",
           "url": "https://xingangpan.github.io/"
         }
-      ]
+      ],
+      "logo": "assets/logos/mmlab.png",
+      "logoType": "mmlab"
     }
   ],
   "industryExperience": [
@@ -99,7 +127,65 @@
       "url": "https://einsia.ai/",
       "mark": "E",
       "date": "Mar. 2026–Present",
-      "topics": "Agents · World models · Embodied AI"
+      "topics": "Agents · World models · Embodied AI",
+      "logo": "assets/logos/einsia.png",
+      "logoType": "einsia"
+    }
+  ],
+  "honors": [
+    {
+      "title": "National Scholarship",
+      "date": "2025"
+    },
+    {
+      "title": "Merit Student, Tsinghua University",
+      "date": "2026"
+    },
+    {
+      "title": "Five-Star Zijing Volunteer, Tsinghua University",
+      "date": "2026"
+    },
+    {
+      "title": "Outstanding CYL Member, Tsinghua University",
+      "date": "2025"
+    },
+    {
+      "title": "AEON Scholarship",
+      "date": "2025"
+    },
+    {
+      "title": "CSP-J — Provincial First Prize",
+      "date": "2019"
+    }
+  ],
+  "services": [
+    {
+      "title": "Reviewer, ICLR",
+      "date": "2027"
+    },
+    {
+      "title": "Vice Chair, Student Association for Science & Technology, Dept. of CS",
+      "date": "2026–Present"
+    },
+    {
+      "title": "Team Leader, Peer Tutoring Workshop, Dept. of CS",
+      "date": "2026–Present"
+    },
+    {
+      "title": "Class President, Dept. of CS",
+      "date": "2025–2026"
+    },
+    {
+      "title": "Team Leader, “Smart Wuxi” Summer Social Practice Trip",
+      "date": "Summer 2025"
+    },
+    {
+      "title": "Staff Member, Organization & Volunteer Division, Dept. of CS",
+      "date": "2025–2026"
+    },
+    {
+      "title": "200+ hours of community volunteer service",
+      "date": "2024–2026"
     }
   ]
 }

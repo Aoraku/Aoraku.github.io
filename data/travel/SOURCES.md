@@ -8,7 +8,7 @@ The atlas is a personal travel journal. China follows the Alibaba DataV boundary
 - United States: [us-atlas 3](https://github.com/topojson/us-atlas), derived from US Census Bureau data; [states-10m.json](https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json). The atlas includes 50 states; DC and territories are excluded from the state list.
 - Rendering: [D3 7.9.0](https://github.com/d3/d3), ISC license; [TopoJSON Client 3.1.0](https://github.com/topojson/topojson-client), ISC license. Vendored license files accompany the libraries.
 
-Source retrieval: October 26, 2026. Polygon simplification and spherical ring orientation are implemented in `scripts/prepare_travel_maps.py`.
+Source retrieval: October 26, 2026. Longitude unwrapping before planar clipping, border densification, polygon simplification, and spherical ring orientation are implemented in `scripts/prepare_travel_maps.py`.
 
 ## Adding travel notes
 

@@ -19,8 +19,14 @@
     document.title = research ? 'Research | Qingle Liu' : 'Qingle Liu | Aoraku';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
+  function institutionLogo(item) {
+    return `<span class="institution-logo" data-logo="${esc(item.logoType)}"><img src="${esc(item.logo)}" alt="${esc(item.name)} logo" loading="lazy"></span>`;
+  }
+  function records(items) {
+    return items.map(item=>`<article class="record-row"><p>${esc(item.title)}</p><span>${esc(item.date)}</span></article>`).join('');
+  }
   function experience(item) {
-    return `<article class="experience-row"><span class="institution-mark" data-mark="${esc(item.mark)}" aria-hidden="true">${esc(item.mark)}</span><div><div class="experience-topline"><h3>${link(item)}</h3><span class="experience-date">${esc(item.date)}</span></div><p>${esc(item.topics)}</p>${item.advisors ? `<p>Advisor${item.advisors.length > 1 ? 's' : ''}: ${item.advisors.map(link).join(', ')}</p>` : ''}</div></article>`;
+    return `<article class="experience-row">${institutionLogo(item)}<div><div class="experience-topline"><h3>${link(item)}</h3><span class="experience-date">${esc(item.date)}</span></div><p>${esc(item.topics)}</p>${item.advisors ? `<p>Advisor${item.advisors.length > 1 ? 's' : ''}: ${item.advisors.map(link).join(', ')}</p>` : ''}</div></article>`;
   }
   function author(name) {
     const match = name.match(/^(.*?)([*†‡]+)?$/);
@@ -55,12 +61,14 @@
       $('#profile-bio').innerHTML=profile.bioParagraphs.map(p=>`<p>${inline(p)}</p>`).join('');
       $('#social-links').innerHTML=profile.socials.filter(x=>x.url).map(link).join('');
       const edu=profile.education;
-      $('#education').innerHTML=`<article class="experience-row"><span class="institution-mark" data-mark="THU" aria-hidden="true">THU</span><div><div class="experience-topline"><h3>${link(edu)}</h3><span class="experience-date">${esc(edu.date)}</span></div><p>${esc(edu.degree)}</p><details class="coursework"><summary>Core coursework & grades</summary><dl>${edu.courses.map(c=>`<dt>${esc(c.category)}</dt><dd>${esc(c.items)}</dd>`).join('')}</dl></details></div></article>`;
+      $('#education').innerHTML=`<article class="experience-row">${institutionLogo(edu)}<div><div class="experience-topline"><h3>${link(edu)}</h3><span class="experience-date">${esc(edu.date)}</span></div><p>${esc(edu.degree)}</p><details class="coursework"><summary>Core coursework & grades</summary><dl>${edu.courses.map(c=>`<dt>${esc(c.category)}</dt><dd><ul>${c.items.map(item=>`<li>${esc(item)}</li>`).join('')}</ul></dd>`).join('')}</dl></details></div></article>`;
       $('#research-experience').innerHTML=profile.researchExperience.map(experience).join('');
       $('#industry-experience').innerHTML=profile.industryExperience.map(experience).join('');
       $('#selected-papers').innerHTML=papers.papers.filter(p=>p.selected).map(p=>publication(p,true)).join('');
       $('#paper-list').innerHTML=papers.papers.map(p=>publication(p,false)).join('');
-      $('#news-list').innerHTML=news.map(n=>`<article class="news-item"><time datetime="${esc(n.date)}">${new Intl.DateTimeFormat('en',{month:'short',year:'numeric'}).format(new Date(n.date+'-01T00:00:00'))}</time><p>${esc(n.title)}.</p></article>`).join('');
+      $('#honors-list').innerHTML=records(profile.honors);
+      $('#services-list').innerHTML=records(profile.services);
+      $('#news-list').innerHTML=news.map(n=>`<article class="news-item"><time datetime="${esc(n.date)}">${new Intl.DateTimeFormat('en',{month:'short',year:'numeric'}).format(new Date(n.date+'-01T00:00:00'))}</time><p>${inline(n.title)}.</p></article>`).join('');
       document.addEventListener('click',event=>{
         const button=event.target.closest('.author-toggle');if(!button)return;
         const container=button.closest('.paper-authors');const more=button.getAttribute('aria-expanded')==='false';
