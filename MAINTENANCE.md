@@ -44,13 +44,13 @@ Blog content:
 - `/travel/`: interactive travel globe, rendered by `assets/travel.js`. The homepage opens it in a new tab.
 - `/assets/CV_Qingle_Liu.pdf`: direct CV link.
 
-`assets/styles.css` defines the academic layout and the locally hosted Lato font. Research headings use Georgia. `assets/blog.css` defines the serif blog layout. `assets/brand.css` styles the vermilion seal shared by all pages. Institutional logo assets and their source links are in `assets/logos/`. `assets/theme.js` defaults to light mode and persists the visitor's choice in local storage. Section underlines are red in light mode and cyan in dark mode.
+`assets/styles.css` defines the academic layout and the locally hosted Lato font. Research headings use Georgia. `assets/blog.css` defines the serif blog layout. `assets/brand.css` and `assets/brand.js` control six red-and-white vector marks shared by all pages. Clicking the mark cycles through seal, music, code, phantom, Monogatari, and shinobi styles; the choice persists in local storage. The adjacent name links home. The vectors in `assets/brand/` include outlined lettering for consistent rendering across browsers. Institutional logo assets and their source links are in `assets/logos/`. `assets/theme.js` defaults to light mode and persists the visitor's choice in local storage. Section underlines are red in light mode and cyan in dark mode.
 
 In `data/papers.json`, set `selected: true` on the five homepage papers. The complete list is shown on Research. Author strings retain contributor markers such as `*`; Qingle Liu's name is underlined automatically. Both publication lists have expandable author lists.
 
 ## Travel journal
 
-Travel records belong in `data/travel/visits.json`; photographs belong in `assets/travel/`. See `data/travel/SOURCES.md` for the record schema, map sources, and boundary convention. The atlas supports 34 Chinese province-level regions, 47 Japanese prefectures, and 50 US states. Records automatically highlight the associated country and region. The place picker lists only countries with published notes. The globe rotates by default (except when reduced motion is enabled); selecting a place or dragging pauses rotation. The Rotate/Pause button controls it explicitly.
+Travel records belong in `data/travel/visits.json`; photographs belong in `assets/travel/`. See `data/travel/SOURCES.md` for the record schema, map sources, and boundary convention. The atlas supports 34 Chinese province-level regions, 47 Japanese prefectures, and 50 US states. Records automatically highlight the associated country and region. The place picker lists only countries with published notes. The globe rotates by default (except when reduced motion is enabled); selecting a place or dragging pauses rotation. The Rotate/Pause button controls it explicitly. The globe stage and its controls keep the same desktop geometry across World View and country views, while rotation and zoom animate continuously.
 
 ## Local preview
 

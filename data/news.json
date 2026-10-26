@@ -1,7 +1,17 @@
 [
   {
+    "date": "2026-10",
+    "title": "Released [AAArena](https://aaarena.net/)",
+    "body": "AAArena evaluates heuristic learning in a long-running game agent competition."
+  },
+  {
+    "date": "2026-10",
+    "title": "Released [World Models’ Last Exam in Physics](https://lab.einsia.ai/phys-last-exam)",
+    "body": "A benchmark for physical consistency in video world models."
+  },
+  {
     "date": "2026-09",
-    "title": "Released DeCoPrune",
+    "title": "Released [DeCoPrune](https://decoprune.github.io/)",
     "body": "We released DeCoPrune, a training-free KV-cache pruning method for autoregressive video diffusion via denoising consistency."
   },
   {
