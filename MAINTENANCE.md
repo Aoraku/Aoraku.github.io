@@ -52,9 +52,9 @@ In `data/papers.json`, set `selected: true` on the five homepage papers. The com
 
 ## Blog presentation
 
-`assets/metro.css` styles the Blog toolbar, rail map, category cards, list view, and reader. Map labels use Japanese Gothic lettering; category headings and articles use serif type. The AK loop is a rounded rectangle, with JR-style green square station numbers; the diagonal G line uses red circular numbers. Station links zoom and fade into a category. Categories use a plain background and five article cards per row on desktop. `?view=list` displays the category sidebar and article list.
+`assets/metro.css` styles the Blog toolbar, rail map, category cards, list view, and reader. Map labels use Japanese Gothic lettering; category headings and articles use serif type. The AK loop is a rounded rectangle, with JR-style green square station numbers; the diagonal G line uses red circular numbers. Station links open a category immediately. Highschool, CST, and Frontier use the red G-line theme; other categories use green. Categories use a plain background and five article cards per row on desktop. `?view=list` displays the category sidebar and article list.
 
-The Blog has an independent dark-by-default theme stored under `aoraku-blog-theme`. The `/blog` entry animation lasts 2.7 seconds: architectural silhouettes, light beams, streamed title, and a black train silhouette. Click or Escape skips it; reduced-motion preferences bypass it. The toolbar provides Main, view switching, selected articles, and theme switching.
+The Blog has an independent dark-by-default theme stored under `aoraku-blog-theme`. The `/blog` entry animation has 2.7 seconds of motion, a 1-second title hold, and a 0.2-second fade: architectural silhouettes, light beams, streamed title and “Da sein.” subtitle, and a black E5 lead-car silhouette. Its motion slows at 30% progress and then accelerates. Click or Escape skips it; reduced-motion preferences bypass it. The toolbar provides Main, view switching, selected articles, and theme switching. View switching retains the active category. Article summaries are shown in full. The reader has a sticky return/date row, monospace code, baseline-aligned inline mathematics, and a scroll-tracking table of contents coloured by railway line.
 
 ## Travel journal
 

@@ -19,3 +19,61 @@
 
 .metro-toolbar{height:76px}.metro-heading{padding-top:4px}.metro-heading h1{font-size:clamp(36px,3.6vw,52px)}.metro-home{margin-top:8px;margin-bottom:18px}.metro-map{width:min(100%,850px,max(650px,calc((100svh - 290px)*1.2985)));margin:5px auto 4px}.metro-legend{padding:17px 6px}.metro-legend .line-symbol{width:34px;height:34px}
 @media(min-width:1600px){.metro-map{width:min(850px,max(650px,calc((100svh - 290px)*1.2985)))}}@media(max-width:700px){.metro-toolbar{height:76px}.metro-map{width:100%;margin:28px auto 18px}.metro-heading{padding:15px 12px}.metro-heading h1{font-size:38px}.metro-home{margin-bottom:30px}.metro-legend{padding:20px 12px}.metro-legend .line-symbol{width:32px;height:32px}}
+
+/* Shared alignment and railway colour context. */
+:root{--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace}
+body{--route-color:var(--green);--accent:#a3d875}
+body[data-line=g]{--route-color:var(--red);--accent:#ff686f}
+:root[data-blog-theme=light] body{--accent:#467321}
+:root[data-blog-theme=light] body[data-line=g]{--accent:#c51f2b}
+.metro-toolbar,.metro-home,.content-band,.doc-band,.site-footer{width:min(1440px,calc(100% - 96px))}
+.metro-actions{gap:28px;align-items:center}
+.metro-actions button,.metro-actions summary{display:flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0;line-height:1}
+.layout-icon{width:16px;height:16px;margin:0;flex:none}
+#blog-theme{width:36px;height:36px;padding:6px}
+#blog-theme svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+#selected-menu summary span{margin-left:0}
+.metro-map{width:min(100%,850px,max(560px,calc((100svh - 260px)*1.0167)));margin:0 auto 12px;will-change:auto}
+.metro-station:hover .station-name,.metro-station:focus-visible .station-name{fill:var(--ink);text-decoration:none;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--green),transparent 25%))}
+.metro-station.g-station:hover .station-name,.metro-station.transfer:hover .station-name{filter:drop-shadow(0 0 5px color-mix(in srgb,var(--red),transparent 25%))}
+.metro-station.transfer .station-halo{fill:var(--red)}
+.article-card::before{background:var(--route-color)}
+.article-card:hover,.category-button.is-active{border-color:var(--route-color)}
+.doc-content.reader-content blockquote{border-color:var(--route-color)}
+.article-card{height:auto;min-height:270px;overflow:visible;aspect-ratio:auto}
+.article-card h2,.article-card .card-summary{display:block;-webkit-line-clamp:unset;overflow:visible;flex-shrink:0;overflow-wrap:anywhere}
+.article-card .card-summary{margin:12px 0 26px;font-size:12px;line-height:1.85}
+.article-card .card-meta{justify-content:flex-start}
+.list-mode .article-card{min-height:0;height:auto}
+.list-mode .article-card .card-summary{margin:10px 0;font-size:13px}
+.doc-header{position:sticky;top:0;z-index:25;background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:18px 0;margin-bottom:30px;gap:20px}
+.doc-back{margin:0;line-height:1.5;flex-shrink:0;color:var(--accent)}
+.doc-meta{margin-left:auto;text-align:right}
+.doc-meta .item-meta{display:block;margin:0;font-size:11px;line-height:1.5}
+.doc-toc.reader-toc{top:82px;max-height:calc(100vh - 110px);scroll-behavior:auto}
+.doc-toc.reader-toc a{padding-left:12px;border-left:2px solid transparent;margin-left:-1px}
+.doc-toc.reader-toc a.h3{padding-left:24px}
+.doc-toc.reader-toc a.is-active{color:var(--accent);border-left-color:var(--route-color);background:color-mix(in srgb,var(--route-color) 9%,transparent);font-weight:600}
+.doc-content.reader-content :is(h1,h2,h3){scroll-margin-top:90px}
+.doc-content.reader-content pre,.doc-content.reader-content code,.doc-content.reader-content .hljs{font-family:var(--mono)}
+/* MathJax SVG supplies its own depth. Keep the container on the text baseline. */
+.doc-content.reader-content mjx-container:not([display="true"]){display:inline!important;width:auto!important;max-width:none!important;overflow:visible!important;vertical-align:baseline!important;line-height:normal!important}
+.doc-content.reader-content mjx-container:not([display="true"])>svg{display:inline!important;max-width:none!important}
+.intro-complete .typing-cursor{visibility:hidden}
+
+@media(max-width:700px){
+  .metro-toolbar,.metro-home,.content-band,.doc-band,.site-footer{width:calc(100% - 36px)}
+  .metro-actions{gap:17px}.metro-map{width:100%;margin:20px auto}
+  .article-card{min-height:250px;height:auto;padding:20px 15px}
+  .article-card .card-summary{font-size:11px}
+  .doc-header{padding:15px 0;gap:12px}
+  .doc-toc.reader-toc{position:static;max-height:150px}
+}
+
+.metro-station.g-station:hover .station-name,.metro-station.transfer:hover .station-name{fill:var(--ink)}
+.metro-station.g-station:focus-visible .rail-badge,.metro-station.transfer:focus-visible .rail-badge{filter:drop-shadow(0 0 7px var(--red))}
+.category-button.is-active{color:var(--accent);background:color-mix(in srgb,var(--route-color) 9%,var(--bg))}
+.doc-meta .item-meta{font-family:var(--serif)}
+
+.intro-heading h1{min-height:0}
+.intro-heading .intro-subtitle{margin:20px 0 0;min-height:1.5em;font-size:clamp(14px,1.4vw,20px);font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.06em;line-height:1.5;color:#b6beb7}

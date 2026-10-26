@@ -3,11 +3,11 @@
     blog: [],
     activeCategory: "selected",
     renderedId: null,
-    request: 0,
-    navigation: 0
+    request: 0
   };
 
   let categoryOrder = [];
+  let stopReaderTracking = () => {};
 
   const footerContactEmail = "lql24@mails.tsinghua.edu.cn";
 
@@ -19,8 +19,8 @@
   async function init() {
     $("#year").textContent = new Date().getFullYear();
     window.addEventListener("hashchange", updateRoute);
-    window.addEventListener("popstate", () => {state.navigation++; updateRoute();});
-    document.addEventListener("click", async event => {
+    window.addEventListener("popstate", updateRoute);
+    document.addEventListener("click", event => {
       const link = event.target.closest("a[href]");
       if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute("download")) return;
       if (link.classList.contains("skip-link")) {
@@ -28,14 +28,9 @@
         const main = $("#main-content"); main.tabIndex = -1; main.focus(); main.scrollIntoView();
         return;
       }
-      const url = new URL(link.href);
+      const url = new URL(link.getAttribute("href"), location.href);
       if (url.origin === location.origin && /^\/blog(?:\/|$)/.test(url.pathname)) {
         event.preventDefault();
-        if (link.classList.contains("metro-station") && $("#metro-map").dataset.transitioning) return;
-        const serial = ++state.navigation;
-        if (link.classList.contains('metro-station')) {
-          if (!(await window.CyberMetro.enter(link)) || serial !== state.navigation) return;
-        }
         $('#selected-menu').open = false;
         if (link.classList.contains('category-button') && new URLSearchParams(location.search).get('view') === 'list') url.searchParams.set('view','list');
         navigate(url.pathname + url.search);
@@ -43,9 +38,8 @@
     });
     bindReader();
     $('#layout-toggle').addEventListener('click', () => {
-      state.navigation++;
       const list = new URLSearchParams(location.search).get('view') === 'list';
-      navigate(list ? '/blog' : `/blog/${state.activeCategory}?view=list`);
+      navigate(`/blog/${state.activeCategory}${list ? '' : '?view=list'}`);
     });
 
     const index = await getJson("data/blog-index.json", { entries: [] });
@@ -108,7 +102,7 @@
 
   function updateRoute() {
     const { active, entryId, category, anchor } = parseRoute();
-    window.CyberMetro?.reset();
+    stopReaderTracking();
     const list = new URLSearchParams(location.search).get('view') === 'list';
     $('#view-blog').classList.toggle('list-mode', list);
     $('#layout-label').textContent = list ? '路线图模式' : '列表模式';
@@ -117,7 +111,7 @@
     $('#selected-menu').open = false;
     $$(".view").forEach(view => { view.hidden = view.id !== `view-${active}`; });
     if (active === 'doc') {
-      if (state.renderedId === entryId) scrollToSection(anchor);
+      if (state.renderedId === entryId) { trackReader(); scrollToSection(anchor); }
       else renderDocRoute(entryId, anchor);
       return;
     }
@@ -134,27 +128,18 @@
     renderBlogList();
     const category = categoryOrder.find(c => c.id === state.activeCategory);
     $('#blog-title').textContent = category?.label || '精选';
-    $('#station-badge').className = `line-symbol ${state.activeCategory === 'highschool' ? 'g' : 'ak'}`;
-    $('#station-badge').innerHTML = window.CyberMetro.lineIcon(state.activeCategory === 'highschool' ? 'g' : 'ak');
-    $('#station-count').textContent = `${state.blog.filter(e => matchesBlogCategory(e, state.activeCategory)).length} 篇`;
+    const line = ['highschool','cst','frontier'].includes(state.activeCategory) ? 'g' : 'ak';
+    document.body.dataset.line = line;
+    $('#station-badge').className = `line-symbol ${line}`;
+    $('#station-badge').innerHTML = window.CyberMetro.lineIcon(line);
   }
 
   function renderCategories() {
-    const counts = categoryOrder.reduce((acc, category) => ({ ...acc, [category.id]: 0 }), {});
-    state.blog.forEach((entry) => {
-      categoryOrder.forEach((category) => {
-        if (matchesBlogCategory(entry, category.id)) {
-          counts[category.id] += 1;
-        }
-      });
-    });
-
     $("#blog-categories").innerHTML = categoryOrder
       .map(
         (category) => `
           <a class="category-button ${state.activeCategory === category.id ? "is-active" : ""}" href="/blog/${category.id}" ${state.activeCategory === category.id ? 'aria-current="page"' : ""}>
             <span>${escapeHtml(category.label)}</span>
-            <strong>${counts[category.id] || 0}</strong>
           </a>
         `
       )
@@ -167,13 +152,13 @@
     const entries = state.blog.filter((entry) => matchesBlogCategory(entry, state.activeCategory));
 
     if (!entries.length) {
-      target.innerHTML = emptyState("この駅の物語は、まだこれから。");
+      target.innerHTML = "";
       return;
     }
 
     target.innerHTML = entries.map(entry => `
       <a class="article-card" href="/blog/${entry.id}" aria-label="${escapeAttr(entry.title)}">
-        <div class="card-meta"><time datetime="${escapeAttr(entry.date || '')}">${escapeHtml(entry.date || '')}</time><span>${String(entry.id).padStart(3, '0')}</span></div>
+        <div class="card-meta"><time datetime="${escapeAttr(entry.date || '')}">${escapeHtml(entry.date || '')}</time></div>
         <h2>${escapeHtml(entry.title || 'Untitled')}</h2>
         ${entry.summary ? `<p class="card-summary">${escapeHtml(entry.summary)}</p>` : ''}
         <span class="card-category">${escapeHtml(getEntryCategoryDisplay(entry))}</span>
@@ -230,13 +215,12 @@
       return;
     }
 
-    state.activeCategory = getEntryCategories(entry)[0] || "selected";
+    state.activeCategory = getEntryCategories(entry).find(c => ["highschool","cst","frontier"].includes(c)) || getEntryCategories(entry)[0] || "selected";
     $('#doc-back-label').textContent = categoryOrder.find(c => c.id === state.activeCategory)?.label || '路線図';
     renderBlog();
     document.title = `${entry.title || "Document"} | Aoraku`;
     docMeta.innerHTML = `
       <div class="item-meta" aria-label="Document metadata">
-        <span>${escapeHtml(getEntryCategoryDisplay(entry))}</span>
         <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
       </div>
     `;
@@ -291,12 +275,14 @@
       highlightCodeBlocks(docContent);
       buildReaderToc(docContent, docToc, entry.id);
       if (window.MathJax?.typesetPromise) {
-        window.MathJax.typesetPromise([docContent]).catch(console.warn);
+        await window.MathJax.typesetPromise([docContent]).catch(console.warn);
+        if(request !== state.request) return;
       }
       if (window.lucide) {
         window.lucide.createIcons();
       }
 
+      trackReader();
       requestAnimationFrame(() => {
         const target = anchor ? document.getElementById(anchor) : null;
         if (target) {
@@ -541,6 +527,45 @@
         return `<a class="${heading.tagName.toLowerCase()}" href="${escapeAttr(href)}">${escapeHtml(heading.textContent)}</a>`;
       })
       .join("");
+  }
+
+  function trackReader() {
+    stopReaderTracking();
+    const content = $('#doc-content'), toc = $('#doc-toc');
+    const headings = $$('h1, h2, h3', content).filter(h => h.id !== 'doc-title');
+    const links = $$('a', toc);
+    if (!headings.length || !links.length) return;
+    let frame = 0, current = -1;
+    const update = () => {
+      frame = 0;
+      const threshold = $('.doc-header').getBoundingClientRect().height + 24;
+      let index = 0;
+      for (let i = 0; i < headings.length; i++) {
+        if (headings[i].getBoundingClientRect().top <= threshold) index = i;
+        else break;
+      }
+      if (window.scrollY + innerHeight >= document.documentElement.scrollHeight - 3) index = headings.length - 1;
+      if (index === current) return;
+      current = index;
+      links.forEach((link, i) => {
+        link.classList.toggle('is-active', i === index);
+        if (i === index) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      const active = links[index], bounds = toc.getBoundingClientRect(), item = active.getBoundingClientRect();
+      if (item.top < bounds.top || item.bottom > bounds.bottom) toc.scrollTop += item.top - bounds.top - bounds.height / 3;
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const resize = new ResizeObserver(schedule);
+    resize.observe(content);
+    window.addEventListener('scroll', schedule, {passive:true});
+    window.addEventListener('resize', schedule);
+    stopReaderTracking = () => {
+      cancelAnimationFrame(frame); resize.disconnect();
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
+    schedule();
   }
 
   function renderInline(value) {
