@@ -3,7 +3,8 @@
     blog: [],
     activeCategory: "selected",
     renderedId: null,
-    request: 0
+    request: 0,
+    navigation: 0
   };
 
   let categoryOrder = [];
@@ -18,8 +19,8 @@
   async function init() {
     $("#year").textContent = new Date().getFullYear();
     window.addEventListener("hashchange", updateRoute);
-    window.addEventListener("popstate", updateRoute);
-    document.addEventListener("click", event => {
+    window.addEventListener("popstate", () => {state.navigation++; updateRoute();});
+    document.addEventListener("click", async event => {
       const link = event.target.closest("a[href]");
       if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute("download")) return;
       if (link.classList.contains("skip-link")) {
@@ -29,14 +30,28 @@
       }
       const url = new URL(link.href);
       if (url.origin === location.origin && /^\/blog(?:\/|$)/.test(url.pathname)) {
-        event.preventDefault(); navigate(url.pathname + url.search);
+        event.preventDefault();
+        if (link.classList.contains("metro-station") && $("#metro-map").dataset.transitioning) return;
+        const serial = ++state.navigation;
+        if (link.classList.contains('metro-station')) {
+          if (!(await window.CyberMetro.enter(link)) || serial !== state.navigation) return;
+        }
+        $('#selected-menu').open = false;
+        if (link.classList.contains('category-button') && new URLSearchParams(location.search).get('view') === 'list') url.searchParams.set('view','list');
+        navigate(url.pathname + url.search);
       }
     });
     bindReader();
+    $('#layout-toggle').addEventListener('click', () => {
+      state.navigation++;
+      const list = new URLSearchParams(location.search).get('view') === 'list';
+      navigate(list ? '/blog' : `/blog/${state.activeCategory}?view=list`);
+    });
 
     const index = await getJson("data/blog-index.json", { entries: [] });
     state.blog = index.entries || [];
     categoryOrder = index.categories || [];
+    $('#selected-articles').innerHTML = state.blog.filter(e => e.selected).map(e => `<a href="/blog/${e.id}"><small>${escapeHtml(getEntryCategoryDisplay(e))}</small>${escapeHtml(e.title)}</a>`).join('') || '<p>暂无精选文章</p>';
     renderBlog();
     updateRoute();
 
@@ -72,10 +87,11 @@
       history.replaceState({}, "", '/blog');
     }
     const path = location.pathname.replace(/\/+$/, '');
-    const slug = path.split('/')[2] || 'selected';
+    const slug = path.split('/')[2] || '';
+    const list = new URLSearchParams(location.search).get('view') === 'list';
     const section = new URLSearchParams(location.search).get('section');
     return {
-      active: /^\d+$/.test(slug) ? 'doc' : 'blog',
+      active: /^\d+$/.test(slug) ? 'doc' : (!slug && !list ? 'metro' : 'blog'),
       entryId: slug,
       category: categoryOrder.some(c => c.id === slug) ? slug : 'selected',
       anchor: /^\d+$/.test(section || '') ? `section-${section}` : ''
@@ -92,6 +108,13 @@
 
   function updateRoute() {
     const { active, entryId, category, anchor } = parseRoute();
+    window.CyberMetro?.reset();
+    const list = new URLSearchParams(location.search).get('view') === 'list';
+    $('#view-blog').classList.toggle('list-mode', list);
+    $('#layout-label').textContent = list ? '路线图模式' : '列表模式';
+    $('#layout-toggle').setAttribute('aria-pressed', String(list));
+    document.body.dataset.blogView = active;
+    $('#selected-menu').open = false;
     $$(".view").forEach(view => { view.hidden = view.id !== `view-${active}`; });
     if (active === 'doc') {
       if (state.renderedId === entryId) scrollToSection(anchor);
@@ -102,13 +125,18 @@
     state.renderedId = null;
     state.activeCategory = category;
     renderBlog();
-    document.title = `${categoryOrder.find(c => c.id === category)?.label || 'Blog'} | Aoraku`;
+    document.title = active === 'metro' ? "Aoraku's Blog: Cyber Metro" : `${categoryOrder.find(c => c.id === category)?.label || 'Blog'} | Cyber Metro`;
     window.scrollTo({top:0, behavior:'auto'});
   }
 
   function renderBlog() {
     renderCategories();
     renderBlogList();
+    const category = categoryOrder.find(c => c.id === state.activeCategory);
+    $('#blog-title').textContent = category?.label || '精选';
+    $('#station-badge').className = `line-symbol ${state.activeCategory === 'highschool' ? 'g' : 'ak'}`;
+    $('#station-badge').innerHTML = window.CyberMetro.lineIcon(state.activeCategory === 'highschool' ? 'g' : 'ak');
+    $('#station-count').textContent = `${state.blog.filter(e => matchesBlogCategory(e, state.activeCategory)).length} 篇`;
   }
 
   function renderCategories() {
@@ -139,33 +167,17 @@
     const entries = state.blog.filter((entry) => matchesBlogCategory(entry, state.activeCategory));
 
     if (!entries.length) {
-      target.innerHTML = emptyState("No entries yet.");
+      target.innerHTML = emptyState("この駅の物語は、まだこれから。");
       return;
     }
 
-    target.innerHTML = entries
-      .map(
-        (entry) => `
-          <article class="blog-item">
-            <div>
-              <div class="item-meta">
-                <span>${escapeHtml(getEntryCategoryDisplay(entry))}</span>
-                <time datetime="${escapeAttr(entry.date || "")}">${formatDate(entry.date)}</time>
-              </div>
-              <h2><a href="/blog/${entry.id}">${escapeHtml(entry.title || "Untitled")}</a></h2>
-              ${entry.summary ? `<p>${escapeHtml(entry.summary)}</p>` : ""}
-              ${
-                entry.tags && entry.tags.length
-                  ? `<div class="tag-list">${entry.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>`
-                  : ""
-              }
-            </div>
-            <a class="text-button" href="/blog/${entry.id}">Read</a>
-          </article>
-        `
-      )
-      .join("");
-
+    target.innerHTML = entries.map(entry => `
+      <a class="article-card" href="/blog/${entry.id}" aria-label="${escapeAttr(entry.title)}">
+        <div class="card-meta"><time datetime="${escapeAttr(entry.date || '')}">${escapeHtml(entry.date || '')}</time><span>${String(entry.id).padStart(3, '0')}</span></div>
+        <h2>${escapeHtml(entry.title || 'Untitled')}</h2>
+        ${entry.summary ? `<p class="card-summary">${escapeHtml(entry.summary)}</p>` : ''}
+        <span class="card-category">${escapeHtml(getEntryCategoryDisplay(entry))}</span>
+      </a>`).join('');
   }
 
   function matchesBlogCategory(entry, categoryId) {
@@ -219,6 +231,7 @@
     }
 
     state.activeCategory = getEntryCategories(entry)[0] || "selected";
+    $('#doc-back-label').textContent = categoryOrder.find(c => c.id === state.activeCategory)?.label || '路線図';
     renderBlog();
     document.title = `${entry.title || "Document"} | Aoraku`;
     docMeta.innerHTML = `

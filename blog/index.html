@@ -1,23 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja" data-blog-theme="dark">
   <head>
     <base href="/" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Aoraku's personal homepage: research, resume, papers, notes, and blog."
+      content="Aoraku's Blog: Cyber Metro — an atlas of thoughts."
     />
     <title>Blog | Aoraku</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/vendor/highlight/github-dark.min.css?v=20260702j" />
-    <link rel="stylesheet" href="assets/blog.css?v=20261027-blog" />
+    <link rel="stylesheet" href="assets/blog.css?v=20261027-metro" />
+    <link rel="stylesheet" href="assets/metro.css?v=20261027-metro" />
+    <script>try { document.documentElement.dataset.blogTheme = localStorage.getItem("aoraku-blog-theme") || "dark"; } catch {}</script>
+    <script defer src="assets/metro.js?v=20261027-metro"></script>
     <script>
       window.MathJax = {
         tex: {
@@ -41,46 +44,45 @@
     <script defer src="assets/vendor/highlight/python.min.js?v=20260702j"></script>
     <script defer src="assets/vendor/highlight/x86asm.min.js?v=20260702j"></script>
     <script defer src="assets/vendor/highlight/verilog.min.js?v=20260702j"></script>
-    <script defer src="assets/blog.js?v=20261027-blog"></script>
-  <link rel="stylesheet" href="/assets/brand.css?v=20261027-blog">
-<script defer src="/assets/brand.js?v=20261027-blog"></script>
+    <script defer src="assets/blog.js?v=20261027-metro"></script>
+
 </head>
-<body><a class="skip-link" href="/blog/#main-content">Skip to content</a><header class="site-header"><div class="header-inner"><div class="brand"><button class="brand-switch" type="button" data-style="seal" aria-label="Seal logo. Switch to Music style"><img draggable="false" src="/assets/brand/seal.svg" width="46" height="46" alt=""></button><a class="brand-link" href="/main" aria-label="Aoraku homepage"><strong>Aoraku</strong><small>Qingle Liu</small></a><span class="brand-status" role="status" aria-live="polite"></span></div><nav class="top-nav" aria-label="Primary navigation"><a class="nav-tab" href="/main">Main</a><a class="nav-tab" href="/assets/CV_Qingle_Liu.pdf">CV</a><a class="nav-tab" href="/research">Research</a><a class="nav-tab is-active" href="/blog" aria-current="page">Blog</a></nav></div></header><main id="main-content">      <section id="view-blog" class="view" aria-labelledby="blog-title">
-        <div class="content-band">
-          <div class="section-heading">
-            
-            <h1 id="blog-title">Blog</h1>
-          </div>
-
-          <div class="blog-shell">
-            <aside class="blog-sidebar" aria-label="Blog categories">
-              <div id="blog-categories" class="category-list"></div>
-            </aside>
-
-            <div class="blog-main">
-              <div id="blog-list" class="blog-list"></div>
-              <article id="blog-reader" class="blog-reader" hidden>
-                <button id="reader-close" class="icon-button" type="button" aria-label="Close reader">
-                  <i data-lucide="x"></i>
-                </button>
-                <div id="reader-meta" class="reader-meta"></div>
-                <div class="reader-layout">
-                  <nav id="reader-toc" class="reader-toc" aria-label="Document table of contents"></nav>
-                  <div id="reader-content" class="reader-content"></div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
+<body>
+<div id="metro-intro" class="metro-intro" hidden role="button" tabindex="0" aria-label="Skip introduction">
+  <div id="intro-skyline" aria-hidden="true"></div>
+  <div class="intro-light light-one"></div><div class="intro-light light-two"></div>
+  <div class="intro-heading"><p>終電の、その先へ。</p><h1 aria-label="Aoraku's Blog: Cyber Metro"><span id="intro-type" aria-hidden="true"></span><span class="typing-cursor" aria-hidden="true"></span></h1></div>
+  <svg id="intro-train" viewBox="0 0 800 120" aria-hidden="true"><path d="M15 88 12 43Q12 29 30 27L547 27Q583 27 615 42L710 83Q744 95 784 97Q797 98 796 105L18 105Z"/><path d="M160 27 172 14 199 14 211 27ZM171 14 195 4 218 14" fill="none" stroke="currentColor" stroke-width="5"/><path d="M85 103V114H145V103M505 103V114H565V103"/></svg>
+  <div class="intro-rail"></div><span class="intro-skip">Click anywhere / Esc</span>
+</div>
+<a class="skip-link" href="/blog/#main-content">Skip to content</a>
+<header class="metro-toolbar">
+  <a class="main-return" href="/main"><span aria-hidden="true">↖</span> Main</a>
+  <div class="metro-actions">
+    <button id="layout-toggle" type="button" aria-pressed="false"><span class="layout-icon" aria-hidden="true">☷</span> <span id="layout-label">列表模式</span></button>
+    <details id="selected-menu"><summary>精选 <span aria-hidden="true">⌄</span></summary><div id="selected-articles"></div></details>
+    <button id="blog-theme" type="button" aria-label="切换浅色模式"><span aria-hidden="true">☼</span></button>
+  </div>
+</header>
+<main id="main-content">
+  <section id="view-metro" class="view metro-home" aria-labelledby="metro-title">
+    <div class="metro-heading"><div><p class="metro-kicker">AORAKU’S BLOG</p><h1 id="metro-title">Cyber Metro<span>.</span></h1></div><p class="metro-subtitle">言葉を乗せて、<br>まだ知らない街へ。</p></div>
+    <div id="metro-map" class="metro-map" aria-label="Blog railway map"></div>
+    <div class="metro-legend"><span><b class="line-symbol ak">AK</b> 環状線 <small>Kanjō Line</small></span><span><b class="line-symbol g">G</b> 学園都市線 <small>Gakuen-toshi Line</small></span><span class="map-instruction">駅を選んで、物語へ。 <span aria-hidden="true">↗</span></span></div>
+  </section>
+  <section id="view-blog" class="view archive-view" aria-labelledby="blog-title" hidden>
+    <div class="content-band">
+      <div class="station-header"><a href="/blog" class="map-return">← 路線図</a><div class="station-title-row"><span id="station-badge" class="line-symbol ak">AK</span><h1 id="blog-title">精选</h1><span id="station-count"></span></div></div>
+      <div class="blog-shell"><aside class="blog-sidebar" aria-label="Blog categories"><div id="blog-categories" class="category-list"></div></aside><div class="blog-main"><div id="blog-list" class="blog-list"></div></div></div>
+    </div>
+  </section>
       <section id="view-doc" class="view document-view" aria-labelledby="doc-title" hidden>
         <div class="doc-band">
           <article id="doc-reader" class="doc-reader">
             <header class="doc-header">
               <button id="doc-back" class="text-button doc-back" type="button">
-                <i data-lucide="arrow-left"></i>
-                <span>Blog</span>
+                <span aria-hidden="true">←</span>
+                <span id="doc-back-label">路線図</span>
               </button>
               <div id="doc-meta" class="doc-meta"></div>
             </header>
@@ -91,4 +93,4 @@
           </article>
         </div>
       </section>
-</main><footer class="site-footer"><span>© <span id="year"></span> Aoraku</span><a href="mailto:lql24@mails.tsinghua.edu.cn">lql24@mails.tsinghua.edu.cn</a></footer></body></html>
+</main><footer class="site-footer"><span>© <span id="year"></span> Aoraku</span><span>CYBER METRO · 言葉の停車場</span></footer></body></html>

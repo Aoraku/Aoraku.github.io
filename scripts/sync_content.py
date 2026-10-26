@@ -16,7 +16,7 @@ CATEGORIES = [
         ("selected", "精选"), ("journal", "雑感"), ("highschool", "高校時代"),
         ("japanese", "日本語"), ("cst", "CST"), ("frontier", "先端"),
         ("society", "社会"), ("poem", "詩歌"), ("philosophy", "哲学"),
-        ("music", "音楽"), ("travel", "旅行")
+        ("arts", "文藝")
     ]
 ]
 CATEGORY_NAMES = {item["id"]: item["label"] for item in CATEGORIES}

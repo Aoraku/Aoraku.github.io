@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T19:06:11+00:00",
+  "generatedAt": "2026-10-26T19:40:58+00:00",
   "categories": [
     {
       "id": "selected",
@@ -38,12 +38,8 @@
       "label": "哲学"
     },
     {
-      "id": "music",
-      "label": "音楽"
-    },
-    {
-      "id": "travel",
-      "label": "旅行"
+      "id": "arts",
+      "label": "文藝"
     }
   ],
   "entries": [
@@ -825,13 +821,13 @@
       "legacyId": "essays-essays-杂文-考试的日子-心该如何过-中道的艺术-index",
       "title": "考试的日子，心该如何过——中道的艺术",
       "date": "2025-08-13",
-      "category": "journal",
+      "category": "society",
       "categories": [
-        "journal"
+        "society"
       ],
-      "categoryLabel": "雑感",
+      "categoryLabel": "社会",
       "categoryLabels": [
-        "雑感"
+        "社会"
       ],
       "selected": true,
       "summary": "大一时应偷袭圣手邀请写了一篇给高中生的文章，算是把我高中的许多感想系统总结了一遍，应该算一篇实用的文章。",
