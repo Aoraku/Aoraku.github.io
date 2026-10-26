@@ -77,3 +77,9 @@ body[data-line=g]{--route-color:var(--red);--accent:#ff686f}
 
 .intro-heading h1{min-height:0}
 .intro-heading .intro-subtitle{margin:20px 0 0;min-height:1.5em;font-size:clamp(14px,1.4vw,20px);font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.06em;line-height:1.5;color:#b6beb7}
+
+/* Selected articles: Hanzomon purple, without a railway badge. */
+body[data-line=selected]{--route-color:#8f76d6;--accent:#b5a0f0}
+:root[data-blog-theme=light] body[data-line=selected]{--accent:#7053b5}
+body[data-line=selected] #blog-title{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;color:var(--route-color)}
+#selected-menu summary,a.category-button[href="/blog/selected"]{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}

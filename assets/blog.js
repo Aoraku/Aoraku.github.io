@@ -45,7 +45,7 @@
     const index = await getJson("data/blog-index.json", { entries: [] });
     state.blog = index.entries || [];
     categoryOrder = index.categories || [];
-    $('#selected-articles').innerHTML = state.blog.filter(e => e.selected).map(e => `<a href="/blog/${e.id}"><small>${escapeHtml(getEntryCategoryDisplay(e))}</small>${escapeHtml(e.title)}</a>`).join('') || '<p>暂无精选文章</p>';
+    $('#selected-articles').innerHTML = state.blog.filter(e => e.selected).map(e => `<a href="/blog/${e.id}"><small>${escapeHtml(getEntryCategoryDisplay(e))}</small>${escapeHtml(e.title)}</a>`).join('') || '<p>暂无精選文章</p>';
     renderBlog();
     updateRoute();
 
@@ -127,11 +127,13 @@
     renderCategories();
     renderBlogList();
     const category = categoryOrder.find(c => c.id === state.activeCategory);
-    $('#blog-title').textContent = category?.label || '精选';
-    const line = ['highschool','cst','frontier'].includes(state.activeCategory) ? 'g' : 'ak';
+    $('#blog-title').textContent = category?.label || '精選';
+    const selected = state.activeCategory === 'selected';
+    const line = document.body.dataset.blogView === 'metro' ? 'ak' : selected ? 'selected' : ['highschool','cst','frontier'].includes(state.activeCategory) ? 'g' : 'ak';
     document.body.dataset.line = line;
+    $('#station-badge').hidden = selected;
     $('#station-badge').className = `line-symbol ${line}`;
-    $('#station-badge').innerHTML = window.CyberMetro.lineIcon(line);
+    $('#station-badge').innerHTML = selected ? '' : window.CyberMetro.lineIcon(line);
   }
 
   function renderCategories() {

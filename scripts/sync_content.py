@@ -13,7 +13,7 @@ OUT_PATH = ROOT / "data" / "blog-index.json"
 METADATA_PATH = ROOT / "data" / "blog-metadata.json"
 CATEGORIES = [
     {"id": key, "label": label} for key, label in [
-        ("selected", "精选"), ("journal", "雑感"), ("highschool", "高校時代"),
+        ("selected", "精選"), ("journal", "雑感"), ("highschool", "高校時代"),
         ("japanese", "日本語"), ("cst", "CST"), ("frontier", "先端"),
         ("society", "社会"), ("poem", "詩歌"), ("philosophy", "哲学"),
         ("arts", "文藝")
