@@ -21,7 +21,11 @@
   const station = s => `<a class="metro-station${s.transfer?' transfer':''}${s.g?' g-station':''}" href="${s.href || `/blog/${s.id}`}" data-station="${s.id}" data-x="${s.x}" data-y="${s.y}" aria-label="${s.name}${s.transfer?'、AK・G 乗り換え':''}"><rect class="station-hit" x="${s.x-65}" y="${s.y-40}" width="130" height="80" rx="8"/><circle class="station-halo" cx="${s.x}" cy="${s.y}" r="42"/>${s.transfer?`<rect class="transfer-link" x="${s.x-65}" y="${s.y-35}" width="130" height="70" rx="35"/>${badge('ak',s.code,s.x-31,s.y)}${badge('g',s.id==='cst'?'02':'03',s.x+32,s.y)}`:badge(s.g?'g':'ak',s.code,s.x,s.y)}<text class="station-name" x="${s.tx}" y="${s.ty}" text-anchor="${s.anchor}">${s.name}</text></a>`;
   $('#metro-map').innerHTML = `<svg viewBox="125 -190 1015 1010" role="group" aria-labelledby="map-name map-desc"><title id="map-name">Cyber Metro 路線図</title><desc id="map-desc">環状線は先端から反時計回りに日本語、雑感、社会、CST、詩歌、哲学、文藝。学園都市線は高校時代からCST、先端を通り、北東の旅へ。旅駅はTravelページにリンクします。</desc><g class="route-track" aria-hidden="true"><rect class="ak-route route-bed" x="330" y="160" width="540" height="320" rx="64"/><path class="g-route route-bed" d="M145 775 1087 -167"/><rect class="ak-route" x="330" y="160" width="540" height="320" rx="64"/><path class="g-route" d="M145 775 1087 -167"/></g>${stations.map(station).join('')}</svg>`;
   document.querySelectorAll('.line-symbol').forEach(el=>{el.innerHTML=lineIcon(el.classList.contains('g')?'g':'ak');});
-  window.CyberMetro = {stations, lineIcon};
+  const motion = {
+    duration: 2700,
+    progress: t => t <= .3 ? .3*(1-Math.pow(1-t/.3,3)) : .3+.7*Math.pow((t-.3)/.7,2)
+  };
+  window.CyberMetro = {stations, lineIcon, motion};
   const theme=$('#blog-theme');
   function updateTheme(){
     const dark=document.documentElement.dataset.blogTheme!=='light';
@@ -38,8 +42,8 @@
     const colors=['#26333b','#343137','#343a32','#3b302c','#303344','#253837','#3d3542'];
     for(let layer=0;layer<2;layer++){
       let x=-20;
-      while(x<1600){const w=32+rand()*50,h=65+rand()*(layer?120:230),y=470-h,kind=Math.floor(x/300)%5,fill=colors[Math.floor(rand()*colors.length)];
-        out+=`<g fill="${fill}" opacity="${layer?1:.55}"><path d="M${x} 470V${y}h${w}v${h}Z"/>`;
+      while(x<1600){const w=32+rand()*50,h=65+rand()*(layer?120:230),y=470-h,kind=[0,1,4,3,2][Math.max(0,Math.min(4,Math.floor(x/320)))],fill=colors[Math.floor(rand()*colors.length)];
+        out+=`<g data-region="${['china','japan','united-states','europe','southeast-asia'][kind]}" fill="${fill}" opacity="${layer?1:.55}"><path d="M${x} 470V${y}h${w}v${h}Z"/>`;
         if(kind===0){out+=`<path d="M${x-5} ${y}h${w+10}l-8-9H${x+3}Z"/>`;for(let j=14;j<h-12;j+=20)out+=`<path d="M${x-3} ${y+j}h${w+6}" stroke="${fill}" stroke-width="7"/>`;}
         if(kind===1)out+=`<path d="M${x-8} ${y} ${x+w/2} ${y-27} ${x+w+8} ${y}Z"/><rect x="${x+w-12}" y="${y-25}" width="5" height="17"/>`;
         if(kind===2)out+=`<rect x="${x+8}" y="${y-13}" width="${w-16}" height="13"/><path d="M${x+w/2} ${y-13}v-20" stroke="${fill}" stroke-width="3"/>`;
@@ -60,10 +64,10 @@
     function key(e){if(['Escape','Enter',' '].includes(e.key)){e.preventDefault();finish();}}
     intro.addEventListener('click',finish,{once:true});document.addEventListener('keydown',key);const start=performance.now(),words="Aoraku's Blog: Cyber Metro";
     // Slow almost to a stop at 30% of the journey, then accelerate.
-    const movingMs=2700, holdMs=1000, fadeMs=200;
+    const movingMs=motion.duration, holdMs=1000, fadeMs=200;
     function tick(now){
       const elapsed=now-start, t=Math.min(1,elapsed/movingMs);
-      const p=t<=.3 ? .3*(1-Math.pow(1-t/.3,3)) : .3+.7*Math.pow((t-.3)/.7,2);
+      const p=motion.progress(t);
       $('#intro-type').textContent=words.slice(0,Math.ceil(p*words.length));
       $('#intro-subtitle').textContent='Da sein.'.slice(0,Math.ceil(p*8));
       $('#intro-train').style.transform=`translateX(${(-820+(innerWidth+1640)*p)}px)`;

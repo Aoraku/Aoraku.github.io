@@ -95,3 +95,56 @@ body[data-blog-view=metro] .site-footer{border-top:0}
   .metro-stage .metro-legend>span{gap:8px}
   .metro-stage .metro-legend .line-symbol{width:27px;height:27px}
 }
+
+/* Platform signs use railway Gothic lettering, independently of article typography. */
+.station-platform{--platform-color:#397b22;position:relative;margin:90px 0 5px;padding-top:12px;font-family:var(--rail-font);isolation:isolate}
+.station-platform[hidden]{display:none}
+.station-platform[data-platform-line=g]{--platform-color:#e52e39}
+.platform-controls{height:44px;display:flex;justify-content:center;margin-bottom:10px}
+.platform-transfer{display:flex;align-items:center;gap:10px;background:none;border:1px solid var(--line);border-radius:30px;padding:5px 15px;color:var(--ink);font:500 13px var(--rail-font);cursor:pointer}
+.platform-transfer:hover{box-shadow:0 0 16px color-mix(in srgb,var(--platform-color) 25%,transparent)}
+.transfer-target{display:grid;place-items:center;width:25px;height:25px;background:#fff;color:#161a1b;font:bold 12px Arial,sans-serif;border:3px solid #80c23d}
+.transfer-target.g{border-radius:50%;border-color:#ed303e}
+.platform-sign-row{display:flex;align-items:center;justify-content:center;gap:clamp(12px,4vw,54px);position:relative;padding-bottom:55px}
+.station-sign{position:relative;width:min(680px,75%);background:#f3f4ef;color:#171e20;border:5px solid #929a98;box-shadow:0 4px 20px #0003;padding:17px 20px 12px;border-radius:2px}
+.station-sign::before,.station-sign::after{content:"";position:absolute;z-index:-1;top:100%;height:160px;width:9px;background:linear-gradient(90deg,#4d5859,#929b98,#4d5859)}
+.station-sign::before{left:14%}.station-sign::after{right:14%}
+.sign-heading{position:relative;display:flex;align-items:center;justify-content:center;min-height:91px;padding:0 80px}
+.platform-code{position:absolute;left:0;display:flex;flex-direction:column;justify-content:center;align-items:center;width:52px;height:61px;line-height:1.05;background:white;border:5px solid #80c23d;border-radius:3px;font:900 23px/1 Arial,sans-serif}
+.platform-code.g{border-radius:50%;width:62px;height:62px;border:6px solid #ed303e;font-size:22px}
+.sign-name{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;white-space:nowrap}
+.sign-name strong{font-size:clamp(27px,3.4vw,44px);font-weight:800;letter-spacing:.12em;line-height:1.2}
+.sign-name>span{font-size:14px;font-weight:600;letter-spacing:.12em}
+.sign-line-name{position:absolute;right:0;top:3px;color:#52615b;font-size:10px;letter-spacing:.08em}
+.sign-band{position:relative;height:25px;margin:12px -10px 0;display:flex;justify-content:space-between;align-items:center;background:var(--platform-color);color:#fff;clip-path:polygon(0 50%,3% 0,97% 0,100% 50%,97% 100%,3% 100%);padding:0 17px;font:600 21px Arial,sans-serif}
+.sign-band i{position:absolute;left:calc(50% - 9px);height:100%;width:18px;background:#a3d13e}
+.station-sign.g .sign-band{height:9px;clip-path:none;padding:0;margin-top:18px}
+.station-sign.g .sign-band i{background:#fff;width:22px;left:calc(50% - 11px)}
+.station-sign.g .sign-band>span{display:none}
+.sign-neighbors{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:12px;margin-top:8px;min-height:46px}
+.platform-neighbor{display:flex;flex-direction:column;color:#202b27!important;text-decoration:none!important;font-size:18px;font-weight:600;gap:3px;line-height:1.25}
+.platform-neighbor small{font:11px/1.4 Arial,sans-serif;color:#59615c}
+.platform-neighbor.right{text-align:right}.platform-neighbor:hover{filter:drop-shadow(0 0 5px #74a35760)}
+.sign-roman{font:700 16px/1.4 Arial,sans-serif;text-align:center}
+.platform-arrow{flex-shrink:0;display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--line);border-radius:50%;font:300 29px/1 Arial,sans-serif;color:var(--ink)!important;text-decoration:none!important;transition:box-shadow .2s,border-color .2s}
+.platform-arrow:hover,.platform-arrow:focus-visible{border-color:var(--platform-color);box-shadow:0 0 20px color-mix(in srgb,var(--platform-color) 28%,transparent)}
+.platform-arrow.unavailable{opacity:.15}
+.platform-track{height:155px;position:relative;overflow:hidden;margin-top:-40px}
+.rail-sleepers{position:absolute;bottom:2px;height:16px;width:100%;background:repeating-linear-gradient(90deg,transparent 0 17px,#495354 17px 24px,transparent 24px 31px);opacity:.55}
+.rail-top,.rail-bottom{position:absolute;left:0;right:0;height:2px;background:#77817f}
+.rail-top{bottom:15px}.rail-bottom{bottom:3px;opacity:.45}
+.platform-train{position:absolute;left:0;bottom:15px;width:840px;height:150px;visibility:hidden;will-change:transform;z-index:2}
+.platform-train svg{display:block;width:100%;height:100%}
+.station-platform.is-moving .platform-train{visibility:visible}
+.station-platform.is-moving .platform-transfer{opacity:.4;pointer-events:none}
+.station-platform.is-moving .platform-arrow{opacity:.45}
+@media(max-width:700px){
+ .station-platform{margin-top:60px}.platform-sign-row{gap:8px;padding-bottom:42px}.station-sign{width:calc(100% - 72px);padding:11px 8px 8px;border-width:3px}
+ .platform-arrow{width:28px;height:36px;border:0;font-size:24px}.sign-heading{min-height:79px;padding:14px 35px 0}.platform-code{width:30px;height:37px;border-width:3px;font-size:15px}.platform-code.g{width:35px;height:35px;border-width:4px;font-size:14px}
+ .sign-name strong{font-size:clamp(19px,5.2vw,28px);letter-spacing:.04em}.sign-name>span{font-size:9px;letter-spacing:.02em}.sign-line-name{font-size:8px;top:0}.sign-band{margin-left:0;margin-right:0;height:20px;padding:0 7px}
+ .sign-neighbors{gap:5px;grid-template-columns:1fr 1fr 1fr;min-height:48px}.platform-neighbor{font-size:12px}.platform-neighbor small{font-size:9px}.sign-roman{font-size:11px}.platform-track{height:118px;margin-top:-30px}.platform-train{width:672px;height:120px}.platform-controls{margin-bottom:5px}
+}
+
+.station-sign.g .platform-neighbor.left>span::before{content:"← ";color:var(--platform-color)}
+.station-sign.g .platform-neighbor.right>span::after{content:" →";color:var(--platform-color)}
+@media(max-width:700px){.station-sign::before,.station-sign::after{height:125px}}

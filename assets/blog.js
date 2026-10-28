@@ -103,6 +103,7 @@
   function updateRoute() {
     const { active, entryId, category, anchor } = parseRoute();
     stopReaderTracking();
+    window.StationPlatform.cancel();
     const list = new URLSearchParams(location.search).get('view') === 'list';
     $('#view-blog').classList.toggle('list-mode', list);
     $('#layout-label').textContent = list ? '路线图模式' : '列表模式';
@@ -134,6 +135,7 @@
     $('#station-badge').hidden = selected;
     $('#station-badge').className = `line-symbol ${line}`;
     $('#station-badge').innerHTML = selected ? '' : window.CyberMetro.lineIcon(line);
+    window.StationPlatform.render(document.body.dataset.blogView === 'blog' ? state.activeCategory : null, navigate);
   }
 
   function renderCategories() {
