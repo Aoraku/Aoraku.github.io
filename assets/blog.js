@@ -135,7 +135,7 @@
     $('#station-badge').hidden = selected;
     $('#station-badge').className = `line-symbol ${line}`;
     $('#station-badge').innerHTML = selected ? '' : window.CyberMetro.lineIcon(line);
-    window.StationPlatform.render(document.body.dataset.blogView === 'blog' ? state.activeCategory : null, navigate);
+    window.StationPlatform.render(document.body.dataset.blogView === 'blog' && !$('#view-blog').classList.contains('list-mode') ? state.activeCategory : null, navigate);
   }
 
   function renderCategories() {

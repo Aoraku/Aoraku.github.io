@@ -37,27 +37,9 @@
   document.addEventListener('click',e=>{if(!$('#selected-menu').contains(e.target))$('#selected-menu').open=false;});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#selected-menu').open=false;});
 
-  function skyline() {
-    let seed=106;const rand=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};let out='';
-    const colors=['#26333b','#343137','#343a32','#3b302c','#303344','#253837','#3d3542'];
-    for(let layer=0;layer<2;layer++){
-      let x=-20;
-      while(x<1600){const w=32+rand()*50,h=65+rand()*(layer?120:230),y=470-h,kind=[0,1,4,3,2][Math.max(0,Math.min(4,Math.floor(x/320)))],fill=colors[Math.floor(rand()*colors.length)];
-        out+=`<g data-region="${['china','japan','united-states','europe','southeast-asia'][kind]}" fill="${fill}" opacity="${layer?1:.55}"><path d="M${x} 470V${y}h${w}v${h}Z"/>`;
-        if(kind===0){out+=`<path d="M${x-5} ${y}h${w+10}l-8-9H${x+3}Z"/>`;for(let j=14;j<h-12;j+=20)out+=`<path d="M${x-3} ${y+j}h${w+6}" stroke="${fill}" stroke-width="7"/>`;}
-        if(kind===1)out+=`<path d="M${x-8} ${y} ${x+w/2} ${y-27} ${x+w+8} ${y}Z"/><rect x="${x+w-12}" y="${y-25}" width="5" height="17"/>`;
-        if(kind===2)out+=`<rect x="${x+8}" y="${y-13}" width="${w-16}" height="13"/><path d="M${x+w/2} ${y-13}v-20" stroke="${fill}" stroke-width="3"/>`;
-        if(kind===3)out+=`<path d="M${x} ${y} ${x+w/2} ${y-38} ${x+w} ${y}Z"/><rect x="${x+5}" y="${y-31}" width="7" height="23"/>`;
-        if(kind===4)out+=`<path d="M${x-10} ${y+4}Q${x+w/2} ${y-14} ${x+w/2} ${y-38}Q${x+w/2} ${y-14} ${x+w+10} ${y+4}Z"/>`;
-        for(let wy=y+13;wy<459;wy+=22)for(let wx=x+8;wx<x+w-7;wx+=17)out+=`<rect x="${wx}" y="${wy}" width="6" height="9" fill="#080b0f"/>`;
-        out+='</g>';x+=w+5+rand()*10;
-      }
-    }
-    return `<svg viewBox="0 0 1600 500" preserveAspectRatio="xMidYMax slice">${out}</svg>`;
-  }
   const intro=$('#metro-intro');
   if(/^\/blog\/?$/.test(location.pathname)&&!location.hash&&!reduced()){
-    intro.hidden=false;$('#intro-skyline').innerHTML=skyline();document.body.classList.add('intro-playing');
+    intro.hidden=false;document.body.classList.add('intro-playing');
     const surfaces=[$('.metro-toolbar'),$('#main-content'),$('.site-footer')];surfaces.forEach(e=>e.inert=true);
     let frame,finished=false;
     function finish(){if(finished)return;finished=true;cancelAnimationFrame(frame);intro.hidden=true;surfaces.forEach(e=>e.inert=false);document.body.classList.remove('intro-playing');document.removeEventListener('keydown',key);}
